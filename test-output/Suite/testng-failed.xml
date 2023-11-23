@@ -2,15 +2,15 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [Suite]">
   <test thread-count="5" name="Test(failed)">
-    <parameter name="ETO" value="20"/>
-    <parameter name="ITO" value="20"/>
+    <parameter name="ETO" value="30"/>
+    <parameter name="ITO" value="30"/>
     <parameter name="browser" value="chrome"/>
     <parameter name="appURL" value="https://edison.tautmore.com/"/>
     <classes>
       <class name="script.AddInstitution">
         <methods>
           <include name="postCondition"/>
-          <include name="testAddStudent" invocation-numbers="0 1 2"/>
+          <include name="testAddStudent" invocation-numbers="0 1"/>
           <include name="preCondition"/>
         </methods>
       </class> <!-- script.AddInstitution -->

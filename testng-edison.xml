@@ -1,0 +1,14 @@
+
+<suite name="Suite">
+  <test name="Test">
+	<parameter name="browser" value="chrome"/>
+	<parameter name="appURL" value="https://edison.tautmore.com/"/>
+	<parameter name="ITO" value="30"/>
+	<parameter name="ETO" value="30"/>
+    <classes>
+      <class priority="1" name="script.InvalidLogin_edison"/>
+      <class priority="2" name="script.ValidLogin_edison"/>
+      <class priority="3" name="script.AddInstitution"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

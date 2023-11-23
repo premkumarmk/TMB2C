@@ -1,13 +1,14 @@
 <suite name="Suite">
   <test name="Test">
 	<parameter name="browser" value="chrome"/>
-	<parameter name="appURL" value="https://myschool.tautmore.com/login"/>
+	<parameter name="appURL" value="https://raj.tautmore.com/login"/>
 	<parameter name="ITO" value="60"/>
 	<parameter name="ETO" value="30"/>
     <classes>
-      <class name="script.ValidLogin_myschool"/>
-      <class name="script.InvalidLogin"/>
-      <class name="script.AddStudent"/>
+      <class priority='2' name="script.ValidLogin_myschool"/>
+      <class priority='1' name="script.InvalidLogin_myschool"/>     
+      <class priority='3' name="script.VerifyCreateStudentSuccessMessage"/>
+      <class priority='4' name="script.AddStudent"/>
     </classes>
   </test>
 </suite>

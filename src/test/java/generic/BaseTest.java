@@ -21,17 +21,20 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.*;
 
 public class BaseTest 
 {
 	public WebDriver driver;
 	public WebDriverWait wait;
+	public Assert asert;
 	
 	@Parameters({"browser","appURL","ITO","ETO"})
 	@BeforeMethod
@@ -39,8 +42,11 @@ public class BaseTest
 			(
 							
 				@Optional("chrome") String browser,		
+				
+				//@Optional("https://edison.tautmore.com/") String appURL,
+				@Optional("https://raj.tautmore.com/login") String appURL,
+				
 				//@Optional("https://myschool.tautmore.com/login") String appURL,
-				@Optional("https://edison.tautmore.com/") String appURL,
 				@Optional("100") String ITO,
 				@Optional("60") String ETO	
 			) throws MalformedURLException	

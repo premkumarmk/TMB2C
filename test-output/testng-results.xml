@@ -1,103 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="5" passed="2" failed="3" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[Browser is:chrome]]>
     </line>
     <line>
-      <![CDATA[Set ITO:20]]>
+      <![CDATA[Set ITO:100]]>
     </line>
     <line>
-      <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-    </line>
-    <line>
-      <![CDATA[Maximize the browser]]>
-    </line>
-    <line>
-      <![CDATA[Set ETO:20]]>
-    </line>
-    <line>
-      <![CDATA[Close the browser]]>
-    </line>
-    <line>
-      <![CDATA[Browser is:chrome]]>
-    </line>
-    <line>
-      <![CDATA[Set ITO:20]]>
-    </line>
-    <line>
-      <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
+      <![CDATA[Enter the URL:https://raj.tautmore.com/login]]>
     </line>
     <line>
       <![CDATA[Maximize the browser]]>
     </line>
     <line>
-      <![CDATA[Set ETO:20]]>
-    </line>
-    <line>
-      <![CDATA[Close the browser]]>
-    </line>
-    <line>
-      <![CDATA[Browser is:chrome]]>
-    </line>
-    <line>
-      <![CDATA[Set ITO:20]]>
-    </line>
-    <line>
-      <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-    </line>
-    <line>
-      <![CDATA[Maximize the browser]]>
-    </line>
-    <line>
-      <![CDATA[Set ETO:20]]>
-    </line>
-    <line>
-      <![CDATA[Close the browser]]>
-    </line>
-    <line>
-      <![CDATA[Browser is:chrome]]>
-    </line>
-    <line>
-      <![CDATA[Set ITO:20]]>
-    </line>
-    <line>
-      <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-    </line>
-    <line>
-      <![CDATA[Maximize the browser]]>
-    </line>
-    <line>
-      <![CDATA[Set ETO:20]]>
-    </line>
-    <line>
-      <![CDATA[Close the browser]]>
-    </line>
-    <line>
-      <![CDATA[Browser is:chrome]]>
-    </line>
-    <line>
-      <![CDATA[Set ITO:20]]>
-    </line>
-    <line>
-      <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-    </line>
-    <line>
-      <![CDATA[Maximize the browser]]>
-    </line>
-    <line>
-      <![CDATA[Set ETO:20]]>
+      <![CDATA[Set ETO:60]]>
     </line>
     <line>
       <![CDATA[Close the browser]]>
     </line>
   </reporter-output>
-  <suite started-at="2023-11-24T00:37:16 IST" name="Suite" finished-at="2023-11-24T00:40:11 IST" duration-ms="174718">
+  <suite started-at="2023-12-03T08:26:08 IST" name="Default suite" finished-at="2023-12-03T08:26:50 IST" duration-ms="42517">
     <groups>
     </groups>
-    <test started-at="2023-11-24T00:37:16 IST" name="Test" finished-at="2023-11-24T00:40:11 IST" duration-ms="174718">
-      <class name="script.AddInstitution">
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:37:19 IST" name="preCondition" finished-at="2023-11-24T00:37:22 IST" duration-ms="3470" status="PASS">
+    <test started-at="2023-12-03T08:26:08 IST" name="Default test" finished-at="2023-12-03T08:26:50 IST" duration-ms="42517">
+      <class name="script.VerifyCreateStudentSuccessMessage">
+        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.VerifyCreateStudentSuccessMessage@77fbd92c]" started-at="2023-12-03T08:26:09 IST" name="preCondition" finished-at="2023-12-03T08:26:13 IST" duration-ms="3931" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -106,17 +34,17 @@
             </param>
             <param index="1">
               <value>
-                <![CDATA[https://edison.tautmore.com/]]>
+                <![CDATA[https://raj.tautmore.com/login]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[20]]>
+                <![CDATA[100]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[20]]>
+                <![CDATA[60]]>
               </value>
             </param>
           </params>
@@ -125,131 +53,127 @@
               <![CDATA[Browser is:chrome]]>
             </line>
             <line>
-              <![CDATA[Set ITO:20]]>
+              <![CDATA[Set ITO:100]]>
             </line>
             <line>
-              <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
+              <![CDATA[Enter the URL:https://raj.tautmore.com/login]]>
             </line>
             <line>
               <![CDATA[Maximize the browser]]>
             </line>
             <line>
-              <![CDATA[Set ETO:20]]>
+              <![CDATA[Set ETO:60]]>
             </line>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method signature="testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:37:22 IST" name="testAddStudent" data-provider="data-set" finished-at="2023-11-24T00:38:15 IST" duration-ms="52615" status="FAIL">
+        <test-method signature="testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.VerifyCreateStudentSuccessMessage@77fbd92c]" started-at="2023-12-03T08:26:13 IST" name="testAddStudent" data-provider="data-set" finished-at="2023-12-03T08:26:50 IST" duration-ms="36640" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[mithun@codewave.com]]>
+                <![CDATA[rajemailex@gmail.com]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[123456]]>
+                <![CDATA[Raj@12345]]>
               </value>
             </param>
             <param index="2">
               <value>
-                <![CDATA[Green ocean]]>
+                <![CDATA[10025]]>
               </value>
             </param>
             <param index="3">
               <value>
-                <![CDATA[1160011110]]>
+                <![CDATA[student10025@gmail.com]]>
               </value>
             </param>
             <param index="4">
               <value>
-                <![CDATA[Greencean@g.com]]>
+                <![CDATA[Fam]]>
               </value>
             </param>
             <param index="5">
               <value>
-                <![CDATA[greenocean]]>
+                <![CDATA[Male]]>
               </value>
             </param>
             <param index="6">
               <value>
-                <![CDATA[Greenc&12]]>
+                <![CDATA[9999999925]]>
               </value>
             </param>
             <param index="7">
               <value>
-                <![CDATA[711722]]>
+                <![CDATA[India]]>
               </value>
             </param>
             <param index="8">
               <value>
-                <![CDATA[Light]]>
+                <![CDATA[Karnataka]]>
               </value>
             </param>
             <param index="9">
               <value>
-                <![CDATA[Theme 1 (background emerald)]]>
+                <![CDATA[Bengaluru]]>
               </value>
             </param>
             <param index="10">
               <value>
-                <![CDATA[www.greenocean.com]]>
+                <![CDATA[560010]]>
               </value>
             </param>
             <param index="11">
               <value>
-                <![CDATA[India]]>
+                <![CDATA[Rajajinagar]]>
               </value>
             </param>
             <param index="12">
               <value>
-                <![CDATA[Himachal Pradesh]]>
+                <![CDATA[same as prefered address]]>
               </value>
             </param>
             <param index="13">
               <value>
-                <![CDATA[Jubbal]]>
+                <![CDATA[14 Mar, 2017]]>
               </value>
             </param>
             <param index="14">
               <value>
-                <![CDATA[Lanmark Road]]>
+                <![CDATA[13 Nov, 2023]]>
               </value>
             </param>
             <param index="15">
               <value>
-                <![CDATA[street main]]>
+                <![CDATA[June/2023-April/2024]]>
               </value>
             </param>
             <param index="16">
               <value>
-                <![CDATA[171205]]>
+                <![CDATA[GradeTHREE]]>
               </value>
             </param>
             <param index="17">
               <value>
-                <![CDATA[ICSE]]>
+                <![CDATA[Section A]]>
+              </value>
+            </param>
+            <param index="18">
+              <value>
+                <![CDATA[HT]]>
+              </value>
+            </param>
+            <param index="19">
+              <value>
+                <![CDATA[Kannada]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for url to be "https://edison.tautmore.com/institution-management". Current url: "https://edison.tautmore.com/institution-management/create" (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.15.0', revision: '1d14b5521b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.160, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56581}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56581/devtoo..., se:cdpVersion: 119.0.6045.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 8aa90d1a4b588c5d8581be47774622e6]]>
-            </message>
+          <exception class="java.lang.AssertionError">
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for url to be "https://edison.tautmore.com/institution-management". Current url: "https://edison.tautmore.com/institution-management/create" (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.15.0', revision: '1d14b5521b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.160, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56581}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56581/devtoo..., se:cdpVersion: 119.0.6045.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 8aa90d1a4b588c5d8581be47774622e6
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
-at script.AddInstitution.testAddStudent(AddInstitution.java:111)
+              <![CDATA[java.lang.AssertionError
+at page.StudentsPage.verifySuccessMsg(StudentsPage.java:120)
+at script.VerifyCreateStudentSuccessMessage.testAddStudent(VerifyCreateStudentSuccessMessage.java:96)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -278,15 +202,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddStudent -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:38:15 IST" name="postCondition" finished-at="2023-11-24T00:38:15 IST" duration-ms="377" status="PASS">
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.VerifyCreateStudentSuccessMessage@77fbd92c]" started-at="2023-12-03T08:26:50 IST" name="postCondition" finished-at="2023-12-03T08:26:50 IST" duration-ms="380" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=testAddStudent status=FAILURE method=AddInstitution.testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.AddInstitution@7f3b84b8] output={null}]]]>
+                <![CDATA[[TestResult name=testAddStudent status=FAILURE method=VerifyCreateStudentSuccessMessage.testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.VerifyCreateStudentSuccessMessage@77fbd92c] output={null}]]]>
               </value>
             </param>
           </params>
@@ -296,527 +220,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:38:15 IST" name="preCondition" finished-at="2023-11-24T00:38:18 IST" duration-ms="2500" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[https://edison.tautmore.com/]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Browser is:chrome]]>
-            </line>
-            <line>
-              <![CDATA[Set ITO:20]]>
-            </line>
-            <line>
-              <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-            </line>
-            <line>
-              <![CDATA[Maximize the browser]]>
-            </line>
-            <line>
-              <![CDATA[Set ETO:20]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- preCondition -->
-        <test-method signature="testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:38:18 IST" name="testAddStudent" data-provider="data-set" finished-at="2023-11-24T00:39:08 IST" duration-ms="50091" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[mithun@codewave.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[123456]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Redmine]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[2130220322]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Redmine@g.com]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[redmine]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[Redmine&4]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[29301]]>
-              </value>
-            </param>
-            <param index="8">
-              <value>
-                <![CDATA[Knowledge]]>
-              </value>
-            </param>
-            <param index="9">
-              <value>
-                <![CDATA[Theme 3 (background cyan)]]>
-              </value>
-            </param>
-            <param index="10">
-              <value>
-                <![CDATA[www.finoma.org]]>
-              </value>
-            </param>
-            <param index="11">
-              <value>
-                <![CDATA[India]]>
-              </value>
-            </param>
-            <param index="12">
-              <value>
-                <![CDATA[Kerala]]>
-              </value>
-            </param>
-            <param index="13">
-              <value>
-                <![CDATA[Cherthala]]>
-              </value>
-            </param>
-            <param index="14">
-              <value>
-                <![CDATA[Chertala Katam Road]]>
-              </value>
-            </param>
-            <param index="15">
-              <value>
-                <![CDATA[DA road]]>
-              </value>
-            </param>
-            <param index="16">
-              <value>
-                <![CDATA[688524]]>
-              </value>
-            </param>
-            <param index="17">
-              <value>
-                <![CDATA[CBSE]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for url to be "https://edison.tautmore.com/institution-management". Current url: "https://edison.tautmore.com/institution-management/create" (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.15.0', revision: '1d14b5521b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.160, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56664}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56664/devtoo..., se:cdpVersion: 119.0.6045.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 6ea077f1945b2cfaad3c13de0524350f]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for url to be "https://edison.tautmore.com/institution-management". Current url: "https://edison.tautmore.com/institution-management/create" (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.15.0', revision: '1d14b5521b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.160, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56664}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56664/devtoo..., se:cdpVersion: 119.0.6045.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 6ea077f1945b2cfaad3c13de0524350f
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
-at script.AddInstitution.testAddStudent(AddInstitution.java:111)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAddStudent -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:39:08 IST" name="postCondition" finished-at="2023-11-24T00:39:08 IST" duration-ms="381" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAddStudent status=FAILURE method=AddInstitution.testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.AddInstitution@7f3b84b8] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Close the browser]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- postCondition -->
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:39:08 IST" name="preCondition" finished-at="2023-11-24T00:39:10 IST" duration-ms="2050" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[https://edison.tautmore.com/]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Browser is:chrome]]>
-            </line>
-            <line>
-              <![CDATA[Set ITO:20]]>
-            </line>
-            <line>
-              <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-            </line>
-            <line>
-              <![CDATA[Maximize the browser]]>
-            </line>
-            <line>
-              <![CDATA[Set ETO:20]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- preCondition -->
-        <test-method signature="testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:39:10 IST" name="testAddStudent" data-provider="data-set" finished-at="2023-11-24T00:40:01 IST" duration-ms="50856" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[mithun@codewave.com]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[123456]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[Johns Society]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[2210033312]]>
-              </value>
-            </param>
-            <param index="4">
-              <value>
-                <![CDATA[Johns@g.com]]>
-              </value>
-            </param>
-            <param index="5">
-              <value>
-                <![CDATA[johns]]>
-              </value>
-            </param>
-            <param index="6">
-              <value>
-                <![CDATA[Johns&123]]>
-              </value>
-            </param>
-            <param index="7">
-              <value>
-                <![CDATA[434400]]>
-              </value>
-            </param>
-            <param index="8">
-              <value>
-                <![CDATA[Light]]>
-              </value>
-            </param>
-            <param index="9">
-              <value>
-                <![CDATA[Theme 4 (background indigo)]]>
-              </value>
-            </param>
-            <param index="10">
-              <value>
-                <![CDATA[www.johns.org]]>
-              </value>
-            </param>
-            <param index="11">
-              <value>
-                <![CDATA[India]]>
-              </value>
-            </param>
-            <param index="12">
-              <value>
-                <![CDATA[Tamil Nadu]]>
-              </value>
-            </param>
-            <param index="13">
-              <value>
-                <![CDATA[Vellore]]>
-              </value>
-            </param>
-            <param index="14">
-              <value>
-                <![CDATA[Thali Road]]>
-              </value>
-            </param>
-            <param index="15">
-              <value>
-                <![CDATA[John nagar]]>
-              </value>
-            </param>
-            <param index="16">
-              <value>
-                <![CDATA[632001]]>
-              </value>
-            </param>
-            <param index="17">
-              <value>
-                <![CDATA[ICSE]]>
-              </value>
-            </param>
-          </params>
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for url to be "https://edison.tautmore.com/institution-management". Current url: "https://edison.tautmore.com/institution-management/create" (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.15.0', revision: '1d14b5521b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.160, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56708}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56708/devtoo..., se:cdpVersion: 119.0.6045.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0b8ca0cc9288a284fb0e8c645bde1622]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for url to be "https://edison.tautmore.com/institution-management". Current url: "https://edison.tautmore.com/institution-management/create" (tried for 20 second(s) with 500 milliseconds interval)
-Build info: version: '4.15.0', revision: '1d14b5521b'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 119.0.6045.160, chrome: {chromedriverVersion: 119.0.6045.105 (38c72552c5e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56708}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56708/devtoo..., se:cdpVersion: 119.0.6045.160, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 0b8ca0cc9288a284fb0e8c645bde1622
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:229)
-at script.AddInstitution.testAddStudent(AddInstitution.java:111)
-at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
-at java.base/java.lang.reflect.Method.invoke(Method.java:580)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-at org.testng.TestRunner.privateRun(TestRunner.java:848)
-at org.testng.TestRunner.run(TestRunner.java:621)
-at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
-at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
-at org.testng.TestNG.runSuites(TestNG.java:1114)
-at org.testng.TestNG.run(TestNG.java:1082)
-at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testAddStudent -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.AddInstitution@7f3b84b8]" started-at="2023-11-24T00:40:01 IST" name="postCondition" finished-at="2023-11-24T00:40:02 IST" duration-ms="355" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testAddStudent status=FAILURE method=AddInstitution.testAddStudent(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:3, instance:script.AddInstitution@7f3b84b8] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Close the browser]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- postCondition -->
-      </class> <!-- script.AddInstitution -->
-      <class name="script.ValidLogin_edison">
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ValidLogin_edison@7b2bbc3]" started-at="2023-11-24T00:40:05 IST" name="preCondition" finished-at="2023-11-24T00:40:08 IST" duration-ms="2734" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[https://edison.tautmore.com/]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Browser is:chrome]]>
-            </line>
-            <line>
-              <![CDATA[Set ITO:20]]>
-            </line>
-            <line>
-              <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-            </line>
-            <line>
-              <![CDATA[Maximize the browser]]>
-            </line>
-            <line>
-              <![CDATA[Set ETO:20]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- preCondition -->
-        <test-method signature="testValidLogin()[pri:1, instance:script.ValidLogin_edison@7b2bbc3]" started-at="2023-11-24T00:40:08 IST" name="testValidLogin" finished-at="2023-11-24T00:40:10 IST" duration-ms="2915" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testValidLogin -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ValidLogin_edison@7b2bbc3]" started-at="2023-11-24T00:40:10 IST" name="postCondition" finished-at="2023-11-24T00:40:11 IST" duration-ms="288" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testValidLogin status=SUCCESS method=ValidLogin_edison.testValidLogin()[pri:1, instance:script.ValidLogin_edison@7b2bbc3] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Close the browser]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- postCondition -->
-      </class> <!-- script.ValidLogin_edison -->
-      <class name="script.InvalidLogin">
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.InvalidLogin@48f2bd5b]" started-at="2023-11-24T00:40:02 IST" name="preCondition" finished-at="2023-11-24T00:40:04 IST" duration-ms="2593" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[https://edison.tautmore.com/]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[20]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Browser is:chrome]]>
-            </line>
-            <line>
-              <![CDATA[Set ITO:20]]>
-            </line>
-            <line>
-              <![CDATA[Enter the URL:https://edison.tautmore.com/]]>
-            </line>
-            <line>
-              <![CDATA[Maximize the browser]]>
-            </line>
-            <line>
-              <![CDATA[Set ETO:20]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- preCondition -->
-        <test-method signature="testInvalidLogin()[pri:2, instance:script.InvalidLogin@48f2bd5b]" started-at="2023-11-24T00:40:04 IST" name="testInvalidLogin" finished-at="2023-11-24T00:40:05 IST" duration-ms="394" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- testInvalidLogin -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.InvalidLogin@48f2bd5b]" started-at="2023-11-24T00:40:05 IST" name="postCondition" finished-at="2023-11-24T00:40:05 IST" duration-ms="176" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[[TestResult name=testInvalidLogin status=SUCCESS method=InvalidLogin.testInvalidLogin()[pri:2, instance:script.InvalidLogin@48f2bd5b] output={null}]]]>
-              </value>
-            </param>
-          </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Close the browser]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- postCondition -->
-      </class> <!-- script.InvalidLogin -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+      </class> <!-- script.VerifyCreateStudentSuccessMessage -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
