@@ -8,7 +8,7 @@
       <class priority='2' name="script.ValidLogin_myschool"/>
       <class priority='1' name="script.InvalidLogin_myschool"/>     
       <class priority='3' name="script.VerifyCreateStudentSuccessMessage"/>
-      <class priority='4' name="script.AddStudent"/>
+      <class priority='4' name="script.VerifyCreateStudentEmailAlreadyExistFailureMessage"/>
     </classes>
   </test>
 </suite>

@@ -3,17 +3,17 @@
 <suite name="Failed suite [Suite]">
   <test thread-count="5" name="Test(failed)">
     <parameter name="ETO" value="30"/>
-    <parameter name="ITO" value="30"/>
+    <parameter name="ITO" value="60"/>
     <parameter name="browser" value="chrome"/>
-    <parameter name="appURL" value="https://edison.tautmore.com/"/>
+    <parameter name="appURL" value="https://raj.tautmore.com/login"/>
     <classes>
-      <class name="script.AddInstitution">
+      <class name="script.AddStudent">
         <methods>
-          <include name="postCondition"/>
           <include name="testAddStudent" invocation-numbers="0 1"/>
+          <include name="postCondition"/>
           <include name="preCondition"/>
         </methods>
-      </class> <!-- script.AddInstitution -->
+      </class> <!-- script.AddStudent -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

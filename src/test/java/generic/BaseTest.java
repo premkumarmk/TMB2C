@@ -44,7 +44,9 @@ public class BaseTest
 				@Optional("chrome") String browser,		
 				
 				//@Optional("https://edison.tautmore.com/") String appURL,
-				@Optional("https://raj.tautmore.com/login") String appURL,
+				//@Optional("https://raj.tautmore.com/login") String appURL,
+				//@Optional("https://tautmore.com") String appURL,
+				@Optional("https://d2c0p5f3p3k3ka.cloudfront.net/") String appURL,
 				
 				//@Optional("https://myschool.tautmore.com/login") String appURL,
 				@Optional("100") String ITO,
@@ -82,6 +84,7 @@ public class BaseTest
 		
 		Reporter.log("Set ETO:"+ETO,true);
 		wait=new WebDriverWait(driver, Duration.ofSeconds(Integer.valueOf(ETO)));
+		
 		
 	}
 	

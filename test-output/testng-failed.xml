@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="script.VerifyCreateStudentSuccessMessage">
+      <class name="script.TakeAllShellsTest">
         <methods>
           <include name="postCondition"/>
-          <include name="testAddStudent" invocation-numbers="0"/>
           <include name="preCondition"/>
+          <include name="takeTest" invocation-numbers="0 1"/>
         </methods>
-      </class> <!-- script.VerifyCreateStudentSuccessMessage -->
+      </class> <!-- script.TakeAllShellsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

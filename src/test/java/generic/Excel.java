@@ -1,12 +1,65 @@
 package generic;
 
 import java.io.FileInputStream;
-
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.FileOutputStream;
+import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class Excel {
 
+
+	
+
+	    public void WriteToExcel(String fileName, String sheetName) throws IOException {
+	        // Step 1: Create a Workbook using WorkbookFactory
+	        Workbook workbook = WorkbookFactory.create(true);
+
+	        // Step 2: Create a Sheet
+	        Sheet sheet = workbook.createSheet(sheetName);
+
+	        // Step 3: Create a Row
+	        Row row = sheet.createRow(0);
+
+	        // Step 4: Create a Cell
+	        Cell cell = row.createCell(0);
+
+	        // Step 5: Set the cell value
+	        cell.setCellValue("Hello, Excel!");
+
+	        // Step 6: Save the workbook
+	        try (FileOutputStream fileOut = new FileOutputStream("fileName")) //workbook.xlsx 
+	        {
+	            workbook.write(fileOut);
+	            System.out.println("Excel file has been written successfully!");
+	        } 
+	        catch (IOException e) 
+	        {
+	            e.printStackTrace();
+	        } 
+	        finally 
+	        {
+	            try 
+	            {
+	                workbook.close();
+	            } 
+	            catch (IOException e) 
+	            {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	
+	
+	
+	
 	public static String getData(String path,String sheet,int r,int c)
 	{
 		String v="";

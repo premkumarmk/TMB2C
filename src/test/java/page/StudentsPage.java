@@ -89,9 +89,38 @@ public class StudentsPage
 	@FindBy(xpath="//div[@id='success-notification-content']/div/div[1]")
 	private WebElement successMessage;
 	
+	@FindBy(xpath="//div[@id='success-notification-content']/div/div[1]")
+	private WebElement failureMessage;
+	
 	public StudentsPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
+	}
+	
+	public void verifyFailureMsg(WebDriver driver, WebDriverWait wait)
+	{
+		String actualMsg = null;
+		String expectedMsg="E-mail already exist";
+		try
+		{
+			////div[@id='failed-notification-content']/descendant::div[contains(text(),'E-mail already exist')]
+			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@id='failed-notification-content']/div/div[2]")));
+			actualMsg=driver.findElement(By.xpath("//div[@id='failed-notification-content']/div/div[2]")).getText();
+			System.out.println("Message is:"+actualMsg);
+
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			System.out.println("In FINALLY");
+		
+		}
+		System.out.println("Message is: "+actualMsg);
+		System.out.println("Element found");		
+		assert(expectedMsg.equals(actualMsg));
 	}
 	
 	public void verifySuccessMsg(WebDriver driver, WebDriverWait wait)
