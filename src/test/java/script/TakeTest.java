@@ -68,7 +68,7 @@ public class TakeTest extends BaseTest{
 			brainGym.clickNextQuestionBtn();
 			
 			
-			shellStatus=brainGym.verifyShellCompleted();
+			shellStatus=brainGym.verifyShellCompletedSingle();
 			
 			System.out.println("Shell Status is:"+shellStatus);
 		}while(shellStatus.equals("no"));

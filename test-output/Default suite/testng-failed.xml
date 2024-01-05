@@ -7,7 +7,7 @@
         <methods>
           <include name="postCondition"/>
           <include name="preCondition"/>
-          <include name="takeTest" invocation-numbers="0 1"/>
+          <include name="takeTest" invocation-numbers="1 2"/>
         </methods>
       </class> <!-- script.TakeAllShellsTest -->
     </classes>

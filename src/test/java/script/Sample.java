@@ -7,19 +7,7 @@ import generic.BaseTest;
 
 
 public class Sample extends BaseTest {
-	
-	 @DataProvider(name = "data-set")
-	    public static Object[][] DataSet() throws Exception 
-	 	{
-	       
-	        Excel excel = new Excel();
-
-	        Object[][] obj = excel.to2DArray("./data/userIds.xlsx", "user_ids");
-	        return obj;
-	    }
-	 
-	 
-	 
+		 
 	 @Test(priority = 3, dataProvider="data-set")
 	 public void tryMultiLogin(String un, String pw, String grade, String subject) throws InterruptedException {
 			System.out.println(un);

@@ -122,7 +122,7 @@ public class TakeAllShellsTest extends BaseTest
 				}
 				
 			}
-						
+			System.out.println("completed One shell, waiting to click Next button");			
 			brainGym.clickNextBtn(); // Click on after one loop of 5 shells
 			brainGym.nextBtnForNextShell(); //click on Belt Next button
 			shellAvailable=brainGym.verifyNextShellStartNowIsAvailable();
@@ -145,52 +145,10 @@ public class TakeAllShellsTest extends BaseTest
 		UpdateDB.changeDate(count);
 		Thread.sleep(3000);
 		
-		studentStrings.add(StringUtils.join(un,pw,grade,subject,"pass","comments"));
+		//studentStrings.add(StringUtils.join(un,pw,grade,subject,"pass","comments"));
 		count++;
 	}while(count<4)	;
 		
-		
-	System.out.println("Student Strings"+studentStrings);
-	String[] studentString =  studentStrings.toArray(new String[4]);
-	try {
-		createExcelSheet(studentString);
-	} catch(IOException e) {
-		
+	System.out.println("4 rounds of shells completed");	
 	}
-		 
-	}
-	 
-		public static  void createExcelSheet(String[] lines) throws IOException
-	    {
-	        FileOutputStream out = new FileOutputStream("test.xls");
-	        //FileOutputStream out = new FileOutputStream("/home/yos/lakshmi.xls");
-
-	        HSSFWorkbook wb = new HSSFWorkbook();
-
-	        HSSFSheet s = wb.createSheet();
-
-	        Row r = null;
-
-	        Cell c = null;
-
-	        for(int i=0;i<lines.length;i++)
-	        {
-	            r = s.createRow(i); 
-	           String[] rowStrings = StringUtils.split(lines[i], ',');
-				 
-	            //System.out.println(""+lines[i]);
-	            //System.out.println("Column string count "+rowStrings.length);
-	            for(int j=0;j<rowStrings.length;j++)
-	            {
-	                c = r.createCell(j);
-	               // System.out.println("Cell text should be "+rowStrings[j]);
-	                c.setCellValue( rowStrings[j] );
-	            }
-	        }
-
-
-	        wb.write(out);
-	        out.close();
-	    }
-
 }

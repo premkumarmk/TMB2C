@@ -139,7 +139,7 @@ public class BrainGymPage {
 		
 	}
 	
-	public String verifyOneShellSetCompletion()
+	public String verifyOneShellSetCompletion(WebDriverWait wait)
 	{
 		System.out.println("Inside verifyOneShellSetCompletion()");
 		String status="no";
@@ -231,7 +231,7 @@ public class BrainGymPage {
 		nextQuestionBtn.click();
 	}
 	
-	public String verifyShellCompleted() throws NoSuchElementException
+	public String verifyShellCompletedSingle() throws NoSuchElementException
 	{
 		System.out.println("Inside verifyShellCompleted()");
 		String status="yes";
@@ -252,7 +252,39 @@ public class BrainGymPage {
 		return status;
 		
 	}
+	public String verifyShellCompleted() throws NoSuchElementException
+	{
+		System.out.println("Inside verifyShellCompleted()");
+		String status="yes";
+		try 
+		{
+			System.out.println("inside verifyShellCompleted try block");
+			if(verificationText.isDisplayed())
+			{
+				System.out.println("inside verifyShellCompleted try block IF Stmt");
+				status="no"; //shell not completed
+				return status;
+			}
+			else if(nextBtn.isDisplayed())
+			{
+				System.out.println("inside verifyShellCompleted try block ELSE IF Stmt");
+				status="yes"; //shell completed
+				return status;
+			}
+			else
+			{
+				System.out.println("inside verifyShellCompleted try block ELSE Stmt");
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+		return status;
+		
+	}
 
+	
 	public String verifyNextShellStartNowIsAvailable() throws InterruptedException 
 	{
 		Thread.sleep(2000);

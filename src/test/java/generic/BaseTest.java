@@ -49,8 +49,8 @@ public class BaseTest
 				@Optional("https://d2c0p5f3p3k3ka.cloudfront.net/") String appURL,
 				
 				//@Optional("https://myschool.tautmore.com/login") String appURL,
-				@Optional("100") String ITO,
-				@Optional("60") String ETO	
+				@Optional("20") String ITO,
+				@Optional("20") String ETO	
 			) throws MalformedURLException	
 	{
 		
@@ -59,7 +59,8 @@ public class BaseTest
 		options.addArguments("--start-maximized");
 		options.addArguments("--disable-web-security");
 		options.addArguments("--no-proxy-server");
-
+		options.addArguments("--disable-notifications");
+		
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("credentials_enable_service", false);
 		prefs.put("profile.password_manager_enabled", false);
