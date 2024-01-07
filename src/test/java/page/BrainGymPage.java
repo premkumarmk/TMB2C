@@ -1,10 +1,14 @@
 package page;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -14,9 +18,16 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import org.testng.asserts.SoftAssert;
+
+import script.Sample;
+import utilities.CompareQuestions;
+import utilities.ExcelConstructionExample;
+import utilities.UpdateDB;
 
 public class BrainGymPage {
-
+	SoftAssert softAssert = new SoftAssert();
 	@FindBy(xpath="//ul/li/a[text()='Brain Gym']")
 	public WebElement leftLinkBrainGym;
 	
@@ -30,6 +41,9 @@ public class BrainGymPage {
 	//button/span[text()='Start workout']
 	@FindBy(xpath="//div[@class='braingym-starttoday']/descendant::button[descendant::span[contains(text(),'workout')]]")
 	public WebElement workoutBtn;
+	
+	@FindBy(xpath="//p[@class='adjusted-para1']")
+	public List<WebElement> shells; 
 	
 	@FindBy(xpath="//div[@class='braingym-starttoday']/descendant::button[descendant::span[contains(text(),'Workout completed')]]")
 	public WebElement workoutCompletedBtn;
@@ -71,17 +85,153 @@ public class BrainGymPage {
 	@FindBy(xpath="//button[text()='Finish']")
 	public WebElement finishOfperDayShellBtn;
 	
-//	@FindBy(xpath="//div[@class='flex-items']/button[text()='Next']")
-//	public WebElement NextBtnAfterEachShell;
-//	
-	//static Map<String, Integer> QuestionsMap;
-	
+
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
-	 
-	public void selectSubject(String sub) {
-		for (WebElement subject : subjectsTabs) {
+	public static List<String> ResultListToExcel =new ArrayList<String>();
+
+	
+	public void login(WebDriver driver, String un, String pw, String grade, String subject) throws InterruptedException{
+		{
+			System.out.println("Username:"+un);
+			System.out.println("Password:"+pw);
+			System.out.println("grade:"+grade);
+			System.out.println("subject:"+subject);
+			LoginPage login=new LoginPage(driver);
+			login.clickOnloginBtnOnDashboard();
+			//Thread.sleep(1000);
+			login.clickOnOptionLoginAs();
+			//Thread.sleep(1000);
+			login.clickOnNext();
+		//	Thread.sleep(1000);
+			login.setUserName(un);
+		//	Thread.sleep(1000);
+			login.setPassword(pw);
+		//	Thread.sleep(1000);
+			login.clickLoginButton();
+		}
+	}
+	
+	public int getShellCount()
+	{
+		return shells.size();
+	}
+	
+	public void numberOfDaystoRun(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject, int numberOfDays) throws Exception
+	{
+		int count=0;
+		
+		do 
+		{		
+				UpdateDB.changeDate(numberOfDays);
+				Thread.sleep(4000);
+				driver.navigate().refresh();
+				Thread.sleep(3000);
+				clickleftLinkBrainGym(wait);
+				selectSubject(subject);
+				clickWorkoutBtn();
+				testPerDayShells(driver, wait, un, pw, grade, subject);
+				//studentStrings.add(StringUtils.join(un,pw,grade,subject,"pass","comments"));
+				count++;
+		}while(count < numberOfDays);
+	}
+	
+	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject) throws InterruptedException
+	{	
+		String asPerDayShellsAreFinsihed ;
+		String shellStatus="no";
+		System.out.println("Inside testPerDayShells method");
+		String shellAvailable="no";
+		int numberOfShells=getShellCount();
+		
+		
+		for(int i=1; i<=numberOfShells; i++)
+		 {
+			System.out.println("Inside dowhile loop in testPerDayShells method");
+			//clickStartNowShell();
+			//clickStartNowOnPopupBtn();
+			
+			testOneShell(un,pw,grade,subject,shellStatus);
+			
+			System.out.println("completed One shell, waiting to click Next button");			
+			clickNextBtn(); // Click on after one loop of 5 shells
+			nextBtnForNextShell(); //click on Belt Next button
+			shellAvailable=verifyNextShellStartNowIsAvailable();
+			System.out.println("verify Next Shell Start Now Is Available:  "+shellAvailable);
+			if(shellAvailable.equals("no"))
+			{
+				asPerDayShellsAreFinsihed = verifyperDayShellsAreCompleted();
+				System.out.println("has Per Day Shells Are Finsihed:  "+asPerDayShellsAreFinsihed);
+				
+				if(asPerDayShellsAreFinsihed.equals("yes"))
+				{
+					System.out.println("before clicking clickFinishperDayShells  in IF");
+					clickFinishPerDayShells();
+				}
+			}
+			
+			
+		}
+		
+	}
+
+	
+	public void testOneShell(String un, String pw, String grade, String subject, String shellStatus) throws InterruptedException
+	{
+
+		clickStartNowShell();
+		clickStartNowOnPopupBtn();
+		String questionText;
+		int r=0;
+		
+		do
+		{
+			
+			questionText=getQuestionText();
+			
+			if(CompareQuestions.SearchAndInsertToHashMap(questionText))
+			{
+				softAssert.assertTrue(true, questionText);
+				System.out.println("IF");
+				Reporter.log("Pass: No Duplicate Found");
+				
+				//Write code to write into Excel
+			    String joinedString = StringUtils.join(un + "," + grade + "," + subject + ",Pass," + questionText);
+			    System.out.println("joinedString is :"+joinedString);
+			    ResultListToExcel.addLast(joinedString);
+							
+			}
+			else
+			{
+				softAssert.assertTrue(false, questionText);
+				System.out.println("ELSE");
+				Reporter.log("Fail: Duplicate Found");
+				//Write code to write into Excel
+				String joinedString = StringUtils.join(un + "," + grade + "," + subject + ",Fail," + questionText);
+				System.out.println("joinedString is :"+joinedString);
+				ResultListToExcel.addLast(joinedString);
+				
+			}
+			
+			clickAnswerOption();
+			clickSubmitAnswerBtn();
+			clickNextQuestionBtn();
+			shellStatus=verifyShellCompleted();
+		//	String oneSetSellCompleted=brainGym.verifyOneShellSetCompletion();
+			System.out.println("Shell Status is:"+shellStatus);
+			
+		}while(shellStatus.equals("no"));
+		
+	}
+	
+	
+	
+	public void selectSubject(String sub) 
+	{
+		for (WebElement subject : subjectsTabs) 
+		{
 			System.out.println(subject);
-			if(subject.getText().equals(sub)) {
+			if(subject.getText().equals(sub)) 
+			{
 				subject.click();
 			}
 		}
@@ -120,6 +270,7 @@ public class BrainGymPage {
 	
 	public void clickStartNowShell() throws InterruptedException
 	{
+		System.out.println("Trying to click Start Now Button ");
 		startNowShell.click();
 		//Thread.sleep(20000);
 	}
