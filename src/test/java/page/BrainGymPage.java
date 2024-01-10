@@ -2,31 +2,28 @@ package page;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.pagefactory.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
-import script.Sample;
+import generic.BaseTest;
 import utilities.CompareQuestions;
-import utilities.ExcelConstructionExample;
+import utilities.JS;
 import utilities.UpdateDB;
 
-public class BrainGymPage {
+public class BrainGymPage extends BaseTest{
 	SoftAssert softAssert = new SoftAssert();
 	@FindBy(xpath="//ul/li/a[text()='Brain Gym']")
 	public WebElement leftLinkBrainGym;
@@ -55,20 +52,47 @@ public class BrainGymPage {
 	@FindBy(xpath="//div[@class='flex-items-details']/descendant::button[text()='Start Now']")
 	public WebElement startNowOnPopupBtn;
 	
-	@FindBy(xpath="//div[@class='question-box']/descendant::p/span")
+	@FindBy(xpath="//input[@type='text']")
+	public WebElement fillType;
+	
+	@FindBy(xpath="//div[@class='question-box']/descendant::p/span") //working for english and science
 	public WebElement getQuestion;
 	//div[@class='question-box']/descendant::span/span => English
 	//div[@class='question-box']/descendant::p/span   =>Science and Maths
 	
-	@FindBy(xpath="//div[@class='question-options-wrapper selectTyleType']/div[2]/button")
-	public WebElement answerOption;
+	@FindBy(xpath="//div[@class='question-box']/descendant::p") // for Maths
+	public WebElement getQuestionForMaths;
 	
+	@FindBy(xpath="//div[@class='question-options-wrapper selectTyleType']/div[1]/button")
+	public WebElement answerOptionA;
+	
+	@FindBy(xpath="//div[@class='question-options-wrapper selectTyleType']/div[2]/button")
+	public WebElement answerOptionB;
+		
 	@FindBy(xpath="//button[@class='submit-answer-button active']")
+	//@FindBy(xpath="//button[@class=contains(text(),'submit-answer-button')]")	
 	public WebElement submitAnswerBtn;
 	
-	@FindBy(xpath="//span[text()='Select your answer']")
-	//@FindBy(xpath="//div[@class='flex-items']/descendant::p[text()='Right answers']")
-	public WebElement verificationText;
+	@FindBy(xpath="//table[@class='drag-detail-table vertical']")
+	public WebElement veritcalTable;
+		
+	@FindBy(xpath="//div[@class='drag-item-sub']")
+	public List<WebElement> listOfSourceElementsForVeritcalTable;
+	
+	@FindBy(xpath="//span[@class='right-part-val']") //right-part-val-common
+	public List<WebElement> listOfTargetElementsForVeritcalTable;
+	
+	@FindBy(xpath="//div[@class='drag-item']")
+	public List<WebElement> listOfsourceElementsToFillBlanks;
+	
+	@FindBy(xpath="//input[@class='dropbox']") //right-part-val-common
+	public List<WebElement> listOftargetElementsToFillBlanks;
+	
+	//@FindBy(xpath="//span[text()='Select your answer']")
+	//@FindBy(xpath="//div[@class='flex-items']/descendant::p[contains(text(),'Right answers')]")
+	//@FindBy(xpath="//div[@class='timer-sub-right']/descendant::p[contains(text(),'Time elapsed')]")
+	@FindBy(xpath="//div[@class='question-box']")
+	public WebElement verificationTag;
 	
 	@FindBy(xpath="//button[text()='Next Question']")
 	public WebElement nextQuestionBtn;
@@ -76,7 +100,7 @@ public class BrainGymPage {
 	@FindBy(xpath="//button[text()='Next']")
 	public WebElement nextBtn;
 	
-	@FindBy(xpath="//button[@class=\"beltpopup-button\" and text()='Next']")
+	@FindBy(xpath="//button[@class='beltpopup-button' and text()='Next']")
 	public WebElement nextBtnForNextShell;
 	
 	@FindBy(xpath="//div[@class='flex-items']/descendant::p[text()='Right answers']")
@@ -85,28 +109,251 @@ public class BrainGymPage {
 	@FindBy(xpath="//button[text()='Finish']")
 	public WebElement finishOfperDayShellBtn;
 	
+	@FindBy(xpath="(//td[@class='right-part'])[4]")
+	public WebElement lastBox;
 
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
 	public static List<String> ResultListToExcel =new ArrayList<String>();
-
+	public static String outputFilepath="./data/result2.xlsx";
+	public static String outputSheetName="Output7";
+	public static int numberOfDaysToRun=2;  //how may days of shells to complete
+	public static Map<String, Integer> stringIntHashMap = new HashMap<String, Integer>();
 	
-	public void login(WebDriver driver, String un, String pw, String grade, String subject) throws InterruptedException{
+	public void selectQuestionType(WebDriver driver) throws Exception
+	{
+		System.out.println("Inside selectQuestionType():");
+		
+		stringIntHashMap.put("Complete the sentence with the correct form of the adverb:", 1);
+	    stringIntHashMap.put("Read the text and drag the correct adverb/ adjective in the blanks:", 2);
+	    stringIntHashMap.put("choose-the-correct-answer", 3);
+	    stringIntHashMap.put("Multi select question", 4);
+	    stringIntHashMap.put("match-the-following", 5);
+	    stringIntHashMap.put("drag and drop", 6);
+	    stringIntHashMap.put("Select your answer", 7);
+	    	    
+	    Boolean isTextPresent;
+	    for (Map.Entry<String, Integer> entry : stringIntHashMap.entrySet()) 
+	    {	
+	    	System.out.println("Inside selectQuestionType() For Loop:");
+	    	String key = entry.getKey();
+	        Integer value = entry.getValue();
+	       
+	      //  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
+
+	        isTextPresent = (boolean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
+	        if(isTextPresent)
+	        {
+	        	System.out.println("Inside If , Question is:"+key+" with key value"+value);
+	        
+	        	 switch(value)
+	     	    {
+		     	    case 1:
+		     	    	System.out.println(" Inside switch case 1 Found:"+ key);
+		     	    	fillInTheBlanks("More Rapidly");
+		     	    	return;
+		     	    	
+		     	    case 2:
+		     	    	System.out.println(" Inside switch case 2 Found:"+ key);
+		     	    	dragAndFillTheQuestion();		     	    	
+		     	    	return;
+		     	    
+		     	    case 3:
+		     	    	System.out.println(" Inside switch case 3 Found:"+ key);
+		     	    	singleChoice();	
+		     	    	return;
+		    	    	
+		     	   	case 4:
+		     	   		System.out.println(" Inside switch case 4 Found:"+ key);
+		     	   		multipleChoice();
+		     	   		return;
+		     	   		
+		     	   	case 5:
+		    	    	System.out.println(" Inside switch case 5 Found:"+ key);
+		    	    	matchTheFollowing(driver);
+		    	    	//verticalMatchTheFollowing(driver);
+		    	    	return;
+		    	    
+		    	    case 6:
+		    	    	System.out.println(" Inside switch case 6 Found:"+ key);
+		    	    	//matchTheFollowing(driver);
+		    	    	verticalMatchTheFollowing(driver);
+		    	    	return;
+		   	    	
+		    	   	case 7:
+		    	   		System.out.println(" Inside switch case 7 Found:"+ key);
+		    	   		singleChoice();	
+		    	   		return;
+		    	   		
+		    	   	default:
+		    	   		System.out.println("Default case:");
+		    	   		//verticalMatchTheFollowing(driver);
+		    	   		return;
+	     	    }
+	        	
+	        }
+	        
+	        System.out.println("Indside loop: within");
+	    }///For loop END
+	    System.out.println("Exiting selectQuestionType(): after loop");
+	   return;
+	}
+	
+//	public boolean verifyTableIsVertical()
+//	{
+//		if(veritcalTable.isDisplayed())
+//		{
+//			System.out.println("Veritical table is present");
+//			return true;
+//		}
+//		else
+//		{
+//			System.out.println("Vertical table is not present");
+//			return false;
+//		}
+//		
+//		
+//	}
+	
+	public void fillInTheBlanks(String text) throws Exception 
+	{	System.out.println("Inside fillInTheBlanks()");
+	
+		Thread.sleep(2000);
+		fillType.sendKeys(text);
+	//	CompareQuestions.scrollDown(submitAnswerBtn);
+		submitAnswerBtn.click();
+		System.out.println("Exiting fillInTheBlanks()");
+	}
+	
+	
+	
+	public void dragAndFillTheQuestion() throws Exception 
+	{
+		System.out.println("Inside dragAndFillTheQuestion()");
+		Actions actions = new Actions(driver);
+		
+		for(int i=0;i<listOfsourceElementsToFillBlanks.size();i++) 
 		{
+			actions.dragAndDrop(listOfsourceElementsToFillBlanks.get(i), listOftargetElementsToFillBlanks.get(i)).build().perform();
+		//	Thread.sleep(2000);
+		}
+		//actions.build().perform();
+		Thread.sleep(3000);
+		submitAnswerBtn.click();
+		System.out.println("Exiting dragAndFillTheQuestion()");
+
+	}
+	
+	public void matchTheFollowing(WebDriver driver) throws Exception 
+	{
+		CompareQuestions.scrollDown(submitAnswerBtn);
+//		if(verifyTableIsVertical())
+//		{
+			System.out.println("Inside if matchTheFollowing->verital table is true");
+			verticalMatchTheFollowing(driver);
+//		}
+//		else
+//		{
+//			System.out.println("Inside else , matchthefollowing -> NOt vertical table");
+//		
+//		}
+//		System.out.println("Inside matchTheFollowing()");
+//		Thread.sleep(2000);
+//		Actions act = new Actions(driver);
+//		System.out.println("Actions initialized");
+//				
+//		List<WebElement> sourceElements = driver.findElements(By.xpath("//div[@class='drag-item-sub']"));
+//		System.out.println("Source elements initialized, size is "+sourceElements.size());
+//		List<WebElement> targetElements = driver.findElements(By.xpath("//span[@class='horizontal-right-part-val']"));
+////		//span[@class='right-part-val']													class="right-part-val-common"						
+//		System.out.println("target elements initialized size is:"+targetElements.size());
+//		
+//		for (int i=0;i<sourceElements.size();i++) 
+//		{
+//			System.out.println("Inside Loop:");
+//			System.out.println(targetElements.get(i).getText());
+//			act.dragAndDrop(sourceElements.get(i), targetElements.get(i)).build().perform();
+//
+//		}
+//		Thread.sleep(2000);
+//		submitAnswerBtn.click();
+		System.out.println("Exiting matchTheFollowing()");
+		return;
+	}
+	
+	public void verticalMatchTheFollowing(WebDriver driver) throws Exception 
+	{
+		System.out.println("Inside verticalMatchTheFollowing()");
+		Thread.sleep(2000);
+		CompareQuestions.scrollDown(lastBox);
+		Actions actions = new Actions(driver);
+		System.out.println("Actions object ID"+actions);
+
+//		for(WebElement e:listOfSourceElementsForVeritcalTable)
+//		{
+//			System.out.println("element ID:"+e);
+//		}
+//		for(WebElement e:listOfTargetElementsForVeritcalTable)
+//		{
+//			System.out.println("element ID:"+e);
+//		}
+		for (int i=0;i<listOfSourceElementsForVeritcalTable.size();i++) 
+		{	System.out.println("Inside Loop : listOfSourceElementsForVeritcalTable ID:"+listOfSourceElementsForVeritcalTable.get(i));
+			
+			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(i)).build().perform();
+			//Thread.sleep(4000);
+		}
+		//actions.build().perform();
+		Thread.sleep(3000);
+//		CompareQuestions.scrollDown(submitAnswerBtn);
+		submitAnswerBtn.click();
+		System.out.println("Exititng verticalMatchTheFollowing()");
+//		return;
+	}
+	
+	public void multipleChoice() throws Exception {
+		//Thread.sleep(2000);
+		System.out.println("Inside multiChoice()");
+	
+		answerOptionA.click();
+		if(submitAnswerBtn.isEnabled()) 
+		{
+			CompareQuestions.scrollDown(submitAnswerBtn);
+			submitAnswerBtn.click();
+		}
+		else 
+		{
+			answerOptionB.click();
+			CompareQuestions.scrollDown(submitAnswerBtn);
+			submitAnswerBtn.click();
+		}
+		System.out.println("Exiting multiChoice()");
+	}
+	
+	
+	public void singleChoice() throws Exception 
+	{
+		System.out.println("Inside singleChoice()");
+		
+		//Thread.sleep(1000);
+		answerOptionA.click();
+	//	CompareQuestions.scrollDown(submitAnswerBtn);
+		submitAnswerBtn.click();
+		System.out.println("exiting singleChoice()");
+	}
+	
+	public void login(String un, String pw, String grade, String subject) throws InterruptedException{
+		{
+			
 			System.out.println("Username:"+un);
 			System.out.println("Password:"+pw);
 			System.out.println("grade:"+grade);
 			System.out.println("subject:"+subject);
-			LoginPage login=new LoginPage(driver);
+			LoginPage login=new LoginPage();
 			login.clickOnloginBtnOnDashboard();
-			//Thread.sleep(1000);
 			login.clickOnOptionLoginAs();
-			//Thread.sleep(1000);
 			login.clickOnNext();
-		//	Thread.sleep(1000);
 			login.setUserName(un);
-		//	Thread.sleep(1000);
 			login.setPassword(pw);
-		//	Thread.sleep(1000);
 			login.clickLoginButton();
 		}
 	}
@@ -135,7 +382,7 @@ public class BrainGymPage {
 		}while(count < numberOfDays);
 	}
 	
-	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject) throws InterruptedException
+	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject) throws Exception
 	{	
 		String asPerDayShellsAreFinsihed ;
 		String shellStatus="no";
@@ -150,16 +397,17 @@ public class BrainGymPage {
 			//clickStartNowShell();
 			//clickStartNowOnPopupBtn();
 			
-			testOneShell(un,pw,grade,subject,shellStatus);
+			testOneShell(driver, un,pw,grade,subject,shellStatus);
 			
 			System.out.println("completed One shell, waiting to click Next button");			
-			clickNextBtn(); // Click on after one loop of 5 shells
-			nextBtnForNextShell(); //click on Belt Next button
-			shellAvailable=verifyNextShellStartNowIsAvailable();
+			//clickNextBtn(); // Click on after one loop of 5 shells
+			clickNextBtnForNextShell(); //click on Belt Next button
+			
+			shellAvailable=verifyNextShellStartNowIsAvailable(); //verify StartNowShell is enabled to click
 			System.out.println("verify Next Shell Start Now Is Available:  "+shellAvailable);
 			if(shellAvailable.equals("no"))
 			{
-				asPerDayShellsAreFinsihed = verifyperDayShellsAreCompleted();
+				asPerDayShellsAreFinsihed = verifyperDayShellsAreCompleted(); //Verify Finish Button is displayed?
 				System.out.println("has Per Day Shells Are Finsihed:  "+asPerDayShellsAreFinsihed);
 				
 				if(asPerDayShellsAreFinsihed.equals("yes"))
@@ -168,6 +416,10 @@ public class BrainGymPage {
 					clickFinishPerDayShells();
 				}
 			}
+			else if(shellAvailable.equals("yes"))
+			{
+				System.out.println("Still Next Shell is availabele and enabled to operate");
+			}
 			
 			
 		}
@@ -175,19 +427,21 @@ public class BrainGymPage {
 	}
 
 	
-	public void testOneShell(String un, String pw, String grade, String subject, String shellStatus) throws InterruptedException
+	public void testOneShell(WebDriver driver, String un, String pw, String grade, String subject, String shellStatus) throws Exception
 	{
 
 		clickStartNowShell();
 		clickStartNowOnPopupBtn();
 		String questionText;
-		int r=0;
+		
 		
 		do
 		{
 			
-			questionText=getQuestionText();
-			
+			questionText=getQuestionText(subject);
+			System.out.println("Before calling selectQuestionType()");
+			selectQuestionType(driver);
+			System.out.println("After calling selectQuestionType()");
 			if(CompareQuestions.SearchAndInsertToHashMap(questionText))
 			{
 				softAssert.assertTrue(true, questionText);
@@ -212,14 +466,17 @@ public class BrainGymPage {
 				
 			}
 			
-			clickAnswerOption();
-			clickSubmitAnswerBtn();
-			clickNextQuestionBtn();
+			
+			
+			//clickAnswerOption();
+			//clickSubmitAnswerBtn();
+			//clickNextQuestionBtn();
 			shellStatus=verifyShellCompleted();
-		//	String oneSetSellCompleted=brainGym.verifyOneShellSetCompletion();
+		
 			System.out.println("Shell Status is:"+shellStatus);
 			
 		}while(shellStatus.equals("no"));
+		System.out.println("After End of While Loop");
 		
 	}
 	
@@ -250,6 +507,7 @@ public class BrainGymPage {
 	
 	public void clickSubject()
 	{
+		
 		subjectScience.click();
 	}
 	
@@ -264,14 +522,38 @@ public class BrainGymPage {
 	
 	public void clickWorkoutBtn() throws InterruptedException
 	{
-		workoutBtn.click();
+		try
+		{
+			if(workoutBtn.isDisplayed())
+			{
+				workoutBtn.click();
+			}
+			else
+			{
+				System.out.println("Workout Button is not displayed");
+			}
+		}
+		catch(NoSuchElementException e)
+		{
+			e.printStackTrace();
+		}
+	
 		//Thread.sleep(10000);
 	}
 	
 	public void clickStartNowShell() throws InterruptedException
 	{
-		System.out.println("Trying to click Start Now Button ");
-		startNowShell.click();
+		System.out.println("Trying to click Start Now Button");
+		if(verifyElementIsDisplayedAndEnabled(startNowShell))
+		{
+			startNowShell.click();
+			System.out.println("Clicked on New Shell to Start");
+		}
+		else
+		{
+			System.out.println("Shell Not enabled to start");
+		}
+		
 		//Thread.sleep(20000);
 	}
 	public void clickStartNowOnPopupBtn() throws InterruptedException
@@ -279,11 +561,23 @@ public class BrainGymPage {
 		startNowOnPopupBtn.click();
 		//Thread.sleep(20000);
 	}
-	public String getQuestionText() throws InterruptedException
+	public String getQuestionText(String subject) throws InterruptedException
 	{
 		System.out.println("INside getQuestionText() method");
-		String question=getQuestion.getText();
-	//	System.out.println("Question is: "+question);
+		String question;
+		
+		if(subject.equals("Mathematics"))
+			{
+			System.out.println("Inside MAths");
+			question=getQuestionForMaths.getText();
+			
+			}
+		else
+		{
+			System.out.println("Inside other other subject");
+			question=getQuestion.getText();
+		}
+		System.out.println("Question is: "+question);
 		addQuestionToMap(question);
 		Thread.sleep(2000);
 		return question;
@@ -367,19 +661,56 @@ public class BrainGymPage {
 	public void clickAnswerOption()
 	{
 		System.out.println("Inside click AnswerOption()");
-		answerOption.click();
+		answerOptionA.click();
 	}
 	
 	public void clickSubmitAnswerBtn()
 	{
-		System.out.println("Inside click SubmitAnswerBtn()");
-		submitAnswerBtn.click();
+		if(submitAnswerBtn.isDisplayed())
+		{
+			if(submitAnswerBtn.isEnabled())
+			{
+				System.out.println("Inside click SubmitAnswerBtn()");
+				submitAnswerBtn.click();
+			}
+			else
+			{
+				System.out.println("Button Displayed But not enabled");
+				return;
+				
+			}
+			
+		}
+		else
+		{
+			System.out.println("Submit Button is NOT displayed");
+		}
 	}
 	
 
 	public void clickNextQuestionBtn()
 	{
-		nextQuestionBtn.click();
+		if(nextQuestionBtn.isDisplayed())
+		{
+			System.out.println("Displayed Next Question  Button");
+			nextQuestionBtn.click();
+			if(verificationTag.isDisplayed())
+			{
+				System.out.println("Next Question Displayed.....");
+			}
+			else if(nextBtn.isDisplayed())
+			{
+				System.out.println("Next question not displayed");
+			}
+			
+			
+		}
+		else
+		{
+			System.out.println("No Next Question  Button");
+			
+		}
+		return;
 	}
 	
 	public String verifyShellCompletedSingle() throws NoSuchElementException
@@ -389,16 +720,24 @@ public class BrainGymPage {
 		try 
 		{
 			System.out.println("inside verifyShellCompleted try block");
-			if(verificationText.isDisplayed())
+			if(verificationTag.isDisplayed())
 			{
-				System.out.println("inside verifyShellCompleted try block IF Stmt");
+				System.out.println("inside verifyShellCompleted try block IF block");
+				System.out.println("Verifying  Question Tag is displayed?");
 				status="no";
+				return status;
+			}
+			else if(nextBtn.isDisplayed())
+			{
+				System.out.println("inside verifyShellCompleted try block ELSE block");
+				System.out.println("Verifying  NEXT button is displayed?");
+				status="yes";
 				return status;
 			}
 		}
 		catch(Exception e)
 		{
-			
+			e.printStackTrace();
 		}
 		return status;
 		
@@ -406,30 +745,54 @@ public class BrainGymPage {
 	public String verifyShellCompleted() throws NoSuchElementException
 	{
 		System.out.println("Inside verifyShellCompleted()");
-		String status="yes";
+		String status="no";
 		try 
 		{
 			System.out.println("inside verifyShellCompleted try block");
-			if(verificationText.isDisplayed())
-			{
-				System.out.println("inside verifyShellCompleted try block IF Stmt");
-				status="no"; //shell not completed
-				return status;
-			}
-			else if(nextBtn.isDisplayed())
-			{
-				System.out.println("inside verifyShellCompleted try block ELSE IF Stmt");
-				status="yes"; //shell completed
-				return status;
-			}
-			else
-			{
-				System.out.println("inside verifyShellCompleted try block ELSE Stmt");
-			}
-		}
-		catch(Exception e)
-		{
 			
+			try
+			{
+				if(nextQuestionBtn.isDisplayed())
+				{
+					System.out.println("Inside nextQuestionBtn.isDisplayed()try block- returns No");
+					nextQuestionBtn.click();
+					status="no";
+				}
+			}
+			catch(NoSuchElementException e)
+			{e.printStackTrace();}
+			
+			try
+			{	
+				if(verificationTag.isDisplayed())
+				{
+				
+					System.out.println("inside nextQuestionBtn.isDisplayed() -return no- Shell NOT Completed");
+					status="no"; //shell completed
+					return status;
+				}
+				
+			}
+			catch(NoSuchElementException e)
+			{e.printStackTrace();}
+			
+			try 
+			{
+				if(nextBtn.isDisplayed())
+				{
+					System.out.println("Inside nextBtn.isDisplayed() try block - return yes");
+					nextBtn.click();
+					status="yes";
+					return status;
+				}
+			}
+			catch(NoSuchElementException e)
+			{e.printStackTrace();}			
+			
+		}
+		catch(NoSuchElementException e)
+		{
+			e.printStackTrace();
 		}
 		return status;
 		
@@ -446,8 +809,19 @@ public class BrainGymPage {
 			System.out.println("inside try block");
 			if(startNowShell.isDisplayed())
 			{
-				System.out.println("inside try block IF Stmt");
-				status="yes";
+				if(startNowShell.isEnabled())
+				{
+					System.out.println("inside try block IF Stmt");
+					status="yes";
+					return status;
+				}
+				else
+				{
+					return status;
+				}
+			}
+			else
+			{
 				return status;
 			}
 		}
@@ -473,9 +847,9 @@ public class BrainGymPage {
 				return status;
 			}
 		}
-		catch(Exception e)
+		catch(NoSuchElementException e)
 		{
-			
+			e.printStackTrace();
 		}
 		return status;
 	}
@@ -490,63 +864,43 @@ public class BrainGymPage {
 		
 	}
 	
-	public void nextBtnForNextShell()
+	public void clickNextBtnForNextShell()
 	{
-		nextBtnForNextShell.click();
+		if(verifyElementIsDisplayedAndEnabled(nextBtnForNextShell))
+		{
+			nextBtnForNextShell.click();
+		}
 	}
 	
-//	public String verifyShellCompleted()
-//	{
-//		try
-//		{
-//			if(textWhoopie.isDisplayed())
-//			{
-//				if(nextBtn.isDisplayed())
-//				{
-//					System.out.println("All questions over!!!");
-//					nextBtn.click();
-//					if(NextBtnForNextShell.isDisplayed())
-//					{
-//						NextBtnForNextShell.click();
-//						
-//					}
-//				}
-//				
-//				
-//			}
-//			else
-//			{
-//				System.out.println("Shell not completed!!");
-//				System.out.println("Going to next question");
-//				
-//			}
-//			
-//		}
-//		catch(Exception e)
-//		{
-//			e.printStackTrace();
-//		}
-//		return textWhoopie.getText();
-//	}	
-	
-//	public String clickNextBtn()
-//	{
-//		System.out.println("Inside click NextQuestionBtn()");
-//		String text="";
-//		if(nextQuestionBtn.isDisplayed())
-//		{
-//			System.out.println("Inside IF Block click NextQuestionBtn()");
-//			nextQuestionBtn.click();
-//			text= "Clicked Succesfully";
-//		}
-//		else
-//		{
-//			System.out.println("Inside Else Block click NextQuestionBtn()");
-//			System.out.println("Next Question button not shown");
-//			text="Questions Over, Not able to click";
-//		}
-//		return text;
-//		
-//	}
+	public Boolean verifyElementIsDisplayedAndEnabled(WebElement element)
+	{
+		try
+		{
+			if(element.isDisplayed())
+			{
+				if(element.isEnabled())
+				{
+					return true;
+				}
+				else
+				{
+					System.out.println("Element Not enabled");
+				}
+				return false;
+			}
+			else
+			{
+				System.out.println("Element Not Displayed");
+				return false;
+			}
+		}
+		catch(NoSuchElementException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return false;
+		
+	}
 	
 }
