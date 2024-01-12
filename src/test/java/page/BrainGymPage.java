@@ -55,6 +55,9 @@ public class BrainGymPage extends BaseTest{
 	@FindBy(xpath="//input[@type='text']")
 	public WebElement fillType;
 	
+	@FindBy(xpath="//span[@id='docs-internal-guid-25fb84ed-7fff-5c64-44a2-825f5a642211']")
+	public static WebElement questionText;
+	
 	@FindBy(xpath="//div[@class='question-box']/descendant::p/span") //working for english and science
 	public WebElement getQuestion;
 	//div[@class='question-box']/descendant::span/span => English
@@ -107,7 +110,7 @@ public class BrainGymPage extends BaseTest{
 	public WebElement oneSetShellCompletion;
 	
 	@FindBy(xpath="//button[text()='Finish']")
-	public WebElement finishOfperDayShellBtn;
+	public WebElement finishBtn;
 	
 	@FindBy(xpath="(//td[@class='right-part'])[4]")
 	public WebElement lastBox;
@@ -384,10 +387,10 @@ public class BrainGymPage extends BaseTest{
 	
 	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject) throws Exception
 	{	
-		String asPerDayShellsAreFinsihed ;
+		//String asPerDayShellsAreFinsihed ;
 		String shellStatus="no";
 		System.out.println("Inside testPerDayShells method");
-		String shellAvailable="no";
+		//String shellAvailable="no";
 		int numberOfShells=getShellCount();
 		
 		
@@ -403,23 +406,39 @@ public class BrainGymPage extends BaseTest{
 			//clickNextBtn(); // Click on after one loop of 5 shells
 			clickNextBtnForNextShell(); //click on Belt Next button
 			
-			shellAvailable=verifyNextShellStartNowIsAvailable(); //verify StartNowShell is enabled to click
-			System.out.println("verify Next Shell Start Now Is Available:  "+shellAvailable);
-			if(shellAvailable.equals("no"))
-			{
-				asPerDayShellsAreFinsihed = verifyperDayShellsAreCompleted(); //Verify Finish Button is displayed?
-				System.out.println("has Per Day Shells Are Finsihed:  "+asPerDayShellsAreFinsihed);
-				
-				if(asPerDayShellsAreFinsihed.equals("yes"))
+			if(isItDisplayed(finishBtn))
 				{
-					System.out.println("before clicking clickFinishperDayShells  in IF");
-					clickFinishPerDayShells();
+					if(isItEnabled(finishBtn))
+					{
+						System.out.println("Shells Completed for the day");
+						finishBtn.click();
+					}
 				}
-			}
-			else if(shellAvailable.equals("yes"))
+			else
 			{
-				System.out.println("Still Next Shell is availabele and enabled to operate");
+				System.out.println("Shells  not over!!!");
 			}
+				
+				
+				
+//			shellAvailable=verifyNextShellStartNowIsAvailable(); //verify StartNowShell is enabled to click
+//			System.out.println("verify Next Shell Start Now Is Available:  "+shellAvailable);
+//			if(shellAvailable.equals("no"))
+//			{
+//				asPerDayShellsAreFinsihed = verifyperDayShellsAreCompleted(); //Verify Finish Button is displayed?
+//				System.out.println("has Per Day Shells Are Finsihed:  "+asPerDayShellsAreFinsihed);
+//				
+//				if(asPerDayShellsAreFinsihed.equals("yes"))
+//				{
+//					System.out.println("before clicking clickFinishperDayShells  in IF");
+//					
+//					clickFinishButton();
+//				}
+//			}
+//			else if(shellAvailable.equals("yes"))
+//			{
+//				System.out.println("Still Next Shell is availabele and enabled to operate");
+//			}
 			
 			
 		}
@@ -433,12 +452,19 @@ public class BrainGymPage extends BaseTest{
 		clickStartNowShell();
 		clickStartNowOnPopupBtn();
 		String questionText;
-		
+//--		getQuestionText();
+			
 		
 		do
 		{
 			
 			questionText=getQuestionText(subject);
+			//questionText=getQuestionText();
+			System.out.println("New Question: "+questionText);
+//			System.out.println("---------------");
+//			System.out.println(utilities.mongoDBSeleniumIntegration.getAnswer());
+//			System.out.println(">>>>>>>>>>>>>.");
+			
 			System.out.println("Before calling selectQuestionType()");
 			selectQuestionType(driver);
 			System.out.println("After calling selectQuestionType()");
@@ -464,8 +490,7 @@ public class BrainGymPage extends BaseTest{
 				System.out.println("joinedString is :"+joinedString);
 				ResultListToExcel.addLast(joinedString);
 				
-			}
-			
+			}		
 			
 			
 			//clickAnswerOption();
@@ -482,6 +507,7 @@ public class BrainGymPage extends BaseTest{
 	
 	
 	
+	
 	public void selectSubject(String sub) 
 	{
 		for (WebElement subject : subjectsTabs) 
@@ -494,10 +520,21 @@ public class BrainGymPage extends BaseTest{
 		}
 	}
 	
+//	public static String getQuestionText() {
+////		String text = questionText.getText().trim();
+//		 WebElement element = driver.findElement(By.xpath("//span[contains(@id,'docs-internal-guid')]/../."));
+//
+//		 String text = element.getAttribute("outerHTML");
+//	        // Print the element's HTML
+//	        System.out.println("Inside getQuestionText() , text is "+text);
+//		return text;
+//	}
+	
 	public BrainGymPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver,this);
 	}
+	
 	
 	public void clickleftLinkBrainGym(WebDriverWait wait)
 	{
@@ -519,46 +556,109 @@ public class BrainGymPage extends BaseTest{
 //		//Thread.sleep(10000);
 //	}
 
-	
-	public void clickWorkoutBtn() throws InterruptedException
+	public Boolean isItDisplayed(WebElement element) throws NoSuchElementException
 	{
+		Boolean res=false;
 		try
 		{
-			if(workoutBtn.isDisplayed())
-			{
-				workoutBtn.click();
-			}
-			else
-			{
-				System.out.println("Workout Button is not displayed");
-			}
+			res= element.isDisplayed();
+			System.out.println("Workout Button is Enabled");
 		}
-		catch(NoSuchElementException e)
+		catch(NoSuchElementException e) 
 		{
+			System.err.println(element+" : Not Found in isItDisplayed()");
 			e.printStackTrace();
 		}
+		return res;
+		
+	}
+	
+	public Boolean isItEnabled(WebElement element) throws NoSuchElementException//, InterruptedException
+	{	//Thread.sleep(1000);
+		Boolean res=false;
+		try
+		{
+			res= element.isEnabled();
+			
+		}
+		catch(NoSuchElementException e) 
+		{
+			System.err.println(element+" : Not Found in isItEnabled()");
+			e.printStackTrace();
+		}
+		return res;
+		
+	}
+	
+	public void clickWorkoutBtn()
+	{
+		if(isItDisplayed(workoutBtn))
+		{	
+			if(isItEnabled(workoutBtn))
+			{
+				
+				workoutBtn.click();
+			}
+		}
+	}
+//	public void clickWorkoutBtn() throws InterruptedException
+//	{
+//		try
+//		{
+//			if(workoutBtn.isDisplayed())
+//			{
+//				workoutBtn.click();
+//			}
+//			else
+//			{
+//				System.out.println("Workout Button is not displayed");
+//			}
+//		}
+//		catch(NoSuchElementException e)
+//		{
+//			e.printStackTrace();
+//		}
 	
 		//Thread.sleep(10000);
-	}
+//	}
 	
+	
+//	public void clickStartNowShell() throws InterruptedException
+//	{
+//		System.out.println("Trying to click Start Now Button");
+//		if(verifyElementIsDisplayedAndEnabled(startNowShell))
+//		{
+//			startNowShell.click();
+//			System.out.println("Clicked on New Shell to Start");
+//		}
+//		else
+//		{
+//			System.out.println("Shell Not enabled to start");
+//		}
+//		
+//		//Thread.sleep(20000);
+//	}
+
 	public void clickStartNowShell() throws InterruptedException
 	{
-		System.out.println("Trying to click Start Now Button");
-		if(verifyElementIsDisplayedAndEnabled(startNowShell))
+		if(isItDisplayed(startNowShell))
 		{
-			startNowShell.click();
-			System.out.println("Clicked on New Shell to Start");
+			if(isItEnabled(startNowShell))
+			{
+				startNowShell.click();
+			}
 		}
-		else
-		{
-			System.out.println("Shell Not enabled to start");
-		}
-		
-		//Thread.sleep(20000);
 	}
+	
 	public void clickStartNowOnPopupBtn() throws InterruptedException
 	{
-		startNowOnPopupBtn.click();
+		if(isItDisplayed(startNowOnPopupBtn))
+		{
+			if(isItEnabled(startNowOnPopupBtn))
+			{
+				startNowOnPopupBtn.click();
+			}
+		}
 		//Thread.sleep(20000);
 	}
 	public String getQuestionText(String subject) throws InterruptedException
@@ -568,7 +668,7 @@ public class BrainGymPage extends BaseTest{
 		
 		if(subject.equals("Mathematics"))
 			{
-			System.out.println("Inside MAths");
+			System.out.println("Inside Maths");
 			question=getQuestionForMaths.getText();
 			
 			}
@@ -661,88 +761,84 @@ public class BrainGymPage extends BaseTest{
 	public void clickAnswerOption()
 	{
 		System.out.println("Inside click AnswerOption()");
-		answerOptionA.click();
+		
+		if(isItDisplayed(answerOptionA))
+		{
+			if(isItEnabled(answerOptionA))
+			{
+				answerOptionA.click();
+			}
+		}
 	}
 	
 	public void clickSubmitAnswerBtn()
 	{
-		if(submitAnswerBtn.isDisplayed())
+		System.out.println("In clickSubmitAnswerBtn()");
+		if(isItDisplayed(submitAnswerBtn))
 		{
-			if(submitAnswerBtn.isEnabled())
+			if(isItEnabled(submitAnswerBtn))
 			{
-				System.out.println("Inside click SubmitAnswerBtn()");
 				submitAnswerBtn.click();
 			}
-			else
-			{
-				System.out.println("Button Displayed But not enabled");
-				return;
-				
-			}
-			
-		}
-		else
-		{
-			System.out.println("Submit Button is NOT displayed");
 		}
 	}
 	
 
-	public void clickNextQuestionBtn()
-	{
-		if(nextQuestionBtn.isDisplayed())
-		{
-			System.out.println("Displayed Next Question  Button");
-			nextQuestionBtn.click();
-			if(verificationTag.isDisplayed())
-			{
-				System.out.println("Next Question Displayed.....");
-			}
-			else if(nextBtn.isDisplayed())
-			{
-				System.out.println("Next question not displayed");
-			}
-			
-			
-		}
-		else
-		{
-			System.out.println("No Next Question  Button");
-			
-		}
-		return;
-	}
-	
-	public String verifyShellCompletedSingle() throws NoSuchElementException
-	{
-		System.out.println("Inside verifyShellCompleted()");
-		String status="yes";
-		try 
-		{
-			System.out.println("inside verifyShellCompleted try block");
-			if(verificationTag.isDisplayed())
-			{
-				System.out.println("inside verifyShellCompleted try block IF block");
-				System.out.println("Verifying  Question Tag is displayed?");
-				status="no";
-				return status;
-			}
-			else if(nextBtn.isDisplayed())
-			{
-				System.out.println("inside verifyShellCompleted try block ELSE block");
-				System.out.println("Verifying  NEXT button is displayed?");
-				status="yes";
-				return status;
-			}
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		return status;
-		
-	}
-	public String verifyShellCompleted() throws NoSuchElementException
+//	public void clickNextQuestionBtn()
+//	{
+//		if(nextQuestionBtn.isDisplayed())
+//		{
+//			System.out.println("Displayed Next Question  Button");
+//			nextQuestionBtn.click();
+//			if(verificationTag.isDisplayed())
+//			{
+//				System.out.println("Next Question Displayed.....");
+//			}
+//			else if(nextBtn.isDisplayed())
+//			{
+//				System.out.println("Next question not displayed");
+//			}
+//			
+//			
+//		}
+//		else
+//		{
+//			System.out.println("No Next Question  Button");
+//			
+//		}
+//		return;
+//	}
+//	
+//	public String verifyShellCompletedSingle() throws NoSuchElementException
+//	{
+//		System.out.println("Inside verifyShellCompleted()");
+//		String status="yes";
+//		try 
+//		{
+//			System.out.println("inside verifyShellCompleted try block");
+//			if(verificationTag.isDisplayed())
+//			{
+//				System.out.println("inside verifyShellCompleted try block IF block");
+//				System.out.println("Verifying  Question Tag is displayed?");
+//				status="no";
+//				return status;
+//			}
+//			else if(nextBtn.isDisplayed())
+//			{
+//				System.out.println("inside verifyShellCompleted try block ELSE block");
+//				System.out.println("Verifying  NEXT button is displayed?");
+//				status="yes";
+//				return status;
+//			}
+//		}
+//		catch(Exception e)
+//		{
+//			e.printStackTrace();
+//		}
+//		return status;
+//		
+//	}
+	public String verifyShellCompleted() throws NoSuchElementException, InterruptedException
 	{
 		System.out.println("Inside verifyShellCompleted()");
 		String status="no";
@@ -752,6 +848,7 @@ public class BrainGymPage extends BaseTest{
 			
 			try
 			{
+				Thread.sleep(3000);
 				if(nextQuestionBtn.isDisplayed())
 				{
 					System.out.println("Inside nextQuestionBtn.isDisplayed()try block- returns No");
@@ -840,7 +937,7 @@ public class BrainGymPage extends BaseTest{
 		try 
 		{
 			System.out.println("inside try block");
-			if(finishOfperDayShellBtn.isDisplayed())
+			if(isItDisplayed(finishBtn))
 			{
 				System.out.println("inside try block IF Stmt");
 				status="yes";
@@ -854,9 +951,17 @@ public class BrainGymPage extends BaseTest{
 		return status;
 	}
 
-	public void clickFinishPerDayShells()
+	public void clickFinishButton()
 	{
-		finishOfperDayShellBtn.click();
+	
+		if(isItDisplayed(finishBtn))
+		{
+			if(isItEnabled(finishBtn))
+			{
+				finishBtn.click();
+			}
+		}
+		
 	}
 
 	public void clickNextBtn() {
