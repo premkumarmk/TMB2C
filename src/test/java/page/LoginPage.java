@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage 
+import generic.BaseTest;
+
+public class LoginPage extends BaseTest
 {
 	@FindBy(xpath="//button[@class='login-signin' and text()='Login']")
 	private WebElement loginBtnDashboard;
@@ -33,7 +35,7 @@ public class LoginPage
 	@FindBy(xpath="//div[@class='login-main']/descendant::p[text()='No such user found in the system']")
 	private WebElement NoSuchUserFoundMsg;
 	
-	public LoginPage(WebDriver driver)
+	public LoginPage()
 	{
 		PageFactory.initElements(driver,this);
 	}

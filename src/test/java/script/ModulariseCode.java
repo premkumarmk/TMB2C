@@ -3,6 +3,7 @@ package script;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import generic.BaseTest;
@@ -10,9 +11,11 @@ import generic.Excel;
 import page.*;
 import utilities.ExcelConstructionExample;
 import utilities.JS;
+import utilities.ToReadResponse;
 
 public class ModulariseCode extends BaseTest
-{	
+{	public static String accessToken=null;
+	
 	@DataProvider(name = "data-set")
     public static Object[][] DataSet() throws Exception 
  	{
@@ -29,9 +32,11 @@ public class ModulariseCode extends BaseTest
 //		 System.out.println("Before JS");
 //		//JS.setZoomLevel(driver,0.75);
 //		System.out.println("After JS");
+	//	seleniumTest(driver);
 		BrainGymPage brainGym= new BrainGymPage(driver);
 		brainGym.login(un, pw, grade, subject);
 		Thread.sleep(2000);		
+		
 		
 		brainGym.numberOfDaystoRun(driver, wait, un, pw, grade, subject, BrainGymPage.numberOfDaysToRun);
 		//brainGym.testOneShell(driver, wait, un, pw, grade, subject,shellStatus);

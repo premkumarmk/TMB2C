@@ -3,12 +3,16 @@ package utilities;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
+import generic.BaseTest;
 import script.Sample;
 
-public class CompareQuestions 
+public class CompareQuestions extends BaseTest
 {
 		public static Map<String, Integer> map = new HashMap<String, Integer>();
 		SoftAssert softAssert = new SoftAssert();
@@ -104,7 +108,12 @@ public class CompareQuestions
 			}
 		}
 
-		
+		public static void scrollDown(WebElement element)
+		{
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			js.executeScript("arguments[0].scrollIntoView(true);", element);
+//			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		}
 
 
 }

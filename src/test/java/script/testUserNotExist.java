@@ -15,7 +15,7 @@ public class testUserNotExist extends BaseTest
 		String un = Excel.getData("./data/userIds.xlsx","user_ids", 1, 0);
 		String pw = Excel.getData("./data/userIds.xlsx","user_ids", 1, 1);
 		
-		LoginPage login=new LoginPage(driver);
+		LoginPage login=new LoginPage();
 		
 		login.clickOnloginBtnOnDashboard();
 		login.clickOnOptionLoginAs();

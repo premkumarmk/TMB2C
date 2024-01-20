@@ -4,9 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Date;
-import java.util.Iterator;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -15,8 +12,6 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.apache.poi.ss.util.WorkbookUtil;
-
 import page.BrainGymPage;
 
 
@@ -85,14 +80,16 @@ public class ExcelConstructionExample {
 	{
 		System.out.println("Inside writeToExcel()");
 		String[] headers = {"Username", "grade", "Subject","Result", "Comments"};	
-		String filepath="./data/result2.xlsx";
-        		  
-        System.out.println("filepath is:"+filepath);
-		try (FileInputStream fileInputStream = new FileInputStream(filepath)) 
+		        		  
+        System.out.println("filepath is:"+BrainGymPage.outputFilepath);
+       
+		try (FileInputStream fileInputStream = new FileInputStream(BrainGymPage.outputFilepath)) 
 		  {
 	
 			  Workbook workbook=WorkbookFactory.create(fileInputStream);
-			  Sheet sheet = workbook.createSheet("Output2");
+			  Sheet sheet = workbook.createSheet(BrainGymPage.outputSheetName);
+			  
+			 
 			  Row headerRow = sheet.createRow(0);
 		      for (int i = 0; i < headers.length; i++) 
 		         {
@@ -108,14 +105,10 @@ public class ExcelConstructionExample {
 	        	    System.out.println(item);
 	        	    CellStyle redFontStyle = createFontStyle(workbook, IndexedColors.RED);
 	                CellStyle greenFontStyle = createFontStyle(workbook, IndexedColors.GREEN);
-
 	        	    // Create a row (e.g., row 0)
 		            Row row = sheet.createRow(r);
-
-		            // Split the result string by commas
-
+		            //split the items by ,
 		            values = item.split(",");
-		            
 		            // Create cells and set values
 		            for (int i = 0; i < values.length; i++)
 		            {
@@ -137,10 +130,10 @@ public class ExcelConstructionExample {
 	       
 
             // Write the workbook to a file ./data/result.xlsx
-            try (FileOutputStream fileOut = new FileOutputStream(filepath)) 
+            try (FileOutputStream fileOut = new FileOutputStream(BrainGymPage.outputFilepath)) 
             {
                 workbook.write(fileOut);
-                System.out.println("Result written to Excel file successfully.");
+                System.out.println("Result written to Excel file successfully."+BrainGymPage.outputFilepath);
             }
            
          catch (IOException e) 
@@ -150,6 +143,9 @@ public class ExcelConstructionExample {
 
 		  }
 	}
+	
+	
+	
 	
 	private static CellStyle createFontStyle(Workbook workbook, IndexedColors color) 
 	{

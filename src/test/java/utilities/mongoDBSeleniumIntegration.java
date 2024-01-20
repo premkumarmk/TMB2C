@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
+import java.util.Map;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -56,6 +56,42 @@ public class mongoDBSeleniumIntegration {
 //} 
 //	        }
 
+    
+    public static List<Integer> getAnswersByQuestionId(String id)
+    {
+    	 List<Integer> answers = null;
+    	System.out.println("Inside getAnswersByQuestionId()");
+    	MongoCollection<Document> questionsCollection=database.getCollection("questions");
+    	//Document query= new Document("_id","61e6a00e2beec30009e55999");
+    	//ObjectId documentId = new ObjectId("61e6a00e2beec30009e55999");
+    	ObjectId documentId = new ObjectId(id);
+    	 Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
+    	 if (queryResult != null) 
+    	 {
+    		 
+    		  answers = (List<Integer>)queryResult.get("solutionIndex", List.class);
+	          System.out.println("answers "+answers);
+	          
+
+	          for(int i=0; i<answers.size();i++)
+	          {
+	        	  System.out.println(answers.get(i));
+	          }
+
+	      
+//    		 Document answerOptionsDocument = queryResult.get("answerOptions", Document.class);
+////    		 List<String> answerOptions = queryResult.getList("solutionIndex", String.class);
+//    		// Map<Object, Object> answerOptions = answerOptionsDocument.entrySet().stream().collect(java.util.stream.Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+//    		 System.out.println("Answer Options: " + answerOptions);
+    	 }
+    	 else {
+             System.out.println("Document not found");
+         }
+    	 
+    	
+		return answers;
+    	
+    }
 	    public static String getStudentIdByEmail() {
 	    	
 	    	System.out.println("Inside getStudentIdByEmail()");
@@ -197,6 +233,42 @@ public class mongoDBSeleniumIntegration {
 	        String customDateOneWeekBefore = dateFormat.format(oneWeekBefore);
 	        return customDateOneWeekBefore;
 	    }
+	    
+// public static int getAnswer() {
+//	    	
+//	 System.out.println("Inside getAnswer()");
+//	    	Object firstElement;			
+//			int intValue = 0;
+////	    	System.out.println("Tesxt value"+queText);
+//	    
+//	        
+//	    	MongoCollection<Document> questionCollection = database.getCollection("questions");
+//	    	Document query = new Document("description","<p><span id=\"docs-internal-guid-25fb84ed-7fff-5c64-44a2-825f5a642211\"><span style=\"font-size: 13pt; font-family: &quot;times new roman&quot;; font-variant-numeric: normal; font-variant-east-asian: normal; vertical-align: baseline; white-space: pre-wrap;\">Pick the word and its Synonym:</span></span></p>");
+//	    	FindIterable<Document> find = questionCollection.find(query);
+//	    	Document result = find.first();
+////	    	System.out.println("STEP -1");
+//	    	System.out.println("result is:"+result);
+//	//    	  Getting "solutionIndex" array list
+//	        List<Object> solutionIndexArray = result.getList("solutionIndex", Object.class);
+//	       System.out.println("Printing solutionIndexArray");
+//	       System.out.println(solutionIndexArray);
+//	        if (!solutionIndexArray.isEmpty()) {
+//	            // Get the first element from the array
+//	        	System.out.println("Inside LIST");
+//	             firstElement = solutionIndexArray.get(0);
+//	            System.out.println("First element of 'solutionIndex' array: " + firstElement);
+//	            intValue = Integer.parseInt(firstElement.toString());
+//	            System.out.println(intValue);
+//	            System.out.println("Result....................");
+//	            
+//	        }
+//	        else {
+//	            System.out.println("The 'solutionIndex' array is empty.");
+//	        }
+//			return intValue;
+//	        
+//	    }
+
 }
 
 	

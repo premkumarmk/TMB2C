@@ -28,7 +28,7 @@ public class TakeTest extends BaseTest{
 		String pw="stuPwd906040";
 		System.out.println("Username:"+un);
 		System.out.println("Password:"+pw);
-		LoginPage login=new LoginPage(driver);
+		LoginPage login=new LoginPage();
 	//	mongoDB.getStudentIdByEmail("abdul@codewave.com");
 		login.clickOnloginBtnOnDashboard();
 		Thread.sleep(1000);
@@ -55,20 +55,20 @@ public class TakeTest extends BaseTest{
 		String shellStatus="no";
 		do
 		{
-			questionText=brainGym.getQuestionText();
-			if (map.containsKey(questionText)) {
-				map.put(questionText,map.get(questionText)+1);
-			} else {
-				map.put(questionText,1);
-			}
-			
+//			questionText=brainGym.getQuestionText();
+//			if (map.containsKey(questionText)) {
+//				map.put(questionText,map.get(questionText)+1);
+//			} else {
+//				map.put(questionText,1);
+//			}
+//			
 			
 			brainGym.clickAnswerOption();
 			brainGym.clickSubmitAnswerBtn();
-			brainGym.clickNextQuestionBtn();
+			//brainGym.clickNextQuestionBtn();
 			
 			
-			shellStatus=brainGym.verifyShellCompletedSingle();
+		//	shellStatus=brainGym.verifyShellCompletedSingle();
 			
 			System.out.println("Shell Status is:"+shellStatus);
 		}while(shellStatus.equals("no"));

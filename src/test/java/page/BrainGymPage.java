@@ -21,6 +21,7 @@ import org.testng.asserts.SoftAssert;
 import generic.BaseTest;
 import utilities.CompareQuestions;
 import utilities.JS;
+import utilities.ToReadResponse;
 import utilities.UpdateDB;
 
 public class BrainGymPage extends BaseTest{
@@ -115,6 +116,7 @@ public class BrainGymPage extends BaseTest{
 	@FindBy(xpath="(//td[@class='right-part'])[4]")
 	public WebElement lastBox;
 
+	public static String accessToken=null;
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
 	public static List<String> ResultListToExcel =new ArrayList<String>();
 	public static String outputFilepath="./data/result2.xlsx";
@@ -291,14 +293,6 @@ public class BrainGymPage extends BaseTest{
 		Actions actions = new Actions(driver);
 		System.out.println("Actions object ID"+actions);
 
-//		for(WebElement e:listOfSourceElementsForVeritcalTable)
-//		{
-//			System.out.println("element ID:"+e);
-//		}
-//		for(WebElement e:listOfTargetElementsForVeritcalTable)
-//		{
-//			System.out.println("element ID:"+e);
-//		}
 		for (int i=0;i<listOfSourceElementsForVeritcalTable.size();i++) 
 		{	System.out.println("Inside Loop : listOfSourceElementsForVeritcalTable ID:"+listOfSourceElementsForVeritcalTable.get(i));
 			
@@ -322,12 +316,16 @@ public class BrainGymPage extends BaseTest{
 		{
 			CompareQuestions.scrollDown(submitAnswerBtn);
 			submitAnswerBtn.click();
+			Thread.sleep(2000);
+			getPageSource();
 		}
 		else 
 		{
 			answerOptionB.click();
 			CompareQuestions.scrollDown(submitAnswerBtn);
 			submitAnswerBtn.click();
+			Thread.sleep(2000);
+			getPageSource();
 		}
 		System.out.println("Exiting multiChoice()");
 	}
@@ -342,6 +340,15 @@ public class BrainGymPage extends BaseTest{
 	//	CompareQuestions.scrollDown(submitAnswerBtn);
 		submitAnswerBtn.click();
 		System.out.println("exiting singleChoice()");
+		Thread.sleep(2000);
+		getPageSource();
+	}
+	
+	public void getPageSource()
+	{
+		System.out.println("before geting page source");
+		String pageSource = driver.getPageSource();
+		System.out.println(pageSource);
 	}
 	
 	public void login(String un, String pw, String grade, String subject) throws InterruptedException{
@@ -391,6 +398,10 @@ public class BrainGymPage extends BaseTest{
 		String shellStatus="no";
 		System.out.println("Inside testPerDayShells method");
 		//String shellAvailable="no";
+		accessToken=ToReadResponse.userRegistrationSuccessful();
+		System.out.println("Access Token in BG page is:  "+accessToken);
+		List<String> chestIds=ToReadResponse.getChestIds();
+		System.out.println("Count Of chestIds is: "+chestIds.size());
 		int numberOfShells=getShellCount();
 		
 		

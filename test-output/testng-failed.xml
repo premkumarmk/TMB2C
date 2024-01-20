@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="script.ModulariseCode">
+      <class name="script.CodekruTest$ModulariseCode">
         <methods>
           <include name="postCondition"/>
-          <include name="takeTest" invocation-numbers="0"/>
           <include name="preCondition"/>
+          <include name="takeTest" invocation-numbers="0"/>
         </methods>
-      </class> <!-- script.ModulariseCode -->
+      </class> <!-- script.CodekruTest$ModulariseCode -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

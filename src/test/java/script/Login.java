@@ -15,7 +15,7 @@ public class Login extends BaseTest
 	{
 		String un="three.9393688889";
 		String pwd="Taut@2023";
-		LoginPage login=new LoginPage(driver);
+		LoginPage login=new LoginPage();
 		
 		login.clickOnloginBtnOnDashboard();
 		login.clickOnOptionLoginAs();

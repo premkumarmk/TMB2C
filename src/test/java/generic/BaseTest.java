@@ -67,6 +67,7 @@ public class BaseTest
 		options.addArguments("--no-proxy-server");
 		options.addArguments("--disable-notifications");
 		options.addArguments("--force-device-scale-factor=" + 0.75);
+		options.setBrowserVersion("116.0.5845.111");
 		
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("credentials_enable_service", false);
@@ -93,14 +94,6 @@ public class BaseTest
 		
 		Reporter.log("Maximize the browser",true);
 		//driver.manage().window().maximize();
-		
-//		Dimension dimension = new Dimension(1800, 1800);
-//        driver.manage().window().setSize(dimension);
-		
-        //driver.findElement(By.tagName("html")).sendKeys(Keys.chord(Keys.CONTROL, Keys.ADD));
-       
-       // JS.setZoomLevel(driver, 100);
-
 		
 		Reporter.log("Set ETO:"+ETO,true);
 		wait=new WebDriverWait(driver, Duration.ofSeconds(Integer.valueOf(ETO)));
