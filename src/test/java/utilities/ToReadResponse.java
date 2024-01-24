@@ -1,7 +1,7 @@
 package utilities;
 
 import org.json.JSONObject;
-
+import org.bson.types.ObjectId;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
@@ -14,15 +14,11 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
-
 import static io.restassured.RestAssured.given;
-
 import java.util.Base64;
 import java.util.List;
-
 import org.apache.commons.lang3.StringUtils;
 import org.hamcrest.Matchers.*;
-import org.json.JSONObject;
 import  io.restassured.specification.RequestSpecification;
 
 public class ToReadResponse {
@@ -67,21 +63,30 @@ public class ToReadResponse {
 	        // Convert the byte array to a string
 	        return new String(encodedBytes);
 	    }
+	 
 	public static void updateDatabase() throws Exception
 	{
 		UpdateDB.changeDate(1);
 		Thread.sleep(4000);
 	} //I want to read ChestId by API by sending token,wrote method getChestId(), but not working
 
-	public static List<String> getChestIds() {
-		//System.out.println("Inside CHestID method");
+	public static List<String> getChestIds(String accessToken, ObjectId studentId,ObjectId subjectId) {
+		System.out.println("Inside CHestID method");
+		System.out.println("accessToken is: "+accessToken);
+		System.out.println("Student ID is: "+studentId);
+		System.out.println("Subject Id is: "+subjectId);
+		
 		 List<String> chestIds=null;
 		 RestAssured.baseURI = "https://dev.tautmore.com/api";
 		 RequestSpecification request = RestAssured.given();
-		 String accessToken = userRegistrationSuccessful();
+		//String accessToken = userRegistrationSuccessful();
 		 JSONObject requestParams = new JSONObject();
-		 requestParams.put("studentId", "659661083a72690008952122");
-		 requestParams.put("subjectId", "625d717654935762da8a5ee9");
+		 requestParams.put("studentId", studentId.toString());
+		 requestParams.put("subjectId", subjectId.toString());
+		 
+//		 requestParams.put("studentId", studentId);
+//		 requestParams.put("subjectId", subjectId);
+		 
 		//String accessToken=accessToken;
 		//https://dev.tautmore.com/api/brain-gym/start-test
 		 Response response = given()
@@ -103,26 +108,28 @@ public class ToReadResponse {
 		  JsonPath jsonpath= response.jsonPath();
 		 //String chest = jsonpath.getString("data.chests[0]._id");
 		 chestIds = jsonpath.getList("data.chests._id",String.class);
-//		 if(!chestIds.isEmpty())
-//		 {
-//		 System.out.println("chest "+chestIds);
-//		 }
+		 if(!chestIds.isEmpty())
+		 {
+		 System.out.println("chest "+chestIds);
+		 }
 		// System.out.println("ENd of method");
 		return chestIds;
 		
 	}
 	
-	public static String  getQuestionId() {
+	public static String  getQuestionId(String accessToken, String chestId) {
 
+		System.out.println("Inside getQuestionId () ");
+		System.out.println("accessToken is: "+accessToken);
+		System.out.println("ChestId is: "+chestId);
         // Set the base URI for your API
         RestAssured.baseURI = "https://dev.tautmore.com/api";
-        //RestAssured.baseURI = "https://u75lkusioi.execute-api.us-east-1.amazonaws.com/prod/api";
-        // Replace "your_access_token" with your actual access token
-        String accessToken = userRegistrationSuccessful(); //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU5NjYxMDgzYTcyNjkwMDA4OTUyMTIyIiwidXNlclR5cGUiOiJTVFVERU5UIiwiRmNtRG9jSWQiOiI2NTk2NjIzZDI1MTZiNzAwMDgzNjdlYjAiLCJpYXQiOjE3MDU0MTI0NjcsImV4cCI6MTcwNTQ5ODg2N30.RixEvV3T1pwtKJfVpgI5-TXizVcrD6Mh23DdCyipxKE";
-        System.out.println("Access token is: "+accessToken);
+       
+       // String accessToken = userRegistrationSuccessful(); //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU5NjYxMDgzYTcyNjkwMDA4OTUyMTIyIiwidXNlclR5cGUiOiJTVFVERU5UIiwiRmNtRG9jSWQiOiI2NTk2NjIzZDI1MTZiNzAwMDgzNjdlYjAiLCJpYXQiOjE3MDU0MTI0NjcsImV4cCI6MTcwNTQ5ODg2N30.RixEvV3T1pwtKJfVpgI5-TXizVcrD6Mh23DdCyipxKE";
+      //  System.out.println("Access token is: "+accessToken);
      //   RequestSpecification request = RestAssured.given();
         JSONObject requestParams = new JSONObject();
-        requestParams.put("chestId", "65aa1a4e8ee2390008717581");
+        requestParams.put("chestId", chestId);
         //  request.header("Content-Type", "application/json");
 
         Response response = given()
@@ -139,12 +146,12 @@ public class ToReadResponse {
 
         // Print the response body
         String responseBody = response.getBody().asString();
-        System.out.println("Response Body: " + responseBody);
+      //  System.out.println("Response Body: " + responseBody);
 
-        System.out.println("Body:" +response.getBody());
+        System.out.println("getQuestionId() Response Body:" +response.getBody());
         JsonPath jsonpath= response.jsonPath();
         String  questionId= jsonpath.getString("data[0]._id");
-        System.out.println("ID is:"+questionId);
+        System.out.println("Question ID is:"+questionId);
         return questionId;
 
     }
@@ -155,15 +162,12 @@ public class ToReadResponse {
 	        RequestSpecification request = RestAssured.given();
 	        JSONObject requestParams = new JSONObject();
 	        requestParams.put("userName", "autostudentone.9606178621");
-	        System.out.println("MAnually method"+convertToBinaryManually("stuPwd906040"));
+	     //   System.out.println("MAnually method"+convertToBinaryManually("stuPwd906040"));
 	        //requestParams.put("password", Base64.getEncoder().encode("stuPwd906040".getBytes()));
-
-
-	        System.out.println("BAse64 method String: " + Base64.getEncoder().encode(convertToBinaryManually("stuPwd906040").getBytes()));
+	    //    System.out.println("BAse64 method String: " + Base64.getEncoder().encode(convertToBinaryManually("stuPwd906040").getBytes()));
 	   //    String pwd= base64Encode("stuPwd906040");
-	      //  byte[] encodedBytes = Base64.getEncoder().encode(base64Encode("stuPwd906040").getBytes());
-	        
-	        System.out.println("New method: "+base64Encode("stuPwd906040"));
+	      //  byte[] encodedBytes = Base64.getEncoder().encode(base64Encode("stuPwd906040").getBytes());	        
+	   //    System.out.println("New method: "+base64Encode("stuPwd906040"));
 	        String pwd=base64Encode("stuPwd906040");
 	        System.out.println("====>"+pwd);
 	      //   requestParams.put("password", "c3R1UHdkOTA2MDQw");
@@ -176,22 +180,24 @@ public class ToReadResponse {
 	        Response response = given()
 	                .header("Content-type", "application/json")
 	                .and()
-	                .body(requestParams.toString())
-	                .log()
-	                .all()
+	                .body(requestParams.toString())	
+	                .log().all()
 	                .when()
 	                .post("/students/login")
 	                .then()
 	                .extract().response();
+	        
+//	        .log()
+//            .all()
 
-	      //  System.out.println("Inside login Aut method" + response);
+	        System.out.println("Inside login Aut method" + response);
 
 	            JSONObject json = new JSONObject(response.getBody().print());
-	            //System.out.println("Body:" + json);
+	            System.out.println("Body:" + json);
 
 	        JsonPath jsonpath= response.jsonPath();
 	        String accessToken = jsonpath.getString("data.accessToken");
-	        System.out.println("\n\naccesstoken:   " +accessToken); //2
+	        System.out.println("Inside userRegistrationSuccessful() accesstoken:   " +accessToken); //2
 	        return accessToken;
 
 	    }

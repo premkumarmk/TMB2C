@@ -10,31 +10,13 @@ import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
 import generic.BaseTest;
-import script.Sample;
+
 
 public class CompareQuestions extends BaseTest
 {
 		public static Map<String, Integer> map = new HashMap<String, Integer>();
+		public static Map<String, String> mapOfQuestionId = new HashMap<String, String>();
 		SoftAssert softAssert = new SoftAssert();
-		//Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
-		
-		public void processQuestion()
-		{
-			if(Sample.SearchAndInsertToHashMap("What is your favorite color?"))
-			{
-				softAssert.assertTrue(true, "What is your favorite color?");
-				System.out.println("IF");
-				Reporter.log("Failed: Duplicate Found");
-				//Write code to write into Excel
-				
-			}
-			else
-			{
-				softAssert.assertTrue(false, "What is your favorite color?");
-				System.out.println("ELSE");
-				//Write code to write into Excel
-			}
-		}
 		
 		 public static boolean SearchAndInsertToHashMap(String questionText) 
 		 {
@@ -52,6 +34,30 @@ public class CompareQuestions extends BaseTest
 		        {
 		        	map.put(questionText,map.get(questionText)+1);
 		            System.out.println("Search key already exists: " + questionText);
+		            return false;
+		        }
+
+		        // Print the updated list
+		       
+			
+		}
+		 
+		 public static boolean SearchQuestionIdAndInsertToHashMap(String questionTextFromDB, String questionId) 
+		 {
+			 	//String searchKey = questionText;
+
+		        // Check if the search key exists in the hashmap
+		        if (!mapOfQuestionId.containsValue(questionId)) 
+		        {
+		            // Insert the new key if it doesn't exist
+		        	mapOfQuestionId.put(questionTextFromDB,questionId);
+		            System.out.println("Inserted Question ID and Question Description From DB: " + questionId +", "+questionTextFromDB);
+		            return true;
+		        } 
+		        else 
+		        {
+		        	mapOfQuestionId.put(questionTextFromDB,questionId);
+		            System.out.println("Question Id already exists: " + questionId +", "+ questionTextFromDB );
 		            return false;
 		        }
 

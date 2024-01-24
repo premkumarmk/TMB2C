@@ -1,14 +1,18 @@
 package utilities;
 import com.mongodb.MongoClientSettings;
+
 import com.mongodb.ConnectionString;
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.UpdateResult;
 
+import script.RemoveHtmlTags;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import org.jsoup.Jsoup;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,15 +60,100 @@ public class mongoDBSeleniumIntegration {
 //} 
 //	        }
 
-    
-    public static List<Integer> getAnswersByQuestionId(String id)
+    @SuppressWarnings("unchecked")
+	public static List<Integer> getAnswersForFillInTheBlanks(String questionid)
     {
-    	 List<Integer> answers = null;
+    	 List<Integer> answersList = null;
+    	System.out.println("Inside getAnswersForFillInTheBlanks()");
+    	MongoCollection<Document> questionsCollection=database.getCollection("questions");
+    	//Document query= new Document("_id","61e6a00e2beec30009e55999");
+    	//ObjectId documentId = new ObjectId("61e6a00e2beec30009e55999");
+    	ObjectId documentId = new ObjectId(questionid);
+    	 Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
+    	 if (queryResult != null) 
+    	 {
+    		  answersList = (List<Integer>)queryResult.get("fillInTheBlankSolution", List.class);
+	          System.out.println("answers "+answersList);
+
+	          for(int i=0; i<answersList.size();i++)
+	          {
+	        	  System.out.println(answersList.get(i));
+	          }
+    	 }
+    	 else {
+             System.out.println("Document not found");
+         }
+    	 
+    	
+		return answersList;
+    	
+    }
+    
+
+    public static String getSolutionType(String questionid)
+    {
+    	String solutionType = null;
+       	System.out.println("Inside getSolutionType()");
+    	MongoCollection<Document> questionsCollection=database.getCollection("questions");
+    	ObjectId documentId = new ObjectId(questionid);
+    	Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
+    	 if (queryResult != null) 
+    	 {
+    		//  answers = (List<Integer>)queryResult.get("description", List.class);
+    		 solutionType=(String)queryResult.get("solutionType", String.class);
+	          System.out.println("answer solution Type "+solutionType);
+	       	          
+    	 }
+    	 else 
+    	 {
+             System.out.println("Document not found");
+         }
+    	
+		return solutionType;
+    }
+    
+
+	public static String getQuestionStatement(String questionid)
+    {
+    	 String questionDescription = null;
+    	 String afterTrimming=null;
+    	System.out.println("Inside getQuestionStatement()");
+    	MongoCollection<Document> questionsCollection=database.getCollection("questions");
+    	ObjectId documentId = new ObjectId(questionid);
+    	 Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
+    	 if (queryResult != null) 
+    	 {
+    		 
+    		//  answers = (List<Integer>)queryResult.get("description", List.class);
+    		 questionDescription=(String)queryResult.get("description", String.class);
+	          System.out.println("answer description "+questionDescription);
+	          System.out.println("questionDescription: Before trimming: "+questionDescription);
+	          
+	        //  RemoveHtmlTags rmvtags=new RemoveHtmlTags();
+	          //rmvtags.
+	         afterTrimming= RemoveHtmlTags.removeHtmlTags(questionDescription);
+	         System.out.println("questionDescription: afterTrimming: "+afterTrimming);
+	          
+    	 }
+    	 else 
+    	 {
+             System.out.println("Document not found");
+         }
+    	 
+    	
+		return afterTrimming;
+    	
+    }
+    
+    @SuppressWarnings("unchecked")
+	public static List<Integer> getAnswersByQuestionId(String questionid)
+    {
+    	List<Integer> answers = null;
     	System.out.println("Inside getAnswersByQuestionId()");
     	MongoCollection<Document> questionsCollection=database.getCollection("questions");
     	//Document query= new Document("_id","61e6a00e2beec30009e55999");
     	//ObjectId documentId = new ObjectId("61e6a00e2beec30009e55999");
-    	ObjectId documentId = new ObjectId(id);
+    	ObjectId documentId = new ObjectId(questionid);
     	 Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
     	 if (queryResult != null) 
     	 {
@@ -92,6 +181,127 @@ public class mongoDBSeleniumIntegration {
 		return answers;
     	
     }
+    
+    
+   
+    public static ObjectId getSubjectIdBySubjectNameAndClassId(String subjectName, String classId) {
+    	
+    	System.out.println("Inside getSubjectIdBySubjectNameAndClassId()");
+    	System.out.println(" variables: subjectName "+subjectName);
+    	System.out.println(" variables: classId "+classId);
+    	
+    	
+//    	MongoClient mongoClient = MongoClients.create(connectionString);
+//            MongoDatabase database = mongoClient.getDatabase(databaseName);
+    	
+        MongoCollection<Document> studentCollection = database.getCollection("subjects");
+
+        // Create a query to find the document with the given email
+     //   Document query = new Document("class",classId).append("name", subjectName);
+       // Document query = new Document("class", classId);
+        Document query = new Document("class", new ObjectId(classId)).append("name", subjectName);
+
+        // Execute the query and retrieve the result
+         FindIterable<Document> findIterable = studentCollection.find(query);
+
+        // Get the first matching document
+        Document document = findIterable.first();
+
+        if (document != null) {
+            // Retrieve the _id from the document
+            ObjectId subId = document.getObjectId("_id");
+            System.out.println("Subject Id for"+subjectName+" is: "+subId);
+            return subId;
+        } else {
+            return null;
+        }
+    }
+
+public static String getClassNameByGrade(String grade) {
+    	
+    	System.out.println("Inside getClassIdByGrade()");
+//    	MongoClient mongoClient = MongoClients.create(connectionString);
+//            MongoDatabase database = mongoClient.getDatabase(databaseName);
+    	
+        MongoCollection<Document> studentCollection = database.getCollection("classes");
+
+        // Create a query to find the document with the given email
+        Document query = new Document("name", grade);
+
+        // Execute the query and retrieve the result
+         FindIterable<Document> findIterable = studentCollection.find(query);
+
+        // Get the first matching document
+        Document document = findIterable.first();
+
+        if (document != null) {
+            // Retrieve the _id from the document
+        //    String classId = document.getObjectId("_id").toString();
+            String className = document.getString("name").toString();
+            System.out.println("class name for Grade "+ grade +" is: "+className);
+            return className;
+        } else {
+            return null;
+        }
+    }
+
+    
+    public static String getClassIdByGrade(String grade) {
+    	
+    	System.out.println("Inside getClassIdByGrade()");
+//    	MongoClient mongoClient = MongoClients.create(connectionString);
+//            MongoDatabase database = mongoClient.getDatabase(databaseName);
+    	
+        MongoCollection<Document> studentCollection = database.getCollection("classes");
+
+        // Create a query to find the document with the given email
+        Document query = new Document("name", grade);
+
+        // Execute the query and retrieve the result
+         FindIterable<Document> findIterable = studentCollection.find(query);
+
+        // Get the first matching document
+        Document document = findIterable.first();
+
+        if (document != null) {
+            // Retrieve the _id from the document
+            String classId = document.getObjectId("_id").toString();
+            System.out.println("class id for Grade "+ grade +" is: "+classId);
+            return classId;
+        } else {
+            return null;
+        }
+    }
+
+    
+    public static ObjectId getStudentIdByUserName(String username) {
+    	
+    	System.out.println("Inside getStudentIdByUserName()");
+//    	MongoClient mongoClient = MongoClients.create(connectionString);
+//            MongoDatabase database = mongoClient.getDatabase(databaseName);
+    	
+        MongoCollection<Document> studentCollection = database.getCollection("students");
+
+        // Create a query to find the document with the given email
+        Document query = new Document("userName", username);
+
+        // Execute the query and retrieve the result
+         FindIterable<Document> findIterable = studentCollection.find(query);
+
+        // Get the first matching document
+        Document document = findIterable.first();
+
+        if (document != null) {
+            // Retrieve the _id from the document
+            ObjectId studId = document.getObjectId("_id");
+            System.out.println("Student Id for username "+"username"+" is: "+studId);
+            return studId;
+        } else {
+            return null;
+        }
+    }
+
+    
 	    public static String getStudentIdByEmail() {
 	    	
 	    	System.out.println("Inside getStudentIdByEmail()");
@@ -213,26 +423,26 @@ public class mongoDBSeleniumIntegration {
 	        return abc;
 	    }
 	    
-	    public static Date addDays(Date date, int days) {
-	        Calendar calendar = Calendar.getInstance();
-	        calendar.setTime(date);
-	        calendar.add(Calendar.DAY_OF_YEAR, days);
-	        return calendar.getTime();
-	    }
+//	    public static Date addDays(Date date, int days) {
+//	        Calendar calendar = Calendar.getInstance();
+//	        calendar.setTime(date);
+//	        calendar.add(Calendar.DAY_OF_YEAR, days);
+//	        return calendar.getTime();
+//	    }
 	    
-	    public static String changeDate() {
-	    	Calendar calendar = Calendar.getInstance();
-	        calendar.setTime(new Date());
-	        calendar.add(Calendar.DAY_OF_YEAR, -7);
-	        Date oneWeekBefore = calendar.getTime();
-	        
-	     // Create a SimpleDateFormat with the desired date format
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-
-	        // Format a custom date string for the one week before date
-	        String customDateOneWeekBefore = dateFormat.format(oneWeekBefore);
-	        return customDateOneWeekBefore;
-	    }
+//	    public static String changeDate() {
+//	    	Calendar calendar = Calendar.getInstance();
+//	        calendar.setTime(new Date());
+//	        calendar.add(Calendar.DAY_OF_YEAR, -7);
+//	        Date oneWeekBefore = calendar.getTime();
+//	        
+//	     // Create a SimpleDateFormat with the desired date format
+//	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+//
+//	        // Format a custom date string for the one week before date
+//	        String customDateOneWeekBefore = dateFormat.format(oneWeekBefore);
+//	        return customDateOneWeekBefore;
+//	    }
 	    
 // public static int getAnswer() {
 //	    	

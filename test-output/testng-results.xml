@@ -20,12 +20,12 @@
       <![CDATA[Close the browser]]>
     </line>
   </reporter-output>
-  <suite started-at="2024-01-16T18:57:24 IST" name="Default suite" finished-at="2024-01-16T18:57:56 IST" duration-ms="32711">
+  <suite started-at="2024-01-25T00:14:50 IST" name="Default suite" finished-at="2024-01-25T00:15:33 IST" duration-ms="42891">
     <groups>
     </groups>
-    <test started-at="2024-01-16T18:57:24 IST" name="Default test" finished-at="2024-01-16T18:57:56 IST" duration-ms="32711">
-      <class name="script.CodekruTest$ModulariseCode">
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.CodekruTest$ModulariseCode@510f3d34]" started-at="2024-01-16T18:57:25 IST" name="preCondition" finished-at="2024-01-16T18:57:33 IST" duration-ms="7813" status="PASS">
+    <test started-at="2024-01-25T00:14:50 IST" name="Default test" finished-at="2024-01-25T00:15:33 IST" duration-ms="42891">
+      <class name="script.ModulariseCode">
+        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@6ad82709]" started-at="2024-01-25T00:14:51 IST" name="preCondition" finished-at="2024-01-25T00:14:55 IST" duration-ms="3747" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -66,7 +66,7 @@
             </line>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.CodekruTest$ModulariseCode@510f3d34]" started-at="2024-01-16T18:57:33 IST" name="takeTest" data-provider="data-set" finished-at="2024-01-16T18:57:56 IST" duration-ms="23545" status="FAIL">
+        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@6ad82709]" started-at="2024-01-25T00:14:55 IST" name="takeTest" data-provider="data-set" finished-at="2024-01-25T00:15:33 IST" duration-ms="38121" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -85,51 +85,22 @@
             </param>
             <param index="3">
               <value>
-                <![CDATA[English]]>
+                <![CDATA[Science]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchElementException">
+          <exception class="java.lang.IndexOutOfBoundsException">
             <message>
-              <![CDATA[no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='question-box']/descendant::p/span"}
-  (Session info: chrome=116.0.5845.96)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.12.1', revision: '8e34639b11'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b1ab5e032a402eb998cb919f98e85f6e, findElement {using=xpath, value=//div[@class='question-box']/descendant::p/span}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.96, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58225}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58225/devtoo..., se:cdpVersion: 116.0.5845.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: b1ab5e032a402eb998cb919f98e85f6e]]>
+              <![CDATA[Index: 1, Size: 0]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//div[@class='question-box']/descendant::p/span"}
-  (Session info: chrome=116.0.5845.96)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.12.1', revision: '8e34639b11'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b1ab5e032a402eb998cb919f98e85f6e, findElement {using=xpath, value=//div[@class='question-box']/descendant::p/span}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 116.0.5845.96, chrome: {chromedriverVersion: 116.0.5845.96 (1a3918166880..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58225}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58225/devtoo..., se:cdpVersion: 116.0.5845.96, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: b1ab5e032a402eb998cb919f98e85f6e
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy19.getText(Unknown Source)
-at page.BrainGymPage.getQuestionText(BrainGymPage.java:683)
-at script.CodekruTest$ModulariseCode.takeTest(CodekruTest.java:106)
+              <![CDATA[java.lang.IndexOutOfBoundsException: Index: 1, Size: 0
+at java.base/java.util.LinkedList.checkElementIndex(LinkedList.java:566)
+at java.base/java.util.LinkedList.get(LinkedList.java:487)
+at java.base/java.util.Collections$UnmodifiableList.get(Collections.java:1501)
+at page.BrainGymPage.testPerDayShells(BrainGymPage.java:657)
+at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:596)
+at script.ModulariseCode.takeTest(ModulariseCode.java:72)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -158,15 +129,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
+          </exception> <!-- java.lang.IndexOutOfBoundsException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- takeTest -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.CodekruTest$ModulariseCode@510f3d34]" started-at="2024-01-16T18:57:56 IST" name="postCondition" finished-at="2024-01-16T18:57:56 IST" duration-ms="193" status="PASS">
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ModulariseCode@6ad82709]" started-at="2024-01-25T00:15:33 IST" name="postCondition" finished-at="2024-01-25T00:15:33 IST" duration-ms="173" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=takeTest status=FAILURE method=CodekruTest$ModulariseCode.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.CodekruTest$ModulariseCode@510f3d34] output={null}]]]>
+                <![CDATA[[TestResult name=takeTest status=FAILURE method=ModulariseCode.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@6ad82709] output={null}]]]>
               </value>
             </param>
           </params>
@@ -176,7 +147,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
-      </class> <!-- script.CodekruTest$ModulariseCode -->
+      </class> <!-- script.ModulariseCode -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
