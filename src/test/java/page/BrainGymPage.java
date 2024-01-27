@@ -20,6 +20,8 @@ import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
 import generic.BaseTest;
+import graphql.ParseAndValidate;
+import groovyjarjarantlr4.v4.codegen.model.Loop;
 import utilities.CompareQuestions;
 import utilities.JS;
 import utilities.ToReadResponse;
@@ -45,6 +47,10 @@ public class BrainGymPage extends BaseTest{
 	@FindBy(xpath="//p[@class='adjusted-para1']")
 	public List<WebElement> shells; 
 	
+	@FindBy(xpath="//p[text()='Start now']/../p")
+	public WebElement shellNowNum; 
+	
+	
 	@FindBy(xpath="//div[@class='braingym-starttoday']/descendant::button[descendant::span[contains(text(),'Workout completed')]]")
 	public WebElement workoutCompletedBtn;
 	
@@ -66,8 +72,12 @@ public class BrainGymPage extends BaseTest{
 	//div[@class='question-box']/descendant::span/span => English
 	//div[@class='question-box']/descendant::p/span   =>Science and Maths
 	
-	@FindBy(xpath="//div[@class='question-box']/h2")
+	@FindBy(xpath="//div[@class='question-box']/descendant::h4")
 	public WebElement getQuestionIfNoStatement;
+	
+	@FindBy(xpath="//div[@class='question-box']")
+	public WebElement commonParent;
+	
 	
 	@FindBy(xpath="//div[@class='question-box']/descendant::p") // for Maths
 	public WebElement getQuestionForMaths;
@@ -122,14 +132,22 @@ public class BrainGymPage extends BaseTest{
 	@FindBy(xpath="//button[@class='beltpopup-button' and text()='Next']")
 	public WebElement nextBtnForNextShell;
 	
+	@FindBy(xpath="//button[@class='beltpopup-button' and text()='Get Your Belt']")
+	public WebElement getYourBeltBtn;	//On completion of Belt
+	//button[@class='beltpopup-button'].getText()== Get Your Belt
+	
+	@FindBy(xpath="//button[@class='beltpopup-button' and text()='Next']")
+	public WebElement nextBtnAfterBeltAchieved; //On completion of Belt
+	
+	
 	@FindBy(xpath="//div[@class='flex-items']/descendant::p[text()='Right answers']")
 	public WebElement oneSetShellCompletion;
 	
 	@FindBy(xpath="//button[text()='Finish']")
 	public WebElement finishBtn;
 	
-	@FindBy(xpath="(//td[@class='right-part'])[4]")
-	public WebElement lastBox;
+	@FindBy(xpath="//td[@class='right-part']")
+	public List<WebElement> rows;
 	
 	@FindBy(xpath="//div[@class='dashboard-overview dash-list-common ']/descendant::li[text()='Logout']")
 	public WebElement logout;
@@ -138,7 +156,7 @@ public class BrainGymPage extends BaseTest{
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
 	public static List<String> ResultListToExcel =new ArrayList<String>();
 	public static String outputFilepath="./data/result3.xlsx";
-	public static String outputSheetName="Output1";
+	public static String outputSheetName="Output2";
 	public static int numberOfDaysToRun=5;  //how may days of shells to complete
 	public static Map<String, Integer> questionTypeHashMap = new HashMap<String, Integer>();
 	public static String questionDescriptionFromDB = null;
@@ -154,6 +172,7 @@ public class BrainGymPage extends BaseTest{
 	
 	public void selectQuestionTypeAndAnswers(WebDriver driver,String questionId, String questionDescriptionFromDB) throws Exception
 	{
+		System.out.println("Inside selectQuestionTypeAndAnswers()");
 		String solutionTypeNumber = mongoDBSeleniumIntegration.getSolutionType(questionId);
 		System.out.println("solutionTypeNumber :"+solutionTypeNumber);
 		System.out.println("Inside selectQuestionType():");
@@ -185,62 +204,64 @@ public class BrainGymPage extends BaseTest{
 		questionTypeHashMap.put("multi solution drag and drop", 26);
 	   
 		
-	  //  Boolean isQuestionIdPresent;
-	    for (Map.Entry<String, Integer> entry : questionTypeHashMap.entrySet()) 
-	    {	
-	    	System.out.println("Inside selectQuestionType() For Loop:");
-	    	String key = entry.getKey();
-	        Integer value = entry.getValue();
+										//  Boolean isQuestionIdPresent;
+//	    for (Map.Entry<String, Integer> entry : questionTypeHashMap.entrySet()) 
+//	    {	
+//	    	//System.out.println("Inside selectQuestionType() For Loop:");
+//	    	String key = entry.getKey();
+//	        Integer value = entry.getValue();
 	       
-	      //  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
+	        							//  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
 
-	        //isTextPresent = (olean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
-	        if(value!=null)
+	        							//isTextPresent = (olean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
+	        if(solutionType!=0)
 	        {
-	        	System.out.println("Inside If , Question is:"+key+" with key value"+value);
+	        	System.out.println("Inside If , Question is: "+questionTypeHashMap.containsKey(solutionTypeNumber)+" with Question SolutionType is:"+solutionType);
 	        
-	        	 switch(value)
+	        	 switch(solutionType)
 	     	    {
 		     	    case 1:
 		     	    case 2:
 		     	    case 4:
 		     	    case 6:
 		     	    case 8:
-		     	    	System.out.println(" Inside switch case 1,2,4,6,8 Found:"+ key);
+		     	    	System.out.println(" Inside switch case 1,2,4,6,8 Found:"+ solutionType);
 		     	    	multiSelect(questionId);
 		     	    	return;
 		     	    	
 		     	    case 9:
-		     	    	System.out.println(" Inside switch case 9 Found:"+ key);
+		     	    	System.out.println(" Inside switch case 9 Found:"+ solutionType);
 		     	    	multiSelect(questionId);
 		     	    	return;
 		     	    
 		     	    case 3:
 		     	    case 10:
-		     	    	System.out.println(" Inside switch case 3 and 10 Found:"+ key);
-		     	    	matchTheFollowing(driver, questionId);
-		    	    	//verticalMatchTheFollowing(driver);
+		     	    	System.out.println(" Inside switch case 3 and 10 Found:"+ solutionType);
+		     	    	//matchTheFollowing(driver, questionId);
+		    	    	verticalMatchTheFollowing(driver, questionId);
 		    	    	return;
 		    	    	
 		     	    case 14:
-		     	    	System.out.println(" Inside switch case 14 Found:"+ key);
+		     	    	System.out.println(" Inside switch case 14 Found:"+ solutionType);
 		     	    	dragAndFillTheQuestion();	
 		     	    	return;
 		    	    	
 		     	   	case 13:
-		     	   		System.out.println(" Inside switch case 13 Found:"+ key);
+		     	   		System.out.println(" Inside switch case 13 Found:"+ solutionType);
 		     	   		fillInTheBlanks("text");
 		     	   		return;
 		     	  
 		     	   	default:
-		     	   		System.out.println("No Solution Type Defined: for solution Type "+value);
+		     	   		System.out.println("No Solution Type Defined: for solution Type "+solutionType);
 		    	    }
 	        	
 	        }
 	        
-	        System.out.println("Indside loop: within");
-	    }///For loop END
-	    System.out.println("Exiting selectQuestionTypeAndAnswers(): after loop");
+	      //  System.out.println("Indside loop: within");
+	  //  }///For loop END
+	    System.out.println("Exiting selectQuestionTypeAndAnswers(): after switch");
+	    System.out.println("Exiting selectQuestionTypeAndAnswers()");
+	    
 	   return;
 	}
 	
@@ -409,7 +430,7 @@ public class BrainGymPage extends BaseTest{
 	{
 		System.out.println("Inside verticalMatchTheFollowing()");
 		Thread.sleep(2000);
-		CompareQuestions.scrollDown(lastBox);
+	//	CompareQuestions.scrollDown(lastBox);
 		Actions actions = new Actions(driver);
 		System.out.println("Actions object ID"+actions);
 
@@ -430,25 +451,34 @@ public class BrainGymPage extends BaseTest{
 	public void verticalMatchTheFollowing(WebDriver driver, String questionId) throws Exception 
 	{
 		answersList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
-
+		//int tdCount=0;
 		System.out.println("Inside verticalMatchTheFollowing()");
 		Thread.sleep(2000);
-		CompareQuestions.scrollDown(lastBox);
+		//tdCount=rows.size();
+		
+		CompareQuestions.scrollDown(rows.getLast());
+		System.out.println("After scroll to last row");
 		Actions actions = new Actions(driver);
 		System.out.println("Actions object ID"+actions);
 		
-		
-		
 		for (int i=0;i<listOfSourceElementsForVeritcalTable.size();i++) 
-		{	System.out.println("Inside Loop : listOfSourceElementsForVeritcalTable ID:"+listOfSourceElementsForVeritcalTable.get(i));
-			
+		{	
 			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(answersList.get(i))).build().perform();
-			//Thread.sleep(4000);
+			  //WebElement sourceElement = listOfSourceElementsForVeritcalTable.get(i);
+	         // WebElement targetCell = listOfTargetElementsForVeritcalTable.get(answersList.get(i));
+				// actions.dragAndDrop(sourceElement, targetCell).perform();
+
+//	          actions.clickAndHold(sourceElement)
+//              .moveToElement(targetCell)
+//              .release()
+//              .build()
+//              .perform();
+//	          
+			System.out.println("----");
+			Thread.sleep(1000);
 		}
-		//actions.build().perform();
-		Thread.sleep(3000);
-//		CompareQuestions.scrollDown(submitAnswerBtn);
-		//submitAnswerBtn.click();
+
+		submitAnswerBtn.click();
 		System.out.println("Exititng verticalMatchTheFollowing()");
 //		return;
 	}
@@ -570,7 +600,9 @@ public class BrainGymPage extends BaseTest{
 	
 	public int getShellCount()
 	{
+	
 		return shells.size();
+		
 	}
 	
 //	public void prepareDB(int numberOfDays) throws Exception
@@ -579,7 +611,7 @@ public class BrainGymPage extends BaseTest{
 //		Thread.sleep(4000);
 //	}
 //	
-	public void numberOfDaystoRun(WebDriver driver, WebDriverWait wait, String accessToken,String un, String pw, String grade, String subject,ObjectId studentId, ObjectId subjectId, int numberOfDays) throws Exception
+	public void numberOfDaystoRun(WebDriver driver, WebDriverWait wait, String accessToken,String un, String pw, String grade, String subject,String studentId, String subjectId, int numberOfDays) throws Exception
 	{
 		//int count=0;
 		
@@ -587,7 +619,7 @@ public class BrainGymPage extends BaseTest{
 		for(int i=0;i<numberOfDays;i++)
 		{		//prepareDB(numberOfDays);
 				driver.navigate().refresh();
-				Thread.sleep(3000);
+				//Thread.sleep(1000);
 				clickleftLinkBrainGym(wait);
 				selectSubject(subject);
 				clickWorkoutBtn();
@@ -602,7 +634,7 @@ public class BrainGymPage extends BaseTest{
 					mongoDBSeleniumIntegration.updateBrainGymMappings(mongoDBSeleniumIntegration.getStudentIdByEmail());
 					Thread.sleep(3000);
 					driver.navigate().refresh();
-					Thread.sleep(3000);
+				//	Thread.sleep(3000);
 					
 				}
 				if(i>0)
@@ -611,7 +643,7 @@ public class BrainGymPage extends BaseTest{
 					mongoDBSeleniumIntegration.updateBrainGymMappings1(mongoDBSeleniumIntegration.getStudentIdByEmail(),i);
 					Thread.sleep(3000);
 					driver.navigate().refresh();
-					Thread.sleep(3000);
+					//Thread.sleep(3000);
 				}
 		}
 		//}while(count < numberOfDays);
@@ -634,7 +666,7 @@ public class BrainGymPage extends BaseTest{
 		}while(count < numberOfDays);
 	}
 	
-	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject, ObjectId studentId, ObjectId subjectId) throws Exception
+	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject, String studentId, String subjectId) throws Exception
 	{	
 		
 		//String asPerDayShellsAreFinsihed ;
@@ -643,10 +675,11 @@ public class BrainGymPage extends BaseTest{
 		//String shellAvailable="no";
 		List<String> chestIds=ToReadResponse.getChestIds(accessToken,studentId,subjectId);
 		System.out.println("Count Of chestIds is: "+chestIds.size());
-		int numberOfShells=getShellCount();
+		int numberOfShellsToLoop=getShellCount();
+		System.out.println("numberOfShellsToLoop value is: "+numberOfShellsToLoop);
 		String chestId=null;
 		
-		for(int i=1; i<=numberOfShells; i++)
+		for(int i=0; i<numberOfShellsToLoop; i++)  //start from chestIds 0 index
 		//for(int i=0; i<chestIds.size(); i++)
 		 {
 			System.out.println("Inside dowhile loop in testPerDayShells method");
@@ -693,15 +726,23 @@ public class BrainGymPage extends BaseTest{
 		
 		do
 		{
-			questionTextFromUI=getQuestionText(subject);
+			Thread.sleep(2000);
+		
+			//questionTextFromUI=isQuestionDisplayedAndGetText();
 			
 			questionId=ToReadResponse.getQuestionId(accessToken,chestId);
+			
+			
 			if(questionId==null)
 			{
 				System.out.println("Question ID is empty, Exiting from execution");
-				driver.quit();
+				Thread.sleep(100000);
+			//	driver.quit();
 			}
 			String questionDescriptionFromDB = mongoDBSeleniumIntegration.getQuestionStatement(questionId);
+			//String solutionTypeNumber = mongoDBSeleniumIntegration.getSolutionType(questionId);
+			System.out.println("Solution Type is: "+mongoDBSeleniumIntegration.getSolutionType(questionId));
+			questionTextFromUI=getQuestionText(subject);
 			//questionText=getQuestionText();
 			//System.out.println("New Question: "+questionText);
 			System.out.println("Question Id From DB is: "+questionId);			
@@ -714,8 +755,11 @@ public class BrainGymPage extends BaseTest{
 			System.out.println("Before calling selectQuestionType()");
 			//selectQuestionType(driver);
 			System.out.println("After calling selectQuestionType()");
-		
+			
+			
+			
 			selectQuestionTypeAndAnswers(driver,questionId, questionDescriptionFromDB);
+			
 			
 			
 			//If condition for Question from DB
@@ -813,18 +857,44 @@ public class BrainGymPage extends BaseTest{
 		subjectScience.click();
 	}
 	
+	public String isQuestionDisplayedAndGetText() throws NoSuchElementException
+	{
+		System.out.println("Inside isQuestionDisplayedAndGetText() ");
+		String res="false";
+		 String text;
+		 String script;
+		 WebElement childElement ;
+		try
+		{
+	        childElement = commonParent.findElement(By.xpath(".//p | .//span"));
 
+	        // Get the text from the child element
+	         text = childElement.getText();
+	        System.out.println("Text from the element: " + text);
+//			res= commonParent.isDisplayed();
+//			System.out.println("Element state is Enabled in : "+element+"-"+res);
+		}
+		catch(NoSuchElementException e) 
+		{
+			System.err.println("Question Tag Not Found: in isItDisplayed(): "+commonParent);
+			e.printStackTrace();
+		}
+		return res;
+		
+	}
+	
+	
 	public Boolean isItDisplayed(WebElement element) throws NoSuchElementException
 	{
 		Boolean res=false;
 		try
 		{
 			res= element.isDisplayed();
-			System.out.println("Element state is Enabled in isItDisplayed"+element);
+			System.out.println("Element state is Enabled in isItDisplayed(): "+element+"-"+res);
 		}
 		catch(NoSuchElementException e) 
 		{
-			System.err.println("Not Found in isItDisplayed()"+element);
+			System.err.println("Not Found: in isItDisplayed(): "+element+"-"+res);
 			e.printStackTrace();
 		}
 		return res;
@@ -895,10 +965,31 @@ public class BrainGymPage extends BaseTest{
 			else
 			{
 				System.out.println("Inside other other subject");
-				question=getQuestion.getText();
+				if(isItDisplayed(getQuestion))
+				{
+					System.out.println("Question element is displayed:");
+					question=getQuestion.getText();
+				}
+				else
+				{
+					System.out.println("Question element is Not displayed: So get heading \"Questions\" only");
+					question=getQuestionIfNoStatement.getText();
+					if(question==null)
+					{
+						System.out.println("Question description not found in UI: ");
+						System.out.println("Quit script");
+						driver.close();
+						driver.quit();
+						
+					}
+				}
+			
+				
+				
+				
 			}
 		System.out.println("Question is: "+question);
-		addQuestionToMap(question);
+		addQuestionToMap(question); //not using now, instead using questionTypeHashMap with solution type
 		Thread.sleep(2000);
 		return question;
 		
@@ -937,7 +1028,7 @@ public class BrainGymPage extends BaseTest{
 	 }
 
 	
-	public void addQuestionToMap(String question)
+	public void addQuestionToMap(String question)   //stores questions and its repetition count
 	{
 		 System.out.println("INside addQuestionToMap() method");
 		int count=0;

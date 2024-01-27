@@ -35,19 +35,19 @@ public class ModulariseCode extends BaseTest
 //		//JS.setZoomLevel(driver,0.75);
 //		System.out.println("After JS");
 	//	seleniumTest(driver);
-			ObjectId studentId = new ObjectId();
-	        ObjectId subjectId = new ObjectId();
+			String studentId =null;
+			String subjectId = null;
 		 studentId=mongoDBSeleniumIntegration.getStudentIdByUserName(un);
-//		System.out.println("getStudentIdByUserName: "+studentId);
+		System.out.println("getStudentIdByUserName: "+studentId);
 		 
 		String classId=mongoDBSeleniumIntegration.getClassIdByGrade(grade);
-//		System.out.println("getClassIdByGrade: "+classId);
+		System.out.println("getClassIdByGrade: "+classId);
 		
-		 subjectId=mongoDBSeleniumIntegration.getSubjectIdBySubjectNameAndClassId(subject, classId);
-	//	System.out.println("Subject Id for Science is : "+subjectId);
+		 subjectId=mongoDBSeleniumIntegration.getSubjectIdBySubjectNameAndClassId(subject, grade);
+		System.out.println("Subject Id for Science is : "+subjectId);
 		
 		String className= mongoDBSeleniumIntegration.getClassNameByGrade(grade);
-//		System.out.println("getClassNameByGrade: "+className); 
+		System.out.println("getClassNameByGrade: "+className); 
 		
 	
 		
@@ -63,7 +63,7 @@ public class ModulariseCode extends BaseTest
 		}
 		Thread.sleep(20000);		
 		
-		//brainGym.clickLogout();
+	//	brainGym.clickLogout();
 		if(!accessToken.equals(null))
 		{
 			System.out.println("In main(), after login()");

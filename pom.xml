@@ -111,5 +111,10 @@
     <artifactId>jsoup</artifactId>
     <version>1.14.3</version> <!-- Check for the latest version on the Jsoup website -->
 </dependency>
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-chrome-driver</artifactId>
+    <version>4.16.1</version>
+</dependency>
 </dependencies>
 </project>

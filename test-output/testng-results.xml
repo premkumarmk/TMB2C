@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="0" skipped="1">
   <reporter-output>
     <line>
       <![CDATA[Browser is:chrome]]>
@@ -10,22 +10,13 @@
     <line>
       <![CDATA[Enter the URL:https://d2c0p5f3p3k3ka.cloudfront.net/]]>
     </line>
-    <line>
-      <![CDATA[Maximize the browser]]>
-    </line>
-    <line>
-      <![CDATA[Set ETO:20]]>
-    </line>
-    <line>
-      <![CDATA[Close the browser]]>
-    </line>
   </reporter-output>
-  <suite started-at="2024-01-25T00:14:50 IST" name="Default suite" finished-at="2024-01-25T00:15:33 IST" duration-ms="42891">
+  <suite started-at="2024-01-28T02:52:28 IST" name="Default suite" finished-at="2024-01-28T02:52:30 IST" duration-ms="2659">
     <groups>
     </groups>
-    <test started-at="2024-01-25T00:14:50 IST" name="Default test" finished-at="2024-01-25T00:15:33 IST" duration-ms="42891">
+    <test started-at="2024-01-28T02:52:28 IST" name="Default test" finished-at="2024-01-28T02:52:30 IST" duration-ms="2659">
       <class name="script.ModulariseCode">
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@6ad82709]" started-at="2024-01-25T00:14:51 IST" name="preCondition" finished-at="2024-01-25T00:14:55 IST" duration-ms="3747" status="PASS">
+        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-28T02:52:28 IST" name="preCondition" finished-at="2024-01-28T02:52:30 IST" duration-ms="1882" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -48,63 +39,46 @@
               </value>
             </param>
           </params>
-          <reporter-output>
-            <line>
-              <![CDATA[Browser is:chrome]]>
-            </line>
-            <line>
-              <![CDATA[Set ITO:5]]>
-            </line>
-            <line>
-              <![CDATA[Enter the URL:https://d2c0p5f3p3k3ka.cloudfront.net/]]>
-            </line>
-            <line>
-              <![CDATA[Maximize the browser]]>
-            </line>
-            <line>
-              <![CDATA[Set ETO:20]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- preCondition -->
-        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@6ad82709]" started-at="2024-01-25T00:14:55 IST" name="takeTest" data-provider="data-set" finished-at="2024-01-25T00:15:33 IST" duration-ms="38121" status="FAIL">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[autostudentone.9606178621]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[stuPwd906040]]>
-              </value>
-            </param>
-            <param index="2">
-              <value>
-                <![CDATA[III]]>
-              </value>
-            </param>
-            <param index="3">
-              <value>
-                <![CDATA[Science]]>
-              </value>
-            </param>
-          </params>
-          <exception class="java.lang.IndexOutOfBoundsException">
+          <exception class="org.openqa.selenium.WebDriverException">
             <message>
-              <![CDATA[Index: 1, Size: 0]]>
+              <![CDATA[unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=120.0.6099.225)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6fd3c06371714d27665e7ee3b9056955, get {url=https://d2c0p5f3p3k3ka.cloudfront.net/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56336}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56336/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6fd3c06371714d27665e7ee3b9056955]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.IndexOutOfBoundsException: Index: 1, Size: 0
-at java.base/java.util.LinkedList.checkElementIndex(LinkedList.java:566)
-at java.base/java.util.LinkedList.get(LinkedList.java:487)
-at java.base/java.util.Collections$UnmodifiableList.get(Collections.java:1501)
-at page.BrainGymPage.testPerDayShells(BrainGymPage.java:657)
-at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:596)
-at script.ModulariseCode.takeTest(ModulariseCode.java:72)
+              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=120.0.6099.225)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6fd3c06371714d27665e7ee3b9056955, get {url=https://d2c0p5f3p3k3ka.cloudfront.net/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56336}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56336/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6fd3c06371714d27665e7ee3b9056955
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:304)
+at generic.BaseTest.preCondition(BaseTest.java:94)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:577)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
 at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
@@ -129,22 +103,112 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.IndexOutOfBoundsException -->
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
+            <line>
+              <![CDATA[Browser is:chrome]]>
+            </line>
+            <line>
+              <![CDATA[Set ITO:5]]>
+            </line>
+            <line>
+              <![CDATA[Enter the URL:https://d2c0p5f3p3k3ka.cloudfront.net/]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- takeTest -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ModulariseCode@6ad82709]" started-at="2024-01-25T00:15:33 IST" name="postCondition" finished-at="2024-01-25T00:15:33 IST" duration-ms="173" status="PASS">
+        </test-method> <!-- preCondition -->
+        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-28T02:52:30 IST" name="takeTest" data-provider="data-set" finished-at="2024-01-28T02:52:30 IST" duration-ms="0" status="SKIP">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=takeTest status=FAILURE method=ModulariseCode.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@6ad82709] output={null}]]]>
+                <![CDATA[autostudentone.9606178621]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[stuPwd906040]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[III]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Science]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.WebDriverException">
+            <message>
+              <![CDATA[unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=120.0.6099.225)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6fd3c06371714d27665e7ee3b9056955, get {url=https://d2c0p5f3p3k3ka.cloudfront.net/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56336}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56336/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6fd3c06371714d27665e7ee3b9056955]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.WebDriverException: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=120.0.6099.225)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [6fd3c06371714d27665e7ee3b9056955, get {url=https://d2c0p5f3p3k3ka.cloudfront.net/}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 120.0.6099.225, chrome: {chromedriverVersion: 120.0.6099.109 (3419140ab66..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56336}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:56336/devtoo..., se:cdpVersion: 120.0.6099.225, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 6fd3c06371714d27665e7ee3b9056955
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:304)
+at generic.BaseTest.preCondition(BaseTest.java:94)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:577)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.WebDriverException -->
           <reporter-output>
-            <line>
-              <![CDATA[Close the browser]]>
-            </line>
+          </reporter-output>
+        </test-method> <!-- takeTest -->
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-28T02:52:30 IST" name="postCondition" finished-at="2024-01-28T02:52:30 IST" duration-ms="0" status="SKIP">
+          <reporter-output>
           </reporter-output>
         </test-method> <!-- postCondition -->
       </class> <!-- script.ModulariseCode -->

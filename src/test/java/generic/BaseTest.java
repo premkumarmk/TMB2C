@@ -34,6 +34,8 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.*;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 
 
 public class BaseTest 
@@ -60,7 +62,7 @@ public class BaseTest
 			) throws MalformedURLException	
 	{
 		
-		//System.setProperty("webdriver.chrome.driver","./exes/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","./exes/chromedriver.exe");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--start-maximized");
 		options.addArguments("--disable-web-security");
@@ -79,7 +81,7 @@ public class BaseTest
         // Create ChromeOptions
     		
 		Reporter.log("Browser is:"+browser,true);
-
+		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver(options);
 		
 		//driver=new FirefoxDriver();

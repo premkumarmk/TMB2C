@@ -22,7 +22,7 @@ import org.hamcrest.Matchers.*;
 import  io.restassured.specification.RequestSpecification;
 
 public class ToReadResponse {
-
+	static int count=1;
 	public static void main(String[] args) throws Exception 
 	{
 		//updateDatabase();
@@ -52,7 +52,8 @@ public class ToReadResponse {
 //	        System.out.println("Original String: " + originalString);
 //	        System.out.println("Encoded String: " + encodedString);
 	    
-		userRegistrationSuccessful();
+		//userRegistrationSuccessful();
+	mongoDBSeleniumIntegration.getSubjectIdBySubjectNameAndClassId("Science", "III");
 		
 	}
 
@@ -70,22 +71,25 @@ public class ToReadResponse {
 		Thread.sleep(4000);
 	} //I want to read ChestId by API by sending token,wrote method getChestId(), but not working
 
-	public static List<String> getChestIds(String accessToken, ObjectId studentId,ObjectId subjectId) {
+	
+	
+	
+	public static List<String> getChestIds(String accessToken, String studentId,String subjectId) {
 		System.out.println("Inside CHestID method");
 		System.out.println("accessToken is: "+accessToken);
-		System.out.println("Student ID is: "+studentId);
-		System.out.println("Subject Id is: "+subjectId);
+//		System.out.println("Student ID is: "+studentId);
+//		System.out.println("Subject Id is: "+subjectId);
 		
 		 List<String> chestIds=null;
 		 RestAssured.baseURI = "https://dev.tautmore.com/api";
 		 RequestSpecification request = RestAssured.given();
 		//String accessToken = userRegistrationSuccessful();
 		 JSONObject requestParams = new JSONObject();
-		 requestParams.put("studentId", studentId.toString());
-		 requestParams.put("subjectId", subjectId.toString());
+//		 requestParams.put("studentId", "659661083a72690008952122");
+//		 requestParams.put("subjectId", "61cc6753c32134a3653b3131");
 		 
-//		 requestParams.put("studentId", studentId);
-//		 requestParams.put("subjectId", subjectId);
+		 requestParams.put("studentId", studentId);
+		 requestParams.put("subjectId", subjectId);
 		 
 		//String accessToken=accessToken;
 		//https://dev.tautmore.com/api/brain-gym/start-test
@@ -117,9 +121,14 @@ public class ToReadResponse {
 		
 	}
 	
+	
+	
+	
 	public static String  getQuestionId(String accessToken, String chestId) {
 
-		System.out.println("Inside getQuestionId () ");
+		
+		System.out.println("Inside getQuestionId (): repeated "+count);
+		count++;
 		System.out.println("accessToken is: "+accessToken);
 		System.out.println("ChestId is: "+chestId);
         // Set the base URI for your API
@@ -181,7 +190,8 @@ public class ToReadResponse {
 	                .header("Content-type", "application/json")
 	                .and()
 	                .body(requestParams.toString())	
-	                .log().all()
+	                .log()
+	                .all()
 	                .when()
 	                .post("/students/login")
 	                .then()

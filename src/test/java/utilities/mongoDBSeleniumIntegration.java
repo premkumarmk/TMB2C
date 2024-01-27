@@ -184,11 +184,11 @@ public class mongoDBSeleniumIntegration {
     
     
    
-    public static ObjectId getSubjectIdBySubjectNameAndClassId(String subjectName, String classId) {
+    public static String getSubjectIdBySubjectNameAndClassId(String subjectName, String grade) {
     	
     	System.out.println("Inside getSubjectIdBySubjectNameAndClassId()");
     	System.out.println(" variables: subjectName "+subjectName);
-    	System.out.println(" variables: classId "+classId);
+    	//System.out.println(" variables: classId "+classId);
     	
     	
 //    	MongoClient mongoClient = MongoClients.create(connectionString);
@@ -199,7 +199,10 @@ public class mongoDBSeleniumIntegration {
         // Create a query to find the document with the given email
      //   Document query = new Document("class",classId).append("name", subjectName);
        // Document query = new Document("class", classId);
-        Document query = new Document("class", new ObjectId(classId)).append("name", subjectName);
+//        String classId=mongoDBSeleniumIntegration.getClassIdByGrade();
+        
+        
+        Document query = new Document("class", new ObjectId(getClassIdByGrade(grade))).append("name", subjectName);
 
         // Execute the query and retrieve the result
          FindIterable<Document> findIterable = studentCollection.find(query);
@@ -209,7 +212,7 @@ public class mongoDBSeleniumIntegration {
 
         if (document != null) {
             // Retrieve the _id from the document
-            ObjectId subId = document.getObjectId("_id");
+            String subId = document.getObjectId("_id").toString();
             System.out.println("Subject Id for"+subjectName+" is: "+subId);
             return subId;
         } else {
@@ -247,15 +250,17 @@ public static String getClassNameByGrade(String grade) {
 
     
     public static String getClassIdByGrade(String grade) {
-    	
+    	String classId = null;
     	System.out.println("Inside getClassIdByGrade()");
 //    	MongoClient mongoClient = MongoClients.create(connectionString);
 //            MongoDatabase database = mongoClient.getDatabase(databaseName);
     	
+//    	{board:ObjectId('61c33124b6b2aa0009e0ddcf'),name:'III'}
+    	
         MongoCollection<Document> studentCollection = database.getCollection("classes");
 
         // Create a query to find the document with the given email
-        Document query = new Document("name", grade);
+        Document query = new Document("name", grade).append("board", new ObjectId("61c33124b6b2aa0009e0ddcf"));
 
         // Execute the query and retrieve the result
          FindIterable<Document> findIterable = studentCollection.find(query);
@@ -265,16 +270,17 @@ public static String getClassNameByGrade(String grade) {
 
         if (document != null) {
             // Retrieve the _id from the document
-            String classId = document.getObjectId("_id").toString();
-            System.out.println("class id for Grade "+ grade +" is: "+classId);
-            return classId;
+             classId = document.getObjectId("_id").toString();
+            System.out.println("class id for Grade III is: "+classId);
+           
         } else {
-            return null;
+             System.out.println("No classId found");
         }
+        return classId;
     }
 
     
-    public static ObjectId getStudentIdByUserName(String username) {
+    public static String getStudentIdByUserName(String username) {
     	
     	System.out.println("Inside getStudentIdByUserName()");
 //    	MongoClient mongoClient = MongoClients.create(connectionString);
@@ -293,7 +299,7 @@ public static String getClassNameByGrade(String grade) {
 
         if (document != null) {
             // Retrieve the _id from the document
-            ObjectId studId = document.getObjectId("_id");
+            String studId = document.getObjectId("_id").toString();
             System.out.println("Student Id for username "+"username"+" is: "+studId);
             return studId;
         } else {
