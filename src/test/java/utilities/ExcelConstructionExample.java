@@ -4,6 +4,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
@@ -87,6 +91,11 @@ public class ExcelConstructionExample {
 		  {
 	
 			  Workbook workbook=WorkbookFactory.create(fileInputStream);
+//			  Instant instant = Instant.now();
+//			  BrainGymPage.outputSheetName=instant.toString();
+			  SimpleDateFormat df = new SimpleDateFormat("dd/MM/yyyy.HH:mm:ss");
+			  String timeStamp = df.format(new Date());
+			  BrainGymPage.outputSheetName=timeStamp;
 			  Sheet sheet = workbook.createSheet(BrainGymPage.outputSheetName);
 			  
 			 

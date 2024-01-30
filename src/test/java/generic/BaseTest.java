@@ -58,7 +58,7 @@ public class BaseTest
 				
 				//@Optional("https://myschool.tautmore.com/login") String appURL,
 				@Optional("5") String ITO,
-				@Optional("20") String ETO	
+				@Optional("10") String ETO	
 			) throws MalformedURLException	
 	{
 		

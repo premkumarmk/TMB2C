@@ -81,10 +81,7 @@ public class ModulariseCode extends BaseTest
 	 @Test(dataProvider="data-set")
 	public void takeTest(String un, String pw, String grade, String subject) throws Exception 
 	{
-//		 System.out.println("Before JS");
-//		//JS.setZoomLevel(driver,0.75);
-//		System.out.println("After JS");
-	//	seleniumTest(driver);
+
 		BrainGymPage brainGym= new BrainGymPage(driver);
 		brainGym.login(un, pw, grade, subject);
 		getLoginSeesionToken(un, pw);
@@ -109,10 +106,6 @@ public class ModulariseCode extends BaseTest
 			questionText=brainGym.getQuestionText(subject);
 			//questionText=getQuestionText();
 			System.out.println("New Question: "+questionText);
-//			System.out.println("---------------");
-//			System.out.println(utilities.mongoDBSeleniumIntegration.getAnswer());
-//			System.out.println(">>>>>>>>>>>>>.");
-			
 			System.out.println("Before calling selectQuestionType()");
 			brainGym.selectQuestionType(driver);
 			System.out.println("After calling selectQuestionType()");
@@ -121,12 +114,10 @@ public class ModulariseCode extends BaseTest
 				softAssert.assertTrue(true, questionText);
 				System.out.println("IF");
 				Reporter.log("Pass: No Duplicate Found");
-				
 				//Write code to write into Excel
 			    String joinedString = StringUtils.join(un + "," + grade + "," + subject + ",Pass," + questionText);
 			    System.out.println("joinedString is :"+joinedString);
 			    brainGym.ResultListToExcel.addLast(joinedString);
-							
 			}
 			else
 			{
@@ -137,17 +128,10 @@ public class ModulariseCode extends BaseTest
 				String joinedString = StringUtils.join(un + "," + grade + "," + subject + ",Fail," + questionText);
 				System.out.println("joinedString is :"+joinedString);
 				brainGym.ResultListToExcel.addLast(joinedString);
-				
 			}		
 			
-			
-			//brainGym.clickAnswerOption();
-			//brainGym.clickSubmitAnswerBtn();
-			//brainGym.clickNextQuestionBtn();
-			 shellStatus=brainGym.verifyShellCompleted();
-		
+			shellStatus=brainGym.verifyQuestionsCompletedOrNot();
 			System.out.println("Shell Status is:"+shellStatus);
-			
 		}while(shellStatus.equals("no"));
 		System.out.println("After End of While Loop");
 		

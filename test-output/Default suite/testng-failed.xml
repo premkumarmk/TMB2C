@@ -6,7 +6,7 @@
       <class name="script.ModulariseCode">
         <methods>
           <include name="postCondition"/>
-          <include name="takeTest"/>
+          <include name="takeTest" invocation-numbers="0"/>
           <include name="preCondition"/>
         </methods>
       </class> <!-- script.ModulariseCode -->

@@ -61,7 +61,7 @@ public class ModulariseCode extends BaseTest
 		{
 			e.printStackTrace();
 		}
-		Thread.sleep(20000);		
+		Thread.sleep(3000);		
 		
 	//	brainGym.clickLogout();
 		if(!accessToken.equals(null))

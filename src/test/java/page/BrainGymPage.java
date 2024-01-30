@@ -76,7 +76,7 @@ public class BrainGymPage extends BaseTest{
 	public WebElement getQuestionIfNoStatement;
 	
 	@FindBy(xpath="//div[@class='question-box']")
-	public WebElement commonParent;
+	public WebElement questionTag;
 	
 	
 	@FindBy(xpath="//div[@class='question-box']/descendant::p") // for Maths
@@ -129,6 +129,12 @@ public class BrainGymPage extends BaseTest{
 	@FindBy(xpath="//button[text()='Next']")
 	public WebElement nextBtn;
 	
+	@FindBy(xpath="//button[@class='beltpopup-button']")
+	public WebElement nextBtnOrGetYoutBeltBtn;
+	
+	@FindBy(xpath="//button[@class='beltpopup-button']")
+	public List<WebElement> listOfBtnForNext; //button[@class='beltpopup-button']
+	
 	@FindBy(xpath="//button[@class='beltpopup-button' and text()='Next']")
 	public WebElement nextBtnForNextShell;
 	
@@ -136,8 +142,15 @@ public class BrainGymPage extends BaseTest{
 	public WebElement getYourBeltBtn;	//On completion of Belt
 	//button[@class='beltpopup-button'].getText()== Get Your Belt
 	
+	@FindBy(xpath="//button[@class='beltpopup-button']/../div/following-sibling::div")
+	public WebElement beltAchievedText;
+	
 	@FindBy(xpath="//button[@class='beltpopup-button' and text()='Next']")
 	public WebElement nextBtnAfterBeltAchieved; //On completion of Belt
+	
+	@FindBy(xpath="//button[@class='beltpopup-button' and contains(text(),'Get Your Belt') or contains(text(),'Next') or contains(text(),'Finish')]")
+	public WebElement commonBtnsInBeltpopup; //On completion of Belt
+	 
 	
 	
 	@FindBy(xpath="//div[@class='flex-items']/descendant::p[text()='Right answers']")
@@ -149,6 +162,17 @@ public class BrainGymPage extends BaseTest{
 	@FindBy(xpath="//td[@class='right-part']")
 	public List<WebElement> rows;
 	
+	@FindBy(xpath="//div[@class='swal-modal' and @role='dialog']")
+	public WebElement noQuestionAvailbaleDialog;
+	
+	@FindBy(xpath="//div[@class='swal-modal' and @role='dialog']/div[@class='swal-text']")
+	public WebElement noQuestionAvailbaleDialogText;
+	
+	@FindBy(xpath="//div[@class='swal-modal' and @role='dialog']/descendant::button[text()='OK']")
+	public WebElement noQuestionAvailbaleDialogOKBtn;
+	
+	
+	
 	@FindBy(xpath="//div[@class='dashboard-overview dash-list-common ']/descendant::li[text()='Logout']")
 	public WebElement logout;
 
@@ -156,8 +180,8 @@ public class BrainGymPage extends BaseTest{
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
 	public static List<String> ResultListToExcel =new ArrayList<String>();
 	public static String outputFilepath="./data/result3.xlsx";
-	public static String outputSheetName="Output2";
-	public static int numberOfDaysToRun=5;  //how may days of shells to complete
+	public static String outputSheetName;//="Output2";
+	public static int numberOfDaysToRun=2;  //how may days of shells to complete
 	public static Map<String, Integer> questionTypeHashMap = new HashMap<String, Integer>();
 	public static String questionDescriptionFromDB = null;
 	public static List<Integer> answersList=null;
@@ -202,18 +226,8 @@ public class BrainGymPage extends BaseTest{
 		questionTypeHashMap.put("drag on image", 24);
 		questionTypeHashMap.put("multi drag and drop", 25);
 		questionTypeHashMap.put("multi solution drag and drop", 26);
-	   
-		
-										//  Boolean isQuestionIdPresent;
-//	    for (Map.Entry<String, Integer> entry : questionTypeHashMap.entrySet()) 
-//	    {	
-//	    	//System.out.println("Inside selectQuestionType() For Loop:");
-//	    	String key = entry.getKey();
-//	        Integer value = entry.getValue();
-	       
-	        							//  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
-
-	        							//isTextPresent = (olean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
+	   										//  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
+											//isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
 	        if(solutionType!=0)
 	        {
 	        	System.out.println("Inside If , Question is: "+questionTypeHashMap.containsKey(solutionTypeNumber)+" with Question SolutionType is:"+solutionType);
@@ -379,11 +393,12 @@ public class BrainGymPage extends BaseTest{
 		
 		for(int i=0;i<listOfsourceElementsToFillBlanks.size();i++) 
 		{
+			Thread.sleep(2000);
 			actions.dragAndDrop(listOfsourceElementsToFillBlanks.get(i), listOftargetElementsToFillBlanks.get(i)).build().perform();
 		//	Thread.sleep(2000);
 		}
 		//actions.build().perform();
-		Thread.sleep(3000);
+		//Thread.sleep(3000);
 		submitAnswerBtn.click();
 		System.out.println("Exiting dragAndFillTheQuestion()");
 
@@ -451,11 +466,7 @@ public class BrainGymPage extends BaseTest{
 	public void verticalMatchTheFollowing(WebDriver driver, String questionId) throws Exception 
 	{
 		answersList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
-		//int tdCount=0;
 		System.out.println("Inside verticalMatchTheFollowing()");
-		Thread.sleep(2000);
-		//tdCount=rows.size();
-		
 		CompareQuestions.scrollDown(rows.getLast());
 		System.out.println("After scroll to last row");
 		Actions actions = new Actions(driver);
@@ -463,6 +474,8 @@ public class BrainGymPage extends BaseTest{
 		
 		for (int i=0;i<listOfSourceElementsForVeritcalTable.size();i++) 
 		{	
+			if(isItDisplayed(listOfSourceElementsForVeritcalTable.get(i)))
+			{
 			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(answersList.get(i))).build().perform();
 			  //WebElement sourceElement = listOfSourceElementsForVeritcalTable.get(i);
 	         // WebElement targetCell = listOfTargetElementsForVeritcalTable.get(answersList.get(i));
@@ -473,9 +486,10 @@ public class BrainGymPage extends BaseTest{
 //              .release()
 //              .build()
 //              .perform();
+			}
 //	          
 			System.out.println("----");
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		}
 
 		submitAnswerBtn.click();
@@ -484,10 +498,10 @@ public class BrainGymPage extends BaseTest{
 	}
 	
 	public void multiSelect(String questionId) throws Exception {
-		//Thread.sleep(2000);
+	
 		System.out.println("Inside multiChoice()");
 		answersList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
-		//Thread.sleep(2000);
+	
 		System.out.println("Answer List is: "+answersList);
 		int answer;
 		for(int i=0; i<answersList.size();i++)
@@ -497,50 +511,59 @@ public class BrainGymPage extends BaseTest{
 			switch(answer)
 			{
 			case 0:
-				answerOptionA.click();
-				break;
+				if(isItDisplayed(answerOptionA))
+				{
+					answerOptionA.click();
+					break;
+				}				
 			
 			case 1:
-				answerOptionB.click();
-				break;
-			
+				if(isItDisplayed(answerOptionB))
+				{
+					answerOptionB.click();
+					break;
+				}
+							
 			case 2:
-				answerOptionC.click();
-				break;
+				if(isItDisplayed(answerOptionC))
+				{
+					answerOptionC.click();
+					break;
+				}
 			
 			case 3:
-				answerOptionD.click();
-				break;
-			
+				if(isItDisplayed(answerOptionD))
+				{
+					answerOptionD.click();
+					break;
+				}
+				
 			case 4:
-				answerOptionE.click();
-				break;
+				if(isItDisplayed(answerOptionE))
+				{
+					answerOptionE.click();
+					break;
+				}
+				
 				
 			default:
-				answerOptionB.click();
-				System.out.println("Clicked on Random answer");
-				break;
+				if(isItDisplayed(answerOptionB))
+				{
+					answerOptionB.click();
+					System.out.println("Clicked on Random answer");
+					break;
+				}
+				
 			
 				
 			}
-			Thread.sleep(1000);
+			Thread.sleep(200);
 		}
 		
-//		for(int i=0; i<answersList.size();i++)
-//		{
-//			Thread.sleep(1000);
-//			//answersList.toString();
-//			String path="//div[@class='question-options-wrapper selectTyleType']/div["+(answersList.get(i)+1)+"]/button";
-//			System.out.println("1st xpath is: "+path);
-//			answerOption= driver.findElement(By.xpath(path));
-//			answerOption.click();
-//		}
-
 		if(submitAnswerBtn.isEnabled()) 
 		{
 			CompareQuestions.scrollDown(submitAnswerBtn);
-			submitAnswerBtn.click();
-			//Thread.sleep(2000);
+			submitAnswerBtn.click();			
 		
 		}
 
@@ -590,10 +613,10 @@ public class BrainGymPage extends BaseTest{
 			login.setUserName(un);
 			login.setPassword(pw);
 			login.clickLoginButton();
-			System.err.println("accessToken value before calling userRegistrationSuccessful(): "+ accessToken);
+			System.out.println("accessToken value before calling userRegistrationSuccessful(): "+ accessToken);
 			accessToken=ToReadResponse.userRegistrationSuccessful();
 			//System.out.println("Access Token in BG page is:  "+accessToken);
-			System.err.println("accessToken value After calling userRegistrationSuccessful(): "+ accessToken);
+			System.out.println("accessToken value After calling userRegistrationSuccessful(): "+ accessToken);
 			
 			return accessToken;
 	}
@@ -618,6 +641,7 @@ public class BrainGymPage extends BaseTest{
 		//do 
 		for(int i=0;i<numberOfDays;i++)
 		{		//prepareDB(numberOfDays);
+				System.out.println("RUnning "+ i +"th day");
 				driver.navigate().refresh();
 				//Thread.sleep(1000);
 				clickleftLinkBrainGym(wait);
@@ -625,7 +649,7 @@ public class BrainGymPage extends BaseTest{
 				clickWorkoutBtn();
 				
 				
-				testPerDayShells(driver, wait, un, pw, grade, subject, studentId, subjectId);
+				testPerDayShells(driver, wait, un, pw, grade, subject, studentId, subjectId,i);
 				//studentStrings.add(StringUtils.join(un,pw,grade,subject,"pass","comments"));
 				//count++;
 				if(i==0)
@@ -666,7 +690,7 @@ public class BrainGymPage extends BaseTest{
 		}while(count < numberOfDays);
 	}
 	
-	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject, String studentId, String subjectId) throws Exception
+	public void testPerDayShells(WebDriver driver, WebDriverWait wait, String un, String pw, String grade, String subject, String studentId, String subjectId, int n) throws Exception
 	{	
 		
 		//String asPerDayShellsAreFinsihed ;
@@ -683,46 +707,82 @@ public class BrainGymPage extends BaseTest{
 		//for(int i=0; i<chestIds.size(); i++)
 		 {
 			System.out.println("Inside dowhile loop in testPerDayShells method");
+			System.out.println("Running "+n+"th day and "+i+" th shell");
 			//clickStartNowShell();
 			//clickStartNowOnPopupBtn();
 
 			
 			chestId=chestIds.get(i);
-			testOneShell(driver, un,pw,grade,subject,shellStatus,chestId);
+			String shellReturnStatus=testOneShell(driver, un,pw,grade,subject,shellStatus,chestId);
 			
-			System.out.println("completed One shell, waiting to click Next button");			
-			//clickNextBtn(); // Click on after one loop of 5 shells
-			clickNextBtnForNextShell(); //click on Belt Next button
-			
-			if(isItDisplayed(finishBtn))
-				{
-					if(isItEnabled(finishBtn))
-					{
-						System.out.println("Shells Completed for the day");
-						finishBtn.click();
-						
-					}
-				}
-			else
+			if(shellReturnStatus.equals("Shell Completed"))
 			{
-				System.out.println("Shells  not over!!!");
-			}
+				System.out.println("completed One shell, waiting to click Next button");			
+				//clickNextBtn(); // Click on after one loop of 5 shells
 				
-		}
+				clickNextBtnForNextShell(); //click on Belt Next button
+				
+				if(isItDisplayed(finishBtn))
+					{
+						if(isItEnabled(finishBtn))
+						{
+							System.out.println("Shells Completed for the day");
+							finishBtn.click();
+							
+						}
+					}
+				else
+				{
+					System.out.println("Shells  not over!!!");
+				}
 
+			}
+			else if(shellReturnStatus.equals("No questions available"))
+			{
+				
+				System.out.println("inside else shellReturnStatus.equals(\"No questions available\" " );
+				System.out.println("Clicking on noQuestionAvailbaleDialogOKBtn" );
+				if(isItDisplayed(noQuestionAvailbaleDialogOKBtn))
+				{
+					noQuestionAvailbaleDialogOKBtn.click();
+				}
+				
+				if(isItDisplayed(nextBtn))
+				{
+					nextBtn.click();
+				}
+				
+				System.out.println("Clicking omn commonBtnsInBeltpopup");
+				if(isItDisplayed(commonBtnsInBeltpopup))
+				{
+					commonBtnsInBeltpopup.click();
+				}
+				
+			}
+						
+			System.out.println("Shell "+i+ "Completed !");
+		}
+		System.out.println("All Shells Completed!!!");
 		
 	}
 
 	
-	public void testOneShell(WebDriver driver, String un, String pw, String grade, String subject, String shellStatus,String chestId) throws Exception
+	public String testOneShell(WebDriver driver, String un, String pw, String grade, String subject, String questionsCompletedStatus,String chestId) throws Exception
 	{
-
+		
 		clickStartNowShell();
 		clickStartNowOnPopupBtn();
 		String questionTextFromUI;
 		String questionId=null;
 //--		getQuestionText();
 			
+		if(isItDisplayed(noQuestionAvailbaleDialog))
+		{
+			System.out.println("No Question displayed in this shell: Questions may be over!!!!!!!!! returning from testOneShell() method");
+			String text=noQuestionAvailbaleDialogText.getText();
+			System.out.println("Dialog text is: "+text);
+			return text;
+		}
 		
 		do
 		{
@@ -748,20 +808,11 @@ public class BrainGymPage extends BaseTest{
 			System.out.println("Question Id From DB is: "+questionId);			
 			System.out.println("question Description From DB : "+questionDescriptionFromDB);
 			System.out.println("Question Description From UI: "+questionTextFromUI);
-//			System.out.println("---------------");
-//			System.out.println(utilities.mongoDBSeleniumIntegration.getAnswer());
-//			System.out.println(">>>>>>>>>>>>>.");
 			
 			System.out.println("Before calling selectQuestionType()");
-			//selectQuestionType(driver);
+
 			System.out.println("After calling selectQuestionType()");
-			
-			
-			
 			selectQuestionTypeAndAnswers(driver,questionId, questionDescriptionFromDB);
-			
-			
-			
 			//If condition for Question from DB
 			if(CompareQuestions.SearchQuestionIdAndInsertToHashMap(questionDescriptionFromDB, questionId))
 			{
@@ -782,43 +833,23 @@ public class BrainGymPage extends BaseTest{
 				System.out.println("joinedString is :"+joinedString);
 				ResultListToExcel.addLast(joinedString);
 			}
-			
-			
-		//If condition for Question from UI	
-//--			if(CompareQuestions.SearchAndInsertToHashMap(questionTextFromUI))
-//--			{
-//	--			softAssert.assertTrue(true, questionTextFromUI);
-//--				System.out.println("IF");
-//--				Reporter.log("Pass: No Duplicate Found");
-//--				
-//--				//Write code to write into Excel
-//--			    String joinedString = StringUtils.join(un + "," + grade + "," + subject + "," + "Pass" + "," +  questionTextFromUI);
-//--			    System.out.println("joinedString is :"+joinedString);
-//--			    ResultListToExcel.addLast(joinedString);
-//--							
-//--			}
-//--			else
-//--			{
-//--				softAssert.assertTrue(false, questionTextFromUI);
-//	--			System.out.println("ELSE");
-//--				Reporter.log("Fail: Duplicate Found");
-//--				//Write code to write into Excel
-//--				String joinedString = StringUtils.join(un + "," + grade + "," + subject +  "," + "Fail" + ","  + questionTextFromUI);
-//--				System.out.println("joinedString is :"+joinedString);
-//--				ResultListToExcel.addLast(joinedString);
-//--				
-//--			}		
-			
+						
 			
 			//clickAnswerOption();
 			//clickSubmitAnswerBtn();
 			//clickNextQuestionBtn();
-			shellStatus=verifyShellCompleted();
-		
-			System.out.println("Shell Status is:"+shellStatus);
 			
-		}while(shellStatus.equals("no"));
+			
+			questionsCompletedStatus=verifyQuestionsCompletedOrNot();
+		
+			System.out.println("Questions Status is:"+questionsCompletedStatus);
+			
+			//controlFlowForNextQuestionOrNextShell();
+			
+		}while(questionsCompletedStatus.equals("no"));
 		System.out.println("After End of While Loop");
+		
+		return "Shell Completed";
 		
 	}
 	
@@ -827,14 +858,22 @@ public class BrainGymPage extends BaseTest{
 	
 	public void selectSubject(String sub) 
 	{
-		for (WebElement subject : subjectsTabs) 
+		try 
 		{
-			System.out.println(subject);
-			if(subject.getText().equals(sub)) 
+			for (WebElement subject : subjectsTabs) 
 			{
-				subject.click();
+				System.out.println(subject);
+				if(subject.getText().equals(sub)) 
+				{
+					subject.click();
+				}
 			}
 		}
+		catch(NoSuchElementException e)
+		{
+			System.err.println(e);
+		}
+		
 	}
 	
 
@@ -857,31 +896,34 @@ public class BrainGymPage extends BaseTest{
 		subjectScience.click();
 	}
 	
-	public String isQuestionDisplayedAndGetText() throws NoSuchElementException
-	{
-		System.out.println("Inside isQuestionDisplayedAndGetText() ");
-		String res="false";
-		 String text;
-		 String script;
-		 WebElement childElement ;
-		try
-		{
-	        childElement = commonParent.findElement(By.xpath(".//p | .//span"));
-
-	        // Get the text from the child element
-	         text = childElement.getText();
-	        System.out.println("Text from the element: " + text);
-//			res= commonParent.isDisplayed();
-//			System.out.println("Element state is Enabled in : "+element+"-"+res);
-		}
-		catch(NoSuchElementException e) 
-		{
-			System.err.println("Question Tag Not Found: in isItDisplayed(): "+commonParent);
-			e.printStackTrace();
-		}
-		return res;
-		
-	}
+//	public String isQuestionDisplayedAndGetText() throws NoSuchElementException
+//	{
+//		System.out.println("Inside isQuestionDisplayedAndGetText() ");
+//		String res="false";
+//		 String text;
+//		 String script;
+//		 WebElement childElement ;
+//		try
+//		{
+//			if(isItDisplayed(questionTag))
+//			{
+//				 childElement = questionTag.findElement(By.xpath(".//p | .//span"));
+//		        // Get the text from the child element
+//		         text = childElement.getText();
+//		         System.out.println("Text from the element: " + text);
+//			}
+//	       
+////			res= commonParent.isDisplayed();
+////			System.out.println("Element state is Enabled in : "+element+"-"+res);
+//		}
+//		catch(NoSuchElementException e) 
+//		{
+//			System.err.println("Question Tag Not Found: in isItDisplayed(): "+questionTag);
+//			e.printStackTrace();
+//		}
+//		return res;
+//		
+//	}
 	
 	
 	public Boolean isItDisplayed(WebElement element) throws NoSuchElementException
@@ -955,7 +997,7 @@ public class BrainGymPage extends BaseTest{
 	public String getQuestionText(String subject) throws InterruptedException
 	{
 		System.out.println("INside getQuestionText() method");
-		String question;
+		String question = null;
 		
 		if(subject.equals("Mathematics"))
 			{
@@ -973,20 +1015,30 @@ public class BrainGymPage extends BaseTest{
 				else
 				{
 					System.out.println("Question element is Not displayed: So get heading \"Questions\" only");
-					question=getQuestionIfNoStatement.getText();
-					if(question==null)
+					if(isItDisplayed(getQuestionIfNoStatement))   
 					{
-						System.out.println("Question description not found in UI: ");
-						System.out.println("Quit script");
-						driver.close();
-						driver.quit();
+						question=getQuestionIfNoStatement.getText();
+						//childElement = questionTag.findElement(By.xpath(".//p | .//span"));
+				        // Get the text from the child element
+				        // text = childElement.getText();
 						
+						
+						if(question==null)
+						{
+							System.out.println("Question description not found in UI: ");
+							System.out.println("Quit script");
+							driver.close();
+							driver.quit();
+							
+						}
+						else
+						{
+							System.out.println("Question statement is empty:");
+						}
 					}
+				
 				}
 			
-				
-				
-				
 			}
 		System.out.println("Question is: "+question);
 		addQuestionToMap(question); //not using now, instead using questionTypeHashMap with solution type
@@ -1096,7 +1148,98 @@ public class BrainGymPage extends BaseTest{
 	
 
 
-	public String verifyShellCompleted() throws NoSuchElementException, InterruptedException
+	
+//	public String controlFlowForNextQuestionOrNextShell()
+//	{
+//		System.out.println("Inside controlFlowForNextQuestionOrNextShell()");
+//		String text;
+//		String status="no";
+//		int numberOfBtns;
+//		
+//		if(isItDisplayed(nextBtnForNextShell))
+//		{
+//			System.out.println("Inside If isItDisplayed(nextBtnForNextShell)");
+//			
+//			numberOfBtns=listOfBtnForNext.size();
+//			System.out.println("numberOfBtns: "+numberOfBtns);
+//			if(numberOfBtns==1)
+//			{
+//				System.out.println("Inside if numberOfBtns==1 ");
+//				text=listOfBtnForNext.get(0).getText();
+//				if(text.equals("Next"))
+//				{
+//					System.out.println("Inside if NExt: ");
+//					handleNextBtnsForShellsExceptLast();
+//					System.out.println("Status: "+status);
+//					
+//					//One shell completed and navigates to "Start Shell" page to go through next shell
+//				}
+//				else if(text.equals("Get Your Belt"))
+//				{
+//					System.out.println("Inside else if GetYourBelt intermediate shells");
+//					handleNextBtnsIfLastShell();
+//					System.out.println("Status: "+status);
+//				//	One Day Shells Completed after clicking Finish, navigates to BrainGym Home page
+//				}
+//			}
+//			else if(numberOfBtns==2)
+//			{
+//				System.out.println("Inside If numberOfBtns==2");
+//				text=listOfBtnForNext.get(0).getText();
+//				if(text.equals("Next"))
+//				{
+//					System.out.println("Inside If btns2 Next");
+//					handleGetYourBeltBtnShellsExceptLast();
+//				}
+//				else if(text.equals("Get Your Belt"))
+//				{
+//					System.out.println("Inside elseIf GetYourBelt Last Shell");
+//					handleGetYourBeltNextShellsAndFinishBtn();
+//				}
+//			}
+//		}
+//		
+//		return status;
+//	}
+	
+	public void handleGetYourBeltNextShellsAndFinishBtn()
+	{
+		System.out.println("handleNextShellsExceptLastAndFinishBtn()");
+		getYourBeltBtn.click();
+		nextQuestionBtn.click();;
+		finishBtn.click();
+		//return "yes";
+		
+	}
+	
+	public void handleGetYourBeltBtnShellsExceptLast()
+	{
+		getYourBeltBtn.click();
+		nextBtn.click();
+		//return "no";
+		//after click navigates to Start ShellNow page
+	}
+	
+	public void handleNextBtnsIfLastShell()
+	{
+		nextBtnForNextShell.click();
+		finishBtn.click();
+	//	return "yes";
+	}
+	
+	
+	public void handleNextBtnsForShellsExceptLast() 
+	{
+		nextBtnForNextShell.click();
+		//return "yes";
+		//		
+	}
+
+	
+
+
+	
+	public String verifyQuestionsCompletedOrNot() throws NoSuchElementException, InterruptedException
 	{
 		System.out.println("Inside verifyShellCompleted()");
 		String status="no";
@@ -1107,7 +1250,8 @@ public class BrainGymPage extends BaseTest{
 			try
 			{
 				Thread.sleep(3000);
-				if(nextQuestionBtn.isDisplayed())
+				//if(nextQuestionBtn.isDisplayed())
+				if(isItDisplayed(nextQuestionBtn))
 				{
 					System.out.println("Inside nextQuestionBtn.isDisplayed()try block- returns No");
 					nextQuestionBtn.click();
@@ -1119,12 +1263,24 @@ public class BrainGymPage extends BaseTest{
 			
 			try
 			{	
-				if(verificationTag.isDisplayed())
+				//if(verificationTag.isDisplayed())
+				System.out.println("before verificationTag");
+				if(isItDisplayed(verificationTag))
 				{
 				
 					System.out.println("inside nextQuestionBtn.isDisplayed() -return no- Shell NOT Completed");
-					status="no"; //shell completed
+					status="no"; //shell not completed 
 					return status;
+				}
+				else if(isItDisplayed(commonBtnsInBeltpopup))
+				{
+					do
+					{
+						commonBtnsInBeltpopup.click();
+						status="yes";
+						
+					}while(isItDisplayed(commonBtnsInBeltpopup));
+					return  status;
 				}
 				
 			}
@@ -1133,12 +1289,22 @@ public class BrainGymPage extends BaseTest{
 			
 			try 
 			{
-				if(nextBtn.isDisplayed())
+			
+				//if(nextBtn.isDisplayed())
+				if(isItDisplayed(nextBtn))
 				{
 					System.out.println("Inside nextBtn.isDisplayed() try block - return yes");
 					nextBtn.click();
 					status="yes";
 					return status;
+				}
+				else if(isItDisplayed(commonBtnsInBeltpopup))
+				{
+					do
+					{
+						commonBtnsInBeltpopup.click();
+						
+					}while(isItDisplayed(commonBtnsInBeltpopup));
 				}
 			}
 			catch(NoSuchElementException e)
@@ -1247,13 +1413,13 @@ public class BrainGymPage extends BaseTest{
 				}
 				else
 				{
-					System.out.println("Element Not enabled");
+					System.out.println("Element Not enabled"+element);
 				}
 				return false;
 			}
 			else
 			{
-				System.out.println("Element Not Displayed");
+				System.out.println("Element Not Displayed"+element);
 				return false;
 			}
 		}
