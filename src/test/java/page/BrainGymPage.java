@@ -20,7 +20,6 @@ import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
 import generic.BaseTest;
-import graphql.ParseAndValidate;
 import groovyjarjarantlr4.v4.codegen.model.Loop;
 import utilities.CompareQuestions;
 import utilities.JS;

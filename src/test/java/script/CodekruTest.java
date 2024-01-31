@@ -3,7 +3,6 @@ package script;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.events.local.GuavaEventBus;
 import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 import org.testng.annotations.DataProvider;

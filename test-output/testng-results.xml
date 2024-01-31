@@ -16,196 +16,13 @@
     <line>
       <![CDATA[Set ETO:10]]>
     </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Pass: No Duplicate Found]]>
-    </line>
-    <line>
-      <![CDATA[Close the browser]]>
-    </line>
   </reporter-output>
-  <suite started-at="2024-01-30T17:54:09 IST" name="Default suite" finished-at="2024-01-30T18:23:39 IST" duration-ms="1769679">
+  <suite started-at="2024-01-31T15:25:02 IST" name="Default suite" finished-at="2024-01-31T15:25:14 IST" duration-ms="11958">
     <groups>
     </groups>
-    <test started-at="2024-01-30T17:54:09 IST" name="Default test" finished-at="2024-01-30T18:23:39 IST" duration-ms="1769679">
+    <test started-at="2024-01-31T15:25:02 IST" name="Default test" finished-at="2024-01-31T15:25:14 IST" duration-ms="11958">
       <class name="script.ModulariseCode">
-        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-30T17:54:10 IST" name="preCondition" finished-at="2024-01-30T17:54:16 IST" duration-ms="5660" status="PASS">
+        <test-method is-config="true" signature="preCondition(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-31T15:25:03 IST" name="preCondition" finished-at="2024-01-31T15:25:09 IST" duration-ms="6238" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -246,7 +63,7 @@
             </line>
           </reporter-output>
         </test-method> <!-- preCondition -->
-        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-30T17:54:16 IST" name="takeTest" data-provider="data-set" finished-at="2024-01-30T18:23:39 IST" duration-ms="1763003" status="FAIL">
+        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-31T15:25:09 IST" name="takeTest" data-provider="data-set" finished-at="2024-01-31T15:25:14 IST" duration-ms="4885" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -269,17 +86,48 @@
               </value>
             </param>
           </params>
-          <exception class="java.lang.IllegalArgumentException">
+          <exception class="org.openqa.selenium.NoSuchWindowException">
             <message>
-              <![CDATA[The workbook already contains a sheet named 'Output2']]>
+              <![CDATA[no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.86)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e759a3beea67b5a7d0b4aef9c31bf1e7, findElement {using=xpath, value=//button[@class='login-signin' and text()='Login']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.86, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50491}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50491/devtoo..., se:cdpVersion: 121.0.6167.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e759a3beea67b5a7d0b4aef9c31bf1e7]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.IllegalArgumentException: The workbook already contains a sheet named 'Output2'
-at org.apache.poi.xssf.usermodel.XSSFWorkbook.validateSheetName(XSSFWorkbook.java:959)
-at org.apache.poi.xssf.usermodel.XSSFWorkbook.createSheet(XSSFWorkbook.java:903)
-at org.apache.poi.xssf.usermodel.XSSFWorkbook.createSheet(XSSFWorkbook.java:108)
-at utilities.ExcelConstructionExample.writeToExcel(ExcelConstructionExample.java:90)
-at script.ModulariseCode.takeTest(ModulariseCode.java:76)
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.86)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e759a3beea67b5a7d0b4aef9c31bf1e7, findElement {using=xpath, value=//button[@class='login-signin' and text()='Login']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.86, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50491}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50491/devtoo..., se:cdpVersion: 121.0.6167.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e759a3beea67b5a7d0b4aef9c31bf1e7
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:353)
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy2/jdk.proxy2.$Proxy19.click(Unknown Source)
+at page.LoginPage.clickOnloginBtnOnDashboard(LoginPage.java:89)
+at page.BrainGymPage.login(BrainGymPage.java:610)
+at script.ModulariseCode.takeTest(ModulariseCode.java:58)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -308,202 +156,89 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.IllegalArgumentException -->
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
           <reporter-output>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
-            <line>
-              <![CDATA[Pass: No Duplicate Found]]>
-            </line>
           </reporter-output>
         </test-method> <!-- takeTest -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-30T18:23:39 IST" name="postCondition" finished-at="2024-01-30T18:23:39 IST" duration-ms="181" status="PASS">
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ModulariseCode@7817fd62]" started-at="2024-01-31T15:25:14 IST" name="postCondition" finished-at="2024-01-31T15:25:14 IST" duration-ms="8" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=takeTest status=FAILURE method=ModulariseCode.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62] output=Pass: No Duplicate Found]]]>
+                <![CDATA[[TestResult name=takeTest status=FAILURE method=ModulariseCode.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@7817fd62] output={null}]]]>
               </value>
             </param>
           </params>
+          <exception class="org.openqa.selenium.NoSuchWindowException">
+            <message>
+              <![CDATA[no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.86)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e759a3beea67b5a7d0b4aef9c31bf1e7, screenshot {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.86, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50491}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50491/devtoo..., se:cdpVersion: 121.0.6167.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e759a3beea67b5a7d0b4aef9c31bf1e7]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=121.0.6167.86)
+Build info: version: '4.12.1', revision: '8e34639b11'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [e759a3beea67b5a7d0b4aef9c31bf1e7, screenshot {}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.86, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:50491}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:50491/devtoo..., se:cdpVersion: 121.0.6167.86, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: e759a3beea67b5a7d0b4aef9c31bf1e7
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:196)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:171)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:602)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:675)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:679)
+at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:325)
+at generic.BaseTest.postCondition(BaseTest.java:118)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
+at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
+at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
+at org.testng.internal.invokers.TestInvoker.runAfterConfigurations(TestInvoker.java:779)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:755)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
           <reporter-output>
-            <line>
-              <![CDATA[Close the browser]]>
-            </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
       </class> <!-- script.ModulariseCode -->
