@@ -7,7 +7,8 @@
         <methods>
           <include name="postCondition"/>
           <include name="takeTest" invocation-numbers="0"/>
-          <include name="preCondition"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
         </methods>
       </class> <!-- script.ModulariseCode -->
     </classes>

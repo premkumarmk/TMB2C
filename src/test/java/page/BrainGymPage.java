@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.commons.lang3.StringUtils;
-import org.bson.types.ObjectId;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,11 +18,8 @@ import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
 import generic.BaseTest;
-import groovyjarjarantlr4.v4.codegen.model.Loop;
 import utilities.CompareQuestions;
-import utilities.JS;
 import utilities.ToReadResponse;
-import utilities.UpdateDB;
 import utilities.mongoDBSeleniumIntegration;
 
 public class BrainGymPage extends BaseTest{
@@ -61,7 +56,7 @@ public class BrainGymPage extends BaseTest{
 	public WebElement startNowOnPopupBtn;
 	
 	@FindBy(xpath="//input[@type='text']")
-	public WebElement fillType;
+	public  List<WebElement> fillType;
 	
 	@FindBy(xpath="//span[@id='docs-internal-guid-25fb84ed-7fff-5c64-44a2-825f5a642211']")
 	public static WebElement questionText;
@@ -173,20 +168,21 @@ public class BrainGymPage extends BaseTest{
 	
 	
 	@FindBy(xpath="//div[@class='dashboard-overview dash-list-common ']/descendant::li[text()='Logout']")
-	public WebElement logout;
+	public static WebElement logout;
 
 	public String accessToken=null;
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
 	public static List<String> ResultListToExcel =new ArrayList<String>();
 	public static String outputFilepath="./data/result3.xlsx";
 	public static String outputSheetName;//="Output2";
-	public static int numberOfDaysToRun=2;  //how may days of shells to complete
+	public static int numberOfDaysToRun=1;  //how may days of shells to complete
 	public static Map<String, Integer> questionTypeHashMap = new HashMap<String, Integer>();
 	public static String questionDescriptionFromDB = null;
-	public static List<Integer> answersList=null;
+	public static List<Integer> answersIntList=null;
+	public static List<String> answersStringList=null;
 	public static WebElement answerOption;
 	
-	public void clickLogout()
+	public static void clickLogout()
 	{
 		logout.click();
 		System.out.println("Clicked on Logout button");
@@ -256,12 +252,12 @@ public class BrainGymPage extends BaseTest{
 		    	    	
 		     	    case 14:
 		     	    	System.out.println(" Inside switch case 14 Found:"+ solutionType);
-		     	    	dragAndFillTheQuestion();	
+		     	    	dragAndFillTheQuestion(driver, questionId);
 		     	    	return;
 		    	    	
 		     	   	case 13:
 		     	   		System.out.println(" Inside switch case 13 Found:"+ solutionType);
-		     	   		fillInTheBlanks("text");
+		     	   		fillInTheBlanks(driver, questionId);
 		     	   		return;
 		     	  
 		     	   	default:
@@ -278,84 +274,84 @@ public class BrainGymPage extends BaseTest{
 	   return;
 	}
 	
-	public void selectQuestionType(WebDriver driver) throws Exception
-	{
-		System.out.println("Inside selectQuestionType():");
-		
-		questionTypeHashMap.put("Complete the sentence with the correct form of the adverb:", 1);
-		questionTypeHashMap.put("Read the text and drag the correct adverb/ adjective in the blanks:", 2);
-		questionTypeHashMap.put("choose-the-correct-answer", 3);
-		questionTypeHashMap.put("Multi select question", 4);
-		questionTypeHashMap.put("match-the-following", 5);
-		questionTypeHashMap.put("drag and drop", 6);
-		questionTypeHashMap.put("Select your answer", 7);
-	    	    
-	    Boolean isTextPresent;
-	    for (Map.Entry<String, Integer> entry : questionTypeHashMap.entrySet()) 
-	    {	
-	    	System.out.println("Inside selectQuestionType() For Loop:");
-	    	String key = entry.getKey();
-	        Integer value = entry.getValue();
-	       
-	      //  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
-
-	        isTextPresent = (boolean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
-	        if(isTextPresent)
-	        {
-	        	System.out.println("Inside If , Question is:"+key+" with key value"+value);
-	        
-	        	 switch(value)
-	     	    {
-		     	    case 1:
-		     	    	System.out.println(" Inside switch case 1 Found:"+ key);
-		     	    	fillInTheBlanks("More Rapidly");
-		     	    	return;
-		     	    	
-		     	    case 2:
-		     	    	System.out.println(" Inside switch case 2 Found:"+ key);
-		     	    	dragAndFillTheQuestion();		     	    	
-		     	    	return;
-		     	    
-		     	    case 3:
-		     	    	System.out.println(" Inside switch case 3 Found:"+ key);
-		     	    	//singleChoice();	
-		     	    	return;
-		    	    	
-		     	   	case 4:
-		     	   		System.out.println(" Inside switch case 4 Found:"+ key);
-		     	   		//multiSelect();
-		     	   		return;
-		     	   		
-		     	   	case 5:
-		    	    	System.out.println(" Inside switch case 5 Found:"+ key);
-		    	    //	matchTheFollowing(driver);
-		    	    	//verticalMatchTheFollowing(driver);
-		    	    	return;
-		    	    
-		    	    case 6:
-		    	    	System.out.println(" Inside switch case 6 Found:"+ key);
-		    	    	//matchTheFollowing(driver);
-		    	    //	verticalMatchTheFollowing(driver);
-		    	    	return;
-		   	    	
-		    	   	case 7:
-		    	   		System.out.println(" Inside switch case 7 Found:"+ key);
-		    	   		//singleChoice();	
-		    	   		return;
-		    	   		
-		    	   	default:
-		    	   		System.out.println("Default case:");
-		    	   		//verticalMatchTheFollowing(driver);
-		    	   		return;
-	     	    }
-	        	
-	        }
-	        
-	        System.out.println("Indside loop: within");
-	    }///For loop END
-	    System.out.println("Exiting selectQuestionType(): after loop");
-	   return;
-	}
+//	public void selectQuestionType(WebDriver driver) throws Exception
+//	{
+//		System.out.println("Inside selectQuestionType():");
+//		
+//		questionTypeHashMap.put("Complete the sentence with the correct form of the adverb:", 1);
+//		questionTypeHashMap.put("Read the text and drag the correct adverb/ adjective in the blanks:", 2);
+//		questionTypeHashMap.put("choose-the-correct-answer", 3);
+//		questionTypeHashMap.put("Multi select question", 4);
+//		questionTypeHashMap.put("match-the-following", 5);
+//		questionTypeHashMap.put("drag and drop", 6);
+//		questionTypeHashMap.put("Select your answer", 7);
+//	    	    
+//	    Boolean isTextPresent;
+//	    for (Map.Entry<String, Integer> entry : questionTypeHashMap.entrySet()) 
+//	    {	
+//	    	System.out.println("Inside selectQuestionType() For Loop:");
+//	    	String key = entry.getKey();
+//	        Integer value = entry.getValue();
+//	       
+//	      //  isTextPresent = (Boolean) ((JavascriptExecutor) driver).executeScript("return document.documentElement.innerText.includes(arguments[0]);", key);
+//
+//	        isTextPresent = (boolean) ((JavascriptExecutor) driver).executeScript("var searchText = arguments[0].toLowerCase(); " +"var pageText = document.documentElement.innerText.toLowerCase(); " +"return pageText.includes(searchText);", key);
+//	        if(isTextPresent)
+//	        {
+//	        	System.out.println("Inside If , Question is:"+key+" with key value"+value);
+//	        
+//	        	 switch(value)
+//	     	    {
+//		     	    case 1:
+//		     	    	System.out.println(" Inside switch case 1 Found:"+ key);
+//		     	    	fillInTheBlanks("More Rapidly");
+//		     	    	return;
+//		     	    	
+//		     	    case 2:
+//		     	    	System.out.println(" Inside switch case 2 Found:"+ key);
+//		     	    	dragAndFillTheQuestion();		     	    	
+//		     	    	return;
+//		     	    
+//		     	    case 3:
+//		     	    	System.out.println(" Inside switch case 3 Found:"+ key);
+//		     	    	//singleChoice();	
+//		     	    	return;
+//		    	    	
+//		     	   	case 4:
+//		     	   		System.out.println(" Inside switch case 4 Found:"+ key);
+//		     	   		//multiSelect();
+//		     	   		return;
+//		     	   		
+//		     	   	case 5:
+//		    	    	System.out.println(" Inside switch case 5 Found:"+ key);
+//		    	    //	matchTheFollowing(driver);
+//		    	    	//verticalMatchTheFollowing(driver);
+//		    	    	return;
+//		    	    
+//		    	    case 6:
+//		    	    	System.out.println(" Inside switch case 6 Found:"+ key);
+//		    	    	//matchTheFollowing(driver);
+//		    	    //	verticalMatchTheFollowing(driver);
+//		    	    	return;
+//		   	    	
+//		    	   	case 7:
+//		    	   		System.out.println(" Inside switch case 7 Found:"+ key);
+//		    	   		//singleChoice();	
+//		    	   		return;
+//		    	   		
+//		    	   	default:
+//		    	   		System.out.println("Default case:");
+//		    	   		//verticalMatchTheFollowing(driver);
+//		    	   		return;
+//	     	    }
+//	        	
+//	        }
+//	        
+//	        System.out.println("Indside loop: within");
+//	    }///For loop END
+//	    System.out.println("Exiting selectQuestionType(): after loop");
+//	   return;
+//	}
 	
 //	public boolean verifyTableIsVertical()
 //	{
@@ -373,11 +369,15 @@ public class BrainGymPage extends BaseTest{
 //		
 //	}
 	
-	public void fillInTheBlanks(String text) throws Exception 
+	public void fillInTheBlanks(WebDriver driver, String questionId) throws Exception 
 	{	System.out.println("Inside fillInTheBlanks()");
-	
+		answersStringList=mongoDBSeleniumIntegration.getAnswersByQuestionIdForFillInTheBlanks(questionId);
 		Thread.sleep(2000);
-		fillType.sendKeys(text);
+		for(int i=0;i<answersStringList.size();i++)
+		{
+			fillType.get(i).sendKeys(answersStringList.get(i));
+		}
+		
 	//	CompareQuestions.scrollDown(submitAnswerBtn);
 		submitAnswerBtn.click();
 		System.out.println("Exiting fillInTheBlanks()");
@@ -385,24 +385,68 @@ public class BrainGymPage extends BaseTest{
 	
 	
 	
-	public void dragAndFillTheQuestion() throws Exception 
+//	public void dragAndFillTheQuestion() throws Exception 
+//	{
+//		System.out.println("Inside dragAndFillTheQuestion()");
+//		Actions actions = new Actions(driver);
+//		
+//		for(int i=0;i<listOfsourceElementsToFillBlanks.size();i++) 
+//		{
+//			Thread.sleep(2000);
+//			actions.dragAndDrop(listOfsourceElementsToFillBlanks.get(i), listOftargetElementsToFillBlanks.get(i)).build().perform();
+//		//	Thread.sleep(2000);
+//		}
+//		//actions.build().perform();
+//		//Thread.sleep(3000);
+//		submitAnswerBtn.click();
+//		System.out.println("Exiting dragAndFillTheQuestion()");
+//
+//	}
+	
+	public void dragAndFillTheQuestion(WebDriver driver, String questionId) throws Exception 
 	{
 		System.out.println("Inside dragAndFillTheQuestion()");
+		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionIdForDragAndFill(questionId);
+		
 		Actions actions = new Actions(driver);
 		
-		for(int i=0;i<listOfsourceElementsToFillBlanks.size();i++) 
+		
+//		for(int i=0;i<listOfsourceElementsToFillBlanks.size();i++) 
+//		{
+//			Thread.sleep(2000);
+//			actions.dragAndDrop(listOfsourceElementsToFillBlanks.get(i), listOftargetElementsToFillBlanks.get(i)).build().perform();
+			
+		try
 		{
-			Thread.sleep(2000);
-			actions.dragAndDrop(listOfsourceElementsToFillBlanks.get(i), listOftargetElementsToFillBlanks.get(i)).build().perform();
-		//	Thread.sleep(2000);
+			//if(isItDisplayed(listOfsourceElementsToFillBlanks))
+			//{	
+				System.out.println("Size of fields are:"+listOfsourceElementsToFillBlanks.size());
+				
+				for (int i=0;i<listOfsourceElementsToFillBlanks.size();i++) 
+				{	
+					
+					
+					actions.dragAndDrop(listOfsourceElementsToFillBlanks.get(i), listOftargetElementsToFillBlanks.get(i)).build().perform();
+					Thread.sleep(1000);
+				}
+		//	}
 		}
-		//actions.build().perform();
-		//Thread.sleep(3000);
+		catch(NoSuchElementException e)
+		{
+			
+		}
+			
+			
+			
+		//}
+
 		submitAnswerBtn.click();
 		System.out.println("Exiting dragAndFillTheQuestion()");
 
 	}
 	
+
+
 	public void matchTheFollowing(WebDriver driver, String questionId) throws Exception 
 	{
 		CompareQuestions.scrollDown(submitAnswerBtn);
@@ -440,31 +484,31 @@ public class BrainGymPage extends BaseTest{
 		return;
 	}
 	
-	public void verticalMatchTheFollowing1(WebDriver driver) throws Exception 
-	{
-		System.out.println("Inside verticalMatchTheFollowing()");
-		Thread.sleep(2000);
-	//	CompareQuestions.scrollDown(lastBox);
-		Actions actions = new Actions(driver);
-		System.out.println("Actions object ID"+actions);
-
-		for (int i=0;i<listOfSourceElementsForVeritcalTable.size();i++) 
-		{	System.out.println("Inside Loop : listOfSourceElementsForVeritcalTable ID:"+listOfSourceElementsForVeritcalTable.get(i));
-			
-			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(i)).build().perform();
-			//Thread.sleep(4000);
-		}
-		//actions.build().perform();
-		Thread.sleep(3000);
-//		CompareQuestions.scrollDown(submitAnswerBtn);
-		submitAnswerBtn.click();
-		System.out.println("Exititng verticalMatchTheFollowing()");
-//		return;
-	}
+//	public void verticalMatchTheFollowing1(WebDriver driver) throws Exception 
+//	{
+//		System.out.println("Inside verticalMatchTheFollowing()");
+//		Thread.sleep(2000);
+//	//	CompareQuestions.scrollDown(lastBox);
+//		Actions actions = new Actions(driver);
+//		System.out.println("Actions object ID"+actions);
+//
+//		for (int i=0;i<listOfSourceElementsForVeritcalTable.size();i++) 
+//		{	System.out.println("Inside Loop : listOfSourceElementsForVeritcalTable ID:"+listOfSourceElementsForVeritcalTable.get(i));
+//			
+//			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(i)).build().perform();
+//			//Thread.sleep(4000);
+//		}
+//		//actions.build().perform();
+//		Thread.sleep(3000);
+////		CompareQuestions.scrollDown(submitAnswerBtn);
+//		submitAnswerBtn.click();
+//		System.out.println("Exititng verticalMatchTheFollowing()");
+////		return;
+//	}
 	
 	public void verticalMatchTheFollowing(WebDriver driver, String questionId) throws Exception 
 	{
-		answersList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
+		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
 		System.out.println("Inside verticalMatchTheFollowing()");
 		CompareQuestions.scrollDown(rows.getLast());
 		System.out.println("After scroll to last row");
@@ -475,7 +519,7 @@ public class BrainGymPage extends BaseTest{
 		{	
 			if(isItDisplayed(listOfSourceElementsForVeritcalTable.get(i)))
 			{
-			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(answersList.get(i))).build().perform();
+			actions.dragAndDrop(listOfSourceElementsForVeritcalTable.get(i), listOfTargetElementsForVeritcalTable.get(answersIntList.get(i))).build().perform();
 			  //WebElement sourceElement = listOfSourceElementsForVeritcalTable.get(i);
 	         // WebElement targetCell = listOfTargetElementsForVeritcalTable.get(answersList.get(i));
 				// actions.dragAndDrop(sourceElement, targetCell).perform();
@@ -499,13 +543,13 @@ public class BrainGymPage extends BaseTest{
 	public void multiSelect(String questionId) throws Exception {
 	
 		System.out.println("Inside multiChoice()");
-		answersList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
+		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
 	
-		System.out.println("Answer List is: "+answersList);
+		System.out.println("Answer List is: "+answersIntList);
 		int answer;
-		for(int i=0; i<answersList.size();i++)
+		for(int i=0; i<answersIntList.size();i++)
 		{
-			answer=answersList.get(i);
+			answer=answersIntList.get(i);
 			System.out.println("Answer value is: "+ answer);
 			switch(answer)
 			{
@@ -573,10 +617,10 @@ public class BrainGymPage extends BaseTest{
 	public void singleChoice(String questionId) throws Exception 
 	{
 		System.out.println("Inside singleChoice()");
-		answersList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
+		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
 		Thread.sleep(2000);
-		System.out.println("Answer List is: "+answersList);
-		String path="//div[@class='question-options-wrapper selectTyleType']/div["+(answersList.get(0)+1)+"]/button";
+		System.out.println("Answer List is: "+answersIntList);
+		String path="//div[@class='question-options-wrapper selectTyleType']/div["+(answersIntList.get(0)+1)+"]/button";
 		System.out.println("xpath is: "+path);
 		answerOption= driver.findElement(By.xpath(path));
 			
@@ -727,6 +771,7 @@ public class BrainGymPage extends BaseTest{
 						{
 							System.out.println("Shells Completed for the day");
 							finishBtn.click();
+							return;
 							
 						}
 					}
@@ -778,6 +823,7 @@ public class BrainGymPage extends BaseTest{
 		if(isItDisplayed(noQuestionAvailbaleDialog))
 		{
 			System.out.println("No Question displayed in this shell: Questions may be over!!!!!!!!! returning from testOneShell() method");
+			Reporter.log("No Question displayed in this shell: Questions may be over!!!!!!!!!");
 			String text=noQuestionAvailbaleDialogText.getText();
 			System.out.println("Dialog text is: "+text);
 			return text;
@@ -795,7 +841,7 @@ public class BrainGymPage extends BaseTest{
 			if(questionId==null)
 			{
 				System.out.println("Question ID is empty, Exiting from execution");
-				Thread.sleep(100000);
+				//Thread.sleep(100000);
 			//	driver.quit();
 			}
 			String questionDescriptionFromDB = mongoDBSeleniumIntegration.getQuestionStatement(questionId);
@@ -817,7 +863,7 @@ public class BrainGymPage extends BaseTest{
 			{
 				softAssert.assertTrue(true, questionDescriptionFromDB);
 				System.out.println("IF");
-				Reporter.log("Pass: No Duplicate Found");
+				Reporter.log("<span style='color: green;'>Pass: No Duplicate Found : "+"</span>"+questionId);
 				String joinedString = StringUtils.join(un + "," + grade + "," + subject + "," + "Pass" + "," + questionDescriptionFromDB + "," +  questionTextFromUI + "," + questionId);
 				System.out.println("joinedString is :"+joinedString);
 				ResultListToExcel.addLast(joinedString);
@@ -826,7 +872,7 @@ public class BrainGymPage extends BaseTest{
 			{
 				softAssert.assertTrue(false, questionDescriptionFromDB);
 				System.out.println("ELSE");
-				Reporter.log("Fail: Duplicate Found");
+				Reporter.log("<span style='color: red;'>Fail: Duplicate Found"+"grade"+","+"subject"+","+questionDescriptionFromDB+","+questionTextFromUI+","+"question Id in UI is: " +questionId+"</span>");
 				//Write code to write into Excel
 				String joinedString = StringUtils.join(un + "," + grade + "," + subject +  "," + "Fail" + ","  + questionDescriptionFromDB + "," +  questionTextFromUI + "," + questionId);
 				System.out.println("joinedString is :"+joinedString);
@@ -1024,8 +1070,8 @@ public class BrainGymPage extends BaseTest{
 						
 						if(question==null)
 						{
-							System.out.println("Question description not found in UI: ");
-							System.out.println("Quit script");
+							System.out.println("Question description not found in UI: Quit execution ");
+							Reporter.log("Question description not found in UI: Quit execution");
 							driver.close();
 							driver.quit();
 							
@@ -1041,7 +1087,7 @@ public class BrainGymPage extends BaseTest{
 			}
 		System.out.println("Question is: "+question);
 		addQuestionToMap(question); //not using now, instead using questionTypeHashMap with solution type
-		Thread.sleep(2000);
+	//	Thread.sleep(2000);
 		return question;
 		
 	}
@@ -1248,7 +1294,7 @@ public class BrainGymPage extends BaseTest{
 			
 			try
 			{
-				Thread.sleep(3000);
+				//Thread.sleep(3000);
 				//if(nextQuestionBtn.isDisplayed())
 				if(isItDisplayed(nextQuestionBtn))
 				{

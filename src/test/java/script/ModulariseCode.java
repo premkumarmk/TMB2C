@@ -1,18 +1,12 @@
 
 package script;
 
-import org.bson.types.ObjectId;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import generic.BaseTest;
 import generic.Excel;
 import page.*;
 import utilities.ExcelConstructionExample;
-import utilities.JS;
-import utilities.ToReadResponse;
 import utilities.mongoDBSeleniumIntegration;
 
 public class ModulariseCode extends BaseTest
@@ -28,16 +22,16 @@ public class ModulariseCode extends BaseTest
         return obj;
     }
 
-	 @Test(dataProvider="data-set")
+	@Test(dataProvider="data-set")
 	public void takeTest(String un, String pw, String grade, String subject) throws Exception 
 	{
 //		 System.out.println("Before JS");
 //		//JS.setZoomLevel(driver,0.75);
 //		System.out.println("After JS");
 	//	seleniumTest(driver);
-			String studentId =null;
-			String subjectId = null;
-		 studentId=mongoDBSeleniumIntegration.getStudentIdByUserName(un);
+		String studentId =null;
+		String subjectId = null;
+		studentId=mongoDBSeleniumIntegration.getStudentIdByUserName(un);
 		System.out.println("getStudentIdByUserName: "+studentId);
 		 
 		String classId=mongoDBSeleniumIntegration.getClassIdByGrade(grade);
@@ -82,6 +76,9 @@ public class ModulariseCode extends BaseTest
 		}
 		System.out.println("Script Completed.....");
 		
-		brainGym.clickLogout();
+		BrainGymPage.clickLogout();
+		
+		driver.close();
+		driver.quit();
 	}
 }

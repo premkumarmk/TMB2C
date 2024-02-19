@@ -2,20 +2,18 @@ package generic;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -30,15 +28,15 @@ import utilities.ExcelConstructionExample;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
-public class BaseTest {
-	public static WebDriver driver;
+public class BaseTestNew {
+    protected WebDriver driver;
 	public WebDriverWait wait;
-	public int numberOfDaysToRun;
-    public String appUrl;
-    public int ITO;
-    public int ETO;
-    public String browserType;
-//	@Parameters({"browser","appURL","ITO","ETO"})
+	private int numberOfDaysToRun;
+    protected String appUrl;
+    protected int ITO;
+    protected int ETO;
+    protected String browserType;
+	@Parameters({"browser","appURL","ITO","ETO"})
 
     @BeforeClass
     public void setUp() {
@@ -51,21 +49,8 @@ public class BaseTest {
             	
             	System.out.println("Inside switch chrome ");
                 //System.setProperty("webdriver.chrome.driver", "./exes/chromedriver.exe");
-            	System.setProperty("webdriver.chrome.driver","./exes/chromedriver.exe");
-        		ChromeOptions options = new ChromeOptions();
-        		options.addArguments("--start-maximized");
-        		options.addArguments("--disable-web-security");
-        		options.addArguments("--no-proxy-server");
-        		options.addArguments("--disable-notifications");
-        		options.addArguments("--force-device-scale-factor=" + 0.75);
-        		options.setBrowserVersion("116.0.5845.111");
-        		
-        		Map<String, Object> prefs = new HashMap<String, Object>();
-        		prefs.put("credentials_enable_service", false);
-        		prefs.put("profile.password_manager_enabled", false);
-        		options.setExperimentalOption("prefs", prefs);
             	WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(options);
+                driver = new ChromeDriver();
                 break;
             case "firefox":
                 System.setProperty("webdriver.gecko.driver", "path/to/geckodriver.exe");
@@ -105,13 +90,13 @@ public class BaseTest {
 
     private void readConfigProperties() {
         Properties prop = new Properties();
-        try (InputStream input = new FileInputStream("./configuration.properties")) {
+        try (InputStream input = new FileInputStream("./config.properties")) {
             prop.load(input);
 
             // Read properties
             numberOfDaysToRun=Integer.parseInt(prop.getProperty("numberOfDaysToRun"));
             browserType = prop.getProperty("browserType");
-            appUrl = prop.getProperty("appURL");
+            appUrl = prop.getProperty("url");
             ITO = Integer.parseInt(prop.getProperty("ITO"));
             ETO = Integer.parseInt(prop.getProperty("ETO")); 
            // otherVariable = prop.getProperty("otherVariable");

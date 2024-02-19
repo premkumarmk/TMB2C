@@ -1,25 +1,13 @@
 package utilities;
 
 import org.json.JSONObject;
-import org.bson.types.ObjectId;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
-import io.restassured.RestAssured;
-import io.restassured.RestAssured.*;
-import io.restassured.http.ContentType;
-import io.restassured.matcher.RestAssuredMatchers.*;
 import io.restassured.path.json.JsonPath;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBody;
-import io.restassured.specification.RequestSpecification;
 import static io.restassured.RestAssured.given;
 import java.util.Base64;
 import java.util.List;
-import org.apache.commons.lang3.StringUtils;
-import org.hamcrest.Matchers.*;
-import  io.restassured.specification.RequestSpecification;
 
 public class ToReadResponse {
 	static int count=1;

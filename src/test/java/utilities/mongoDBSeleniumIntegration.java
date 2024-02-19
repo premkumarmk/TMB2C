@@ -1,7 +1,4 @@
 package utilities;
-import com.mongodb.MongoClientSettings;
-
-import com.mongodb.ConnectionString;
 import com.mongodb.client.*;
 import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
@@ -10,20 +7,11 @@ import com.mongodb.client.result.UpdateResult;
 import script.RemoveHtmlTags;
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
-import org.jsoup.Jsoup;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 public class mongoDBSeleniumIntegration {
 	
@@ -116,7 +104,7 @@ public class mongoDBSeleniumIntegration {
 	public static String getQuestionStatement(String questionid)
     {
     	 String questionDescription = null;
-    	 String afterTrimming=null;
+    	 String questionStmt=null;
     	System.out.println("Inside getQuestionStatement()");
     	MongoCollection<Document> questionsCollection=database.getCollection("questions");
     	ObjectId documentId = new ObjectId(questionid);
@@ -131,8 +119,8 @@ public class mongoDBSeleniumIntegration {
 	          
 	        //  RemoveHtmlTags rmvtags=new RemoveHtmlTags();
 	          //rmvtags.
-	         afterTrimming= RemoveHtmlTags.removeHtmlTags(questionDescription);
-	         System.out.println("questionDescription: afterTrimming: "+afterTrimming);
+	         questionStmt= RemoveHtmlTags.removeHtmlTags(questionDescription);
+	         System.out.println("questionDescription: afterTrimming: "+questionStmt);
 	          
     	 }
     	 else 
@@ -141,9 +129,74 @@ public class mongoDBSeleniumIntegration {
          }
     	 
     	
-		return afterTrimming;
+		return questionStmt;
     	
     }
+	
+
+	@SuppressWarnings("unchecked")
+	public static List<String> getAnswersByQuestionIdForFillInTheBlanks(String questionid) 
+	{
+		
+		List<String> answers = null;
+    	System.out.println("Inside getAnswersByQuestionIdForDragAndFill()");
+    	MongoCollection<Document> questionsCollection=database.getCollection("questions");
+
+    	ObjectId documentId = new ObjectId(questionid);
+    	 Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
+    	 if (queryResult != null) 
+    	 {
+    		 
+    		  answers = (List<String>)queryResult.get("fillInTheBlankSolution", List.class);
+	          System.out.println("answers "+answers);
+	          
+
+	          for(int i=0; i<answers.size();i++)
+	          {
+	        	  System.out.println(answers.get(i));
+	          }
+    	 }
+    	 else 
+    	 {
+             System.out.println("Document not found");
+         }
+    	 
+    	
+		return answers;
+
+	}
+
+	
+	@SuppressWarnings("unchecked")
+	public static List<Integer> getAnswersByQuestionIdForDragAndFill(String questionid) 
+	{
+		
+		List<Integer> answers = null;
+    	System.out.println("Inside getAnswersByQuestionIdForDragAndFill()");
+    	MongoCollection<Document> questionsCollection=database.getCollection("questions");
+
+    	ObjectId documentId = new ObjectId(questionid);
+    	 Document queryResult = questionsCollection.find(Filters.eq("_id",documentId)).first();
+    	 if (queryResult != null) 
+    	 {
+    		 
+    		  answers = (List<Integer>)queryResult.get("dragTheTextSolution", List.class);
+	          System.out.println("answers "+answers);
+	          
+
+	          for(int i=0; i<answers.size();i++)
+	          {
+	        	  System.out.println(answers.get(i));
+	          }
+    	 }
+    	 else 
+    	 {
+             System.out.println("Document not found");
+         }
+    	 
+    	
+		return answers;
+	}
     
     @SuppressWarnings("unchecked")
 	public static List<Integer> getAnswersByQuestionId(String questionid)
@@ -428,6 +481,10 @@ public static String getClassNameByGrade(String grade) {
 	        Date abc = dateFormat.parse(customDateOneWeekBefore);
 	        return abc;
 	    }
+
+
+	
+
 	    
 //	    public static Date addDays(Date date, int days) {
 //	        Calendar calendar = Calendar.getInstance();
