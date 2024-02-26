@@ -4,6 +4,8 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.UpdateResult;
 
+import generic.BaseTest;
+import script.RunBGScript;
 import script.RemoveHtmlTags;
 
 import org.bson.Document;
@@ -18,16 +20,21 @@ public class mongoDBSeleniumIntegration {
 //	public static FindIterable<Document> findIterable;
 	static MongoCollection<Document> studentCollection;
 	static Date oneWeekBefore;
-
   // 	static String studentEmailToFind = "sakthivel@codewave.com"; // Replace with the actual student email
    	static String studentEmailToFind = "premkumar@tautmore.com";
-    static String connectionString = "mongodb+srv://tautmore-dev:tautMore%242021@tmcw2m10.t7eym.mongodb.net/";
-//    mongodb+srv://tautmore-dev:tautMore%242021@tmcw2m10.t7eym.mongodb.net/test?authSource=admin&replicaSet=atlas-4odvzd-shard-0&readPreference=primary&ssl=true
-   static String databaseName = "tautmore-development"; // Replace with the actual database name
-   static String studentname = "autostudentone";
+    static String studentname = "autostudentone";
    
-	static MongoClient mongoClient = MongoClients.create(connectionString);
-    static MongoDatabase database = mongoClient.getDatabase(databaseName);
+//     static String connectionString = "mongodb+srv://tautmore-dev:tautMore%242021@tmcw2m10.t7eym.mongodb.net/";
+//    static String databaseName = "tautmore-development"; // Replace with the actual database name
+    
+    static String connectionString = "mongodb+srv://tautmore-prod:vXxYe453ZZboegWr@tmprodm30.pcaql.mongodb.net/";
+    static String databaseName = "tautmore-production"; 
+   
+//     static String connectionString =BaseTest.connectionString;
+//     static String databaseName =BaseTest.databaseName;
+//		   
+	  static MongoClient mongoClient = MongoClients.create(connectionString);
+      static MongoDatabase database = mongoClient.getDatabase(databaseName);
 
 //    public void allConnections() throws Exception{
 //    try (MongoClient mongoClient = MongoClients.create(connectionString)) {
@@ -324,7 +331,7 @@ public static String getClassNameByGrade(String grade) {
         if (document != null) {
             // Retrieve the _id from the document
              classId = document.getObjectId("_id").toString();
-            System.out.println("class id for Grade III is: "+classId);
+            System.out.println("class id is: "+classId);
            
         } else {
              System.out.println("No classId found");

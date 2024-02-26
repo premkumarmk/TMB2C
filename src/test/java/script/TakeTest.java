@@ -64,7 +64,7 @@ public class TakeTest extends BaseTest{
 //			
 			
 			brainGym.clickAnswerOption();
-			brainGym.clickSubmitAnswerBtn();
+		//	brainGym.clickSubmitAnswerBtn();
 			//brainGym.clickNextQuestionBtn();
 			
 			

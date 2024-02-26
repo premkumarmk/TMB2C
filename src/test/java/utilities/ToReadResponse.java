@@ -1,9 +1,13 @@
 package utilities;
 
 import org.json.JSONObject;
+
+import generic.BaseTest;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import kong.unirest.HttpResponse;
+import kong.unirest.core.Unirest;
 import io.restassured.path.json.JsonPath;
 import static io.restassured.RestAssured.given;
 import java.util.Base64;
@@ -43,6 +47,7 @@ public class ToReadResponse {
 		//userRegistrationSuccessful();
 	mongoDBSeleniumIntegration.getSubjectIdBySubjectNameAndClassId("Science", "III");
 		
+		
 	}
 
 	 private static String base64Encode(String originalString) {
@@ -65,11 +70,12 @@ public class ToReadResponse {
 	public static List<String> getChestIds(String accessToken, String studentId,String subjectId) {
 		System.out.println("Inside CHestID method");
 		System.out.println("accessToken is: "+accessToken);
-//		System.out.println("Student ID is: "+studentId);
-//		System.out.println("Subject Id is: "+subjectId);
+		System.out.println("Student ID is: "+studentId);
+		System.out.println("Subject Id is: "+subjectId);
 		
 		 List<String> chestIds=null;
-		 RestAssured.baseURI = "https://dev.tautmore.com/api";
+//       RestAssured.baseURI = "https://dev.tautmore.com/api";
+		 RestAssured.baseURI = "https://u75lkusioi.execute-api.us-east-1.amazonaws.com/prod/api";
 		 RequestSpecification request = RestAssured.given();
 		//String accessToken = userRegistrationSuccessful();
 		 JSONObject requestParams = new JSONObject();
@@ -104,12 +110,62 @@ public class ToReadResponse {
 		 {
 		 System.out.println("chest "+chestIds);
 		 }
-		// System.out.println("ENd of method");
+		 System.out.println("ENd of Inside CHestID method ");
 		return chestIds;
 		
 	}
 	
 	
+	public static String  getAnswerAttemptResponse(String accessToken, String chestId, String questionId) {
+
+		
+		System.out.println("Inside getAnswerAttemptResponse (): repeated ");
+
+		System.out.println("accessToken is: "+accessToken);
+		System.out.println("ChestId is: "+chestId);
+		System.out.println("questionId is: "+questionId);
+        // Set the base URI for your API
+//      RestAssured.baseURI = "https://dev.tautmore.com/api";
+        RestAssured.baseURI = "https://u75lkusioi.execute-api.us-east-1.amazonaws.com/prod/api";
+       
+        JSONObject requestParams = new JSONObject();
+        requestParams.put("chestId", chestId);
+        requestParams.put("questionId", questionId);
+
+      // " {"chestId":"65d880a70f93810008599791","questionId":"62b5c06602a32d0009b9db8a","attemptedSolutionIndex":[2],"
+     //  		+ ""attemptedFillInTheBlankSolution":null,"timeTaken":68}" "
+      
+        //{"chestId":"65d89bc36c60590008ae946c","questionId":"62b54fd7f6914800091f664a","attemptedSolutionIndex":[0,1],"attemptedFillInTheBlankSolution":null,"timeTaken":20}
+        
+        //  request.header("Content-Type", "application/json");
+
+        Response response = given()
+                .header("Authorization", accessToken)
+                .header("Content-Type", "application/json")
+                .and()
+                .body(requestParams.toString())
+                .log()
+                .all()
+                .when()
+                .post("/brainGym/attempt-question")
+                .then()
+                .extract().response();
+
+        // Print the response body
+        String responseBody = response.getBody().asString();
+        System.out.println("getAnswerAttemptResponse Response Body: " + responseBody);
+
+     //   System.out.println("getAnswerAttemptResponse() Response Body:" +response.getBody());
+        JsonPath jsonpath= response.jsonPath();
+       
+       // System.out.println("response of data.message is:"+res1);
+        System.out.println("Status code is: "+jsonpath.get("statusCode"));
+        System.out.println("Status is: "+jsonpath.get("status"));
+        System.out.println("message code is: "+jsonpath.get("message"));
+        
+      
+        return jsonpath.get("message"); //
+    }	
 	
 	
 	public static String  getQuestionId(String accessToken, String chestId) {
@@ -120,7 +176,8 @@ public class ToReadResponse {
 		System.out.println("accessToken is: "+accessToken);
 		System.out.println("ChestId is: "+chestId);
         // Set the base URI for your API
-        RestAssured.baseURI = "https://dev.tautmore.com/api";
+//      RestAssured.baseURI = "https://dev.tautmore.com/api";
+        RestAssured.baseURI = "https://u75lkusioi.execute-api.us-east-1.amazonaws.com/prod/api";
        
        // String accessToken = userRegistrationSuccessful(); //"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjU5NjYxMDgzYTcyNjkwMDA4OTUyMTIyIiwidXNlclR5cGUiOiJTVFVERU5UIiwiRmNtRG9jSWQiOiI2NTk2NjIzZDI1MTZiNzAwMDgzNjdlYjAiLCJpYXQiOjE3MDU0MTI0NjcsImV4cCI6MTcwNTQ5ODg2N30.RixEvV3T1pwtKJfVpgI5-TXizVcrD6Mh23DdCyipxKE";
       //  System.out.println("Access token is: "+accessToken);
@@ -152,20 +209,27 @@ public class ToReadResponse {
         return questionId;
 
     }
-	public static String userRegistrationSuccessful() {
+//	public static String userRegistrationSuccessful(String un, String pw) 
+	public static String userRegistrationSuccessful(String un, String pw){
 
 	       // RestAssured.baseURI = "https://u75lkusioi.execute-api.us-east-1.amazonaws.com/prod/api";
-	        RestAssured.baseURI = "https://dev.tautmore.com/api";
+	       // RestAssured.baseURI = "https://dev.tautmore.com/api";
+			RestAssured.baseURI = "https://u75lkusioi.execute-api.us-east-1.amazonaws.com/prod/api";
 	        RequestSpecification request = RestAssured.given();
 	        JSONObject requestParams = new JSONObject();
-	        requestParams.put("userName", "autostudentone.9606178621");
+	        
+	  
+	        
+	      //  requestParams.put("userName", "autostudentone.9606178621");
+	        requestParams.put("userName", un);
 	     //   System.out.println("MAnually method"+convertToBinaryManually("stuPwd906040"));
 	        //requestParams.put("password", Base64.getEncoder().encode("stuPwd906040".getBytes()));
 	    //    System.out.println("BAse64 method String: " + Base64.getEncoder().encode(convertToBinaryManually("stuPwd906040").getBytes()));
 	   //    String pwd= base64Encode("stuPwd906040");
 	      //  byte[] encodedBytes = Base64.getEncoder().encode(base64Encode("stuPwd906040").getBytes());	        
 	   //    System.out.println("New method: "+base64Encode("stuPwd906040"));
-	        String pwd=base64Encode("stuPwd906040");
+	       // String pwd=base64Encode("stuPwd906040");
+	        String pwd=base64Encode(pw);
 	        System.out.println("====>"+pwd);
 	      //   requestParams.put("password", "c3R1UHdkOTA2MDQw");
 	        requestParams.put("password", pwd);

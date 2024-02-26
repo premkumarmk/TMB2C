@@ -18,6 +18,7 @@ import org.testng.Reporter;
 import org.testng.asserts.SoftAssert;
 
 import generic.BaseTest;
+import script.RunBGScript;
 import utilities.CompareQuestions;
 import utilities.ToReadResponse;
 import utilities.mongoDBSeleniumIntegration;
@@ -173,14 +174,16 @@ public class BrainGymPage extends BaseTest{
 	public String accessToken=null;
 	static Map<String, Integer> QuestionsMap = new HashMap<String, Integer>();
 	public static List<String> ResultListToExcel =new ArrayList<String>();
-	public static String outputFilepath="./data/result3.xlsx";
-	public static String outputSheetName;//="Output2";
-	public static int numberOfDaysToRun=1;  //how may days of shells to complete
+	public static String outputFilepath;//="./data/result3.xlsx";
+	public static String outputSheetName;//="Output2";	
 	public static Map<String, Integer> questionTypeHashMap = new HashMap<String, Integer>();
 	public static String questionDescriptionFromDB = null;
 	public static List<Integer> answersIntList=null;
 	public static List<String> answersStringList=null;
 	public static WebElement answerOption;
+	public static String attemptResponse;
+	
+	//public static int numberOfDaysToRun=1;  //how may days of shells to complete
 	
 	public static void clickLogout()
 	{
@@ -189,8 +192,9 @@ public class BrainGymPage extends BaseTest{
 		
 	}
 	
-	public void selectQuestionTypeAndAnswers(WebDriver driver,String questionId, String questionDescriptionFromDB) throws Exception
+	public void selectQuestionTypeAndAnswers(WebDriver driver,String chestId, String questionId, String questionDescriptionFromDB) throws Exception
 	{
+		
 		System.out.println("Inside selectQuestionTypeAndAnswers()");
 		String solutionTypeNumber = mongoDBSeleniumIntegration.getSolutionType(questionId);
 		System.out.println("solutionTypeNumber :"+solutionTypeNumber);
@@ -235,29 +239,29 @@ public class BrainGymPage extends BaseTest{
 		     	    case 6:
 		     	    case 8:
 		     	    	System.out.println(" Inside switch case 1,2,4,6,8 Found:"+ solutionType);
-		     	    	multiSelect(questionId);
+		     	    	multiSelect(chestId, questionId);
 		     	    	return;
 		     	    	
 		     	    case 9:
 		     	    	System.out.println(" Inside switch case 9 Found:"+ solutionType);
-		     	    	multiSelect(questionId);
+		     	    	multiSelect(chestId, questionId);
 		     	    	return;
 		     	    
 		     	    case 3:
 		     	    case 10:
 		     	    	System.out.println(" Inside switch case 3 and 10 Found:"+ solutionType);
 		     	    	//matchTheFollowing(driver, questionId);
-		    	    	verticalMatchTheFollowing(driver, questionId);
+		    	    	verticalMatchTheFollowing(driver, chestId, questionId);
 		    	    	return;
 		    	    	
 		     	    case 14:
 		     	    	System.out.println(" Inside switch case 14 Found:"+ solutionType);
-		     	    	dragAndFillTheQuestion(driver, questionId);
+		     	    	dragAndFillTheQuestion(driver, chestId, questionId);
 		     	    	return;
 		    	    	
 		     	   	case 13:
 		     	   		System.out.println(" Inside switch case 13 Found:"+ solutionType);
-		     	   		fillInTheBlanks(driver, questionId);
+		     	   		fillInTheBlanks(driver, chestId, questionId);
 		     	   		return;
 		     	  
 		     	   	default:
@@ -369,7 +373,7 @@ public class BrainGymPage extends BaseTest{
 //		
 //	}
 	
-	public void fillInTheBlanks(WebDriver driver, String questionId) throws Exception 
+	public void fillInTheBlanks(WebDriver driver, String chestId, String questionId) throws Exception 
 	{	System.out.println("Inside fillInTheBlanks()");
 		answersStringList=mongoDBSeleniumIntegration.getAnswersByQuestionIdForFillInTheBlanks(questionId);
 		Thread.sleep(2000);
@@ -379,7 +383,8 @@ public class BrainGymPage extends BaseTest{
 		}
 		
 	//	CompareQuestions.scrollDown(submitAnswerBtn);
-		submitAnswerBtn.click();
+		//submitAnswerBtn.click();
+		clickSubmitAnswerBtn(chestId,questionId);
 		System.out.println("Exiting fillInTheBlanks()");
 	}
 	
@@ -403,7 +408,7 @@ public class BrainGymPage extends BaseTest{
 //
 //	}
 	
-	public void dragAndFillTheQuestion(WebDriver driver, String questionId) throws Exception 
+	public void dragAndFillTheQuestion(WebDriver driver, String chestId,  String questionId) throws Exception 
 	{
 		System.out.println("Inside dragAndFillTheQuestion()");
 		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionIdForDragAndFill(questionId);
@@ -440,20 +445,21 @@ public class BrainGymPage extends BaseTest{
 			
 		//}
 
-		submitAnswerBtn.click();
+		//submitAnswerBtn.click();
+		clickSubmitAnswerBtn(chestId,questionId);
 		System.out.println("Exiting dragAndFillTheQuestion()");
 
 	}
 	
 
 
-	public void matchTheFollowing(WebDriver driver, String questionId) throws Exception 
+	public void matchTheFollowing(WebDriver driver, String chestId, String questionId) throws Exception 
 	{
 		CompareQuestions.scrollDown(submitAnswerBtn);
 //		if(verifyTableIsVertical())
 //		{
 			System.out.println("Inside if matchTheFollowing->verital table is true");
-			verticalMatchTheFollowing(driver, questionId);
+			verticalMatchTheFollowing(driver, chestId,  questionId);
 //		}
 //		else
 //		{
@@ -506,7 +512,7 @@ public class BrainGymPage extends BaseTest{
 ////		return;
 //	}
 	
-	public void verticalMatchTheFollowing(WebDriver driver, String questionId) throws Exception 
+	public void verticalMatchTheFollowing(WebDriver driver, String chestId, String questionId) throws Exception 
 	{
 		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
 		System.out.println("Inside verticalMatchTheFollowing()");
@@ -535,12 +541,13 @@ public class BrainGymPage extends BaseTest{
 			Thread.sleep(500);
 		}
 
-		submitAnswerBtn.click();
+		//submitAnswerBtn.click();
+		clickSubmitAnswerBtn(chestId,questionId);
 		System.out.println("Exititng verticalMatchTheFollowing()");
 //		return;
 	}
 	
-	public void multiSelect(String questionId) throws Exception {
+	public void multiSelect(String chestId, String questionId) throws Exception {
 	
 		System.out.println("Inside multiChoice()");
 		answersIntList=mongoDBSeleniumIntegration.getAnswersByQuestionId(questionId);
@@ -606,8 +613,9 @@ public class BrainGymPage extends BaseTest{
 		if(submitAnswerBtn.isEnabled()) 
 		{
 			CompareQuestions.scrollDown(submitAnswerBtn);
-			submitAnswerBtn.click();			
-		
+			clickSubmitAnswerBtn(chestId,questionId);
+		//	submitAnswerBtn.click();		
+				
 		}
 
 		System.out.println("Exiting multiChoice()");
@@ -657,7 +665,8 @@ public class BrainGymPage extends BaseTest{
 			login.setPassword(pw);
 			login.clickLoginButton();
 			System.out.println("accessToken value before calling userRegistrationSuccessful(): "+ accessToken);
-			accessToken=ToReadResponse.userRegistrationSuccessful();
+			accessToken=ToReadResponse.userRegistrationSuccessful(un,pw);
+		//	accessToken=ToReadResponse.userRegistrationSuccessful();
 			//System.out.println("Access Token in BG page is:  "+accessToken);
 			System.out.println("accessToken value After calling userRegistrationSuccessful(): "+ accessToken);
 			
@@ -682,6 +691,7 @@ public class BrainGymPage extends BaseTest{
 		//int count=0;
 		
 		//do 
+		System.out.println("Inside numberOfDaystoRun() ");
 		for(int i=0;i<numberOfDays;i++)
 		{		//prepareDB(numberOfDays);
 				System.out.println("RUnning "+ i +"th day");
@@ -741,6 +751,13 @@ public class BrainGymPage extends BaseTest{
 		System.out.println("Inside testPerDayShells method");
 		//String shellAvailable="no";
 		List<String> chestIds=ToReadResponse.getChestIds(accessToken,studentId,subjectId);
+		if(chestIds.size()==0)
+		{
+			System.out.println("ERROR......  ChestIDs List is Zero!!!");
+			Reporter.log("Chest ID List is Empty ");
+			Reporter.log("ERROR......  ChestIDs List is Zero!!!");
+			
+		}
 		System.out.println("Count Of chestIds is: "+chestIds.size());
 		int numberOfShellsToLoop=getShellCount();
 		System.out.println("numberOfShellsToLoop value is: "+numberOfShellsToLoop);
@@ -756,7 +773,7 @@ public class BrainGymPage extends BaseTest{
 
 			
 			chestId=chestIds.get(i);
-			String shellReturnStatus=testOneShell(driver, un,pw,grade,subject,shellStatus,chestId);
+			String shellReturnStatus=testOneShell(driver, un,pw,grade,subject,i,shellStatus,chestId);
 			
 			if(shellReturnStatus.equals("Shell Completed"))
 			{
@@ -811,87 +828,99 @@ public class BrainGymPage extends BaseTest{
 	}
 
 	
-	public String testOneShell(WebDriver driver, String un, String pw, String grade, String subject, String questionsCompletedStatus,String chestId) throws Exception
+	public String testOneShell(WebDriver driver, String un, String pw, String grade, String subject, int shellNumber ,String questionsCompletedStatus,String chestId) throws Exception
 	{
-		
+		shellNumber++;
 		clickStartNowShell();
 		clickStartNowOnPopupBtn();
 		String questionTextFromUI;
 		String questionId=null;
 //--		getQuestionText();
-			
-		if(isItDisplayed(noQuestionAvailbaleDialog))
+		
+		
+		
+		int QuestionCountPerShell=0;
+		if(isItDisplayed(questionTag))
 		{
-			System.out.println("No Question displayed in this shell: Questions may be over!!!!!!!!! returning from testOneShell() method");
-			Reporter.log("No Question displayed in this shell: Questions may be over!!!!!!!!!");
-			String text=noQuestionAvailbaleDialogText.getText();
-			System.out.println("Dialog text is: "+text);
-			return text;
+			do
+			{
+				Thread.sleep(2000);
+			
+				//questionTextFromUI=isQuestionDisplayedAndGetText();
+				
+				questionId=ToReadResponse.getQuestionId(accessToken,chestId);
+				
+				
+				if(questionId==null)
+				{
+					System.out.println("Question ID is empty, Exiting from execution");
+					//Thread.sleep(100000);
+				//	driver.quit();
+				}
+				QuestionCountPerShell++;
+				String questionDescriptionFromDB = mongoDBSeleniumIntegration.getQuestionStatement(questionId);
+				//String solutionTypeNumber = mongoDBSeleniumIntegration.getSolutionType(questionId);
+				System.out.println("Solution Type is: "+mongoDBSeleniumIntegration.getSolutionType(questionId));
+				questionTextFromUI=getQuestionText(subject);
+				//questionText=getQuestionText();
+				//System.out.println("New Question: "+questionText);
+				System.out.println("Question Id From DB is: "+questionId);			
+				System.out.println("question Description From DB : "+questionDescriptionFromDB);
+				System.out.println("Question Description From UI: "+questionTextFromUI);
+				
+				System.out.println("Before calling selectQuestionType()");
+	
+				System.out.println("After calling selectQuestionType()");
+				selectQuestionTypeAndAnswers(driver,chestId,questionId, questionDescriptionFromDB);
+				//If condition for Question from DB
+				if(CompareQuestions.SearchQuestionIdAndInsertToHashMap(questionDescriptionFromDB, questionId))
+				{
+					softAssert.assertTrue(true, questionDescriptionFromDB);
+					System.out.println("IF");
+					Reporter.log("<span style='color: green;'>Pass: No Duplicate Found : "+"</span>"+questionId);
+					String joinedString = StringUtils.join(shellNumber+","+QuestionCountPerShell+ ","+ un + "," + grade + "," + subject + "," + "Pass" + "," + questionDescriptionFromDB + "," +  questionTextFromUI + "," + questionId);
+					System.out.println("joinedString is :"+joinedString);
+					ResultListToExcel.addLast(joinedString);
+				}
+				else
+				{
+					softAssert.assertTrue(false, questionDescriptionFromDB);
+					System.out.println("ELSE");
+					Reporter.log("<span style='color: red;'>Fail: Duplicate Found"+"grade"+","+"subject"+","+questionDescriptionFromDB+","+questionTextFromUI+","+"question Id in UI is: " +questionId+"</span>");
+					//Write code to write into Excel
+					String joinedString = StringUtils.join(shellNumber +","+QuestionCountPerShell+ ","+ un + "," + grade + "," + subject +  "," + "Fail" + ","  + questionDescriptionFromDB + "," +  questionTextFromUI + "," + questionId);
+					System.out.println("joinedString is :"+joinedString);
+					ResultListToExcel.addLast(joinedString);
+				}
+							
+				
+				//clickAnswerOption();
+				//clickSubmitAnswerBtn();
+				//clickNextQuestionBtn();
+				
+				
+				questionsCompletedStatus=verifyQuestionsCompletedOrNot();
+			
+				System.out.println("Questions Status is:"+questionsCompletedStatus);
+				
+				//controlFlowForNextQuestionOrNextShell();
+				
+			}while(questionsCompletedStatus.equals("no"));
+		}
+		else if(isItDisplayed(noQuestionAvailbaleDialog))
+		{
+				System.out.println("No Question displayed in this shell: Questions may be over!!!!!!!!! returning from testOneShell() method");
+				Reporter.log("No Question displayed in this shell: Questions may be over!!!!!!!!!");
+				String text=noQuestionAvailbaleDialogText.getText();
+				System.out.println("Dialog text is: "+text);
+				return text;
+			
+		}
+		else
+		{
+			System.out.println("...................Issue with Question Tag.......................");
 		}
 		
-		do
-		{
-			Thread.sleep(2000);
-		
-			//questionTextFromUI=isQuestionDisplayedAndGetText();
-			
-			questionId=ToReadResponse.getQuestionId(accessToken,chestId);
-			
-			
-			if(questionId==null)
-			{
-				System.out.println("Question ID is empty, Exiting from execution");
-				//Thread.sleep(100000);
-			//	driver.quit();
-			}
-			String questionDescriptionFromDB = mongoDBSeleniumIntegration.getQuestionStatement(questionId);
-			//String solutionTypeNumber = mongoDBSeleniumIntegration.getSolutionType(questionId);
-			System.out.println("Solution Type is: "+mongoDBSeleniumIntegration.getSolutionType(questionId));
-			questionTextFromUI=getQuestionText(subject);
-			//questionText=getQuestionText();
-			//System.out.println("New Question: "+questionText);
-			System.out.println("Question Id From DB is: "+questionId);			
-			System.out.println("question Description From DB : "+questionDescriptionFromDB);
-			System.out.println("Question Description From UI: "+questionTextFromUI);
-			
-			System.out.println("Before calling selectQuestionType()");
-
-			System.out.println("After calling selectQuestionType()");
-			selectQuestionTypeAndAnswers(driver,questionId, questionDescriptionFromDB);
-			//If condition for Question from DB
-			if(CompareQuestions.SearchQuestionIdAndInsertToHashMap(questionDescriptionFromDB, questionId))
-			{
-				softAssert.assertTrue(true, questionDescriptionFromDB);
-				System.out.println("IF");
-				Reporter.log("<span style='color: green;'>Pass: No Duplicate Found : "+"</span>"+questionId);
-				String joinedString = StringUtils.join(un + "," + grade + "," + subject + "," + "Pass" + "," + questionDescriptionFromDB + "," +  questionTextFromUI + "," + questionId);
-				System.out.println("joinedString is :"+joinedString);
-				ResultListToExcel.addLast(joinedString);
-			}
-			else
-			{
-				softAssert.assertTrue(false, questionDescriptionFromDB);
-				System.out.println("ELSE");
-				Reporter.log("<span style='color: red;'>Fail: Duplicate Found"+"grade"+","+"subject"+","+questionDescriptionFromDB+","+questionTextFromUI+","+"question Id in UI is: " +questionId+"</span>");
-				//Write code to write into Excel
-				String joinedString = StringUtils.join(un + "," + grade + "," + subject +  "," + "Fail" + ","  + questionDescriptionFromDB + "," +  questionTextFromUI + "," + questionId);
-				System.out.println("joinedString is :"+joinedString);
-				ResultListToExcel.addLast(joinedString);
-			}
-						
-			
-			//clickAnswerOption();
-			//clickSubmitAnswerBtn();
-			//clickNextQuestionBtn();
-			
-			
-			questionsCompletedStatus=verifyQuestionsCompletedOrNot();
-		
-			System.out.println("Questions Status is:"+questionsCompletedStatus);
-			
-			//controlFlowForNextQuestionOrNextShell();
-			
-		}while(questionsCompletedStatus.equals("no"));
 		System.out.println("After End of While Loop");
 		
 		return "Shell Completed";
@@ -1179,7 +1208,7 @@ public class BrainGymPage extends BaseTest{
 		}
 	}
 	
-	public void clickSubmitAnswerBtn()
+	public void clickSubmitAnswerBtn(String chestId, String questionId)
 	{
 		System.out.println("In clickSubmitAnswerBtn()");
 		if(isItDisplayed(submitAnswerBtn))
@@ -1187,6 +1216,7 @@ public class BrainGymPage extends BaseTest{
 			if(isItEnabled(submitAnswerBtn))
 			{
 				submitAnswerBtn.click();
+				attemptResponse=ToReadResponse.getAnswerAttemptResponse(accessToken, chestId, questionId);
 			}
 		}
 	}

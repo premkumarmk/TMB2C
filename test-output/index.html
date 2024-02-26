@@ -25,7 +25,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -50,7 +50,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Default_suite" class="navigator-link ">
-                    <span>C:\Users\user\AppData\Local\Temp\testng-eclipse--1595654915\testng-customsuite.xml</span>
+                    <span>C:\Users\user\AppData\Local\Temp\testng-eclipse--921135973\testng-customsuite.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -92,7 +92,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method, 1 failed,   </span>
+                    <span class="method-stats">3 methods, 3 failed,   </span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -103,7 +103,17 @@
                     <div class="method-list-content failed suite-Default_suite">
                       <span>
                         <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Default_suite" title="script.ModulariseCode" class="method navigator-link" hash-for-method="takeTest(autostudentone.9606178621, stuPwd906040, III, English)">takeTest(autostudentone.9606178621, stuPwd906040, III, English)</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-Default_suite" title="script.RunBGScript" class="method navigator-link" hash-for-method="takeTest(four.9393688889, Taut@1607, IV, Science)">takeTest(four.9393688889, Taut@1607, IV, Science)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="script.RunBGScript" class="method navigator-link" hash-for-method="takeTest(three.9393688889, Taut@2023, III, English)">takeTest(three.9393688889, Taut@2023, III, English)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Default_suite" title="script.RunBGScript" class="method navigator-link" hash-for-method="takeTest(five.9393688889, stuPwd882304, V, Mathematics)">takeTest(five.9393688889, stuPwd882304, V, Mathematics)</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-Default_suite -->
@@ -121,45 +131,103 @@
           <div class="suite-Default_suite-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">script.ModulariseCode</span>
+              <span class="class-name">script.RunBGScript</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="takeTest(autostudentone.9606178621, stuPwd906040, III, English)">
-                  </a> <!-- takeTest(autostudentone.9606178621, stuPwd906040, III, English) -->
+                  <a name="takeTest(four.9393688889, Taut@1607, IV, Science)">
+                  </a> <!-- takeTest(four.9393688889, Taut@1607, IV, Science) -->
                   <span class="method-name">takeTest</span>
-                  <span class="parameters">(autostudentone.9606178621,stuPwd906040,III,English)</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=121.0.6167.161)
-Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
-System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [2109ef6a76dd8a7892e4dbdb786dbc0a, findElements {using=xpath, value=//p[@class=&apos;adjusted-para1&apos;]}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.161, chrome: {chromedriverVersion: 121.0.6167.184 (057a8ae7deb..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49882}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49882/devtoo..., se:cdpVersion: 121.0.6167.161, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a
-	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
-	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElements(ElementLocation.java:182)
-	at org.openqa.selenium.remote.ElementLocation.findElements(ElementLocation.java:103)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:373)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:367)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElements(DefaultElementLocator.java:83)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:36)
-	at jdk.proxy2/jdk.proxy2.$Proxy15.size(Unknown Source)
-	at page.BrainGymPage.getShellCount(BrainGymPage.java:670)
-	at page.BrainGymPage.testPerDayShells(BrainGymPage.java:745)
-	at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:695)
-	at script.ModulariseCode.takeTest(ModulariseCode.java:66)
+                  <span class="parameters">(four.9393688889,Taut@1607,IV,Science)</span>
+                  <div class="stack-trace">java.lang.NullPointerException: Cannot invoke &quot;String.equals(Object)&quot; because &quot;accessToken&quot; is null
+	at script.RunBGScript.takeTest(RunBGScript.java:112)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="takeTest(three.9393688889, Taut@2023, III, English)">
+                  </a> <!-- takeTest(three.9393688889, Taut@2023, III, English) -->
+                  <span class="method-name">takeTest</span>
+                  <span class="parameters">(three.9393688889,Taut@2023,III,English)</span>
+                  <div class="stack-trace">java.lang.IllegalArgumentException: hexString can not be null
+	at org.bson.assertions.Assertions.notNull(Assertions.java:37)
+	at org.bson.types.ObjectId.parseHexString(ObjectId.java:418)
+	at org.bson.types.ObjectId.&lt;init&gt;(ObjectId.java:205)
+	at utilities.mongoDBSeleniumIntegration.updateBrainGymMappings(mongoDBSeleniumIntegration.java:403)
+	at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:711)
+	at script.RunBGScript.takeTest(RunBGScript.java:117)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.testng.TestRunner.privateRun(TestRunner.java:848)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+	at org.testng.TestNG.runSuites(TestNG.java:1114)
+	at org.testng.TestNG.run(TestNG.java:1082)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+
+</div> <!-- stack-trace -->
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="takeTest(five.9393688889, stuPwd882304, V, Mathematics)">
+                  </a> <!-- takeTest(five.9393688889, stuPwd882304, V, Mathematics) -->
+                  <span class="method-name">takeTest</span>
+                  <span class="parameters">(five.9393688889,stuPwd882304,V,Mathematics)</span>
+                  <div class="stack-trace">java.lang.IllegalArgumentException: hexString can not be null
+	at org.bson.assertions.Assertions.notNull(Assertions.java:37)
+	at org.bson.types.ObjectId.parseHexString(ObjectId.java:418)
+	at org.bson.types.ObjectId.&lt;init&gt;(ObjectId.java:205)
+	at utilities.mongoDBSeleniumIntegration.updateBrainGymMappings(mongoDBSeleniumIntegration.java:403)
+	at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:711)
+	at script.RunBGScript.takeTest(RunBGScript.java:117)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -195,7 +263,7 @@ Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a
         </div> <!-- panel Default_suite -->
         <div panel-name="test-xml-Default_suite" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">C:\Users\user\AppData\Local\Temp\testng-eclipse--1595654915\testng-customsuite.xml</span>
+            <span class="header-content">C:\Users\user\AppData\Local\Temp\testng-eclipse--921135973\testng-customsuite.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -204,7 +272,7 @@ Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a
 &lt;suite name=&quot;Default suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;Default test&quot; verbose=&quot;2&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;script.ModulariseCode&quot;/&gt;
+      &lt;class name=&quot;script.RunBGScript&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Default test --&gt;
 &lt;/suite&gt; &lt;!-- Default suite --&gt;
@@ -244,16 +312,24 @@ data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
 data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
-data.addRows(1);
+data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'takeTest')
-data.setCell(0, 2, 'script.ModulariseCode')
-data.setCell(0, 3, 20225);
+data.setCell(0, 2, 'script.RunBGScript')
+data.setCell(0, 3, 548632);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'takeTest')
+data.setCell(1, 2, 'script.RunBGScript')
+data.setCell(1, 3, 525294);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'takeTest')
+data.setCell(2, 2, 'script.RunBGScript')
+data.setCell(2, 3, 7232);
 window.suiteTableData['Default_suite']= { tableData: data, tableDiv: 'times-div-Default_suite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 20 seconds</span>
+              <span class="suite-total-time">Total running time: 18 minutes</span>
               <div id="times-div-Default_suite">
               </div> <!-- times-div-Default_suite -->
             </div> <!-- times-div -->
@@ -264,6 +340,54 @@ return data;
             <span class="header-content">Reporter output for Default suite</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">takeTest(three.9393688889, Taut@2023, III, English)</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b552f7c62b9f0009a8eeb3</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b55339f6914800091f666d</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b55370f6914800091f667e</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b584c01ab0d8000973442f</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b58572e743df0009a1a285</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b585afd582f1000942dcf4</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b585d31ab0d80009734450</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b59ec7d926d600094f40d8</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b59fcd23ece70009a96c14</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b5a04823ece70009a96c27</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b5c06602a32d0009b9db8a</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b5c0ec174b250009254cae</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b5c12f02a32d0009b9db99</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b5c16102a32d0009b9dba6</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b6900d2a753e0009b344be</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b690382a753e0009b344c4</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b6906c2a753e0009b344ca</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b690c94042fe0009ee0f6a</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">takeTest(five.9393688889, stuPwd882304, V, Mathematics)</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44612b265940009ea2f89</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b433874651ba00092554f2</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b43437461ea60009f31505</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b434da113c200009745609</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b4342b461ea60009f314ff</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b434ba113c200009745603</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b43561113c200009745637</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b43593113c200009745641</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b440ca461ea60009f3162c</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44101d9e40c000932ef1e</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b4413fd9e40c000932ef2e</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b4417b461ea60009f31678</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44b3d14a1720009f07273</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44b7514a1720009f07285</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44b98461ea60009f317f9</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44bb914a1720009f0728d</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44e5bae14fc0009785274</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44e94ae14fc000978528f</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44f2dae14fc00097852a9</span>
+                <span class="reporter-method-output"><span style='color: green;'>Pass: No Duplicate Found : </span>62b44f5f14a1720009f07306</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
         <div panel-name="ignored-methods-Default_suite" class="panel">
@@ -279,22 +403,48 @@ return data;
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">script.ModulariseCode</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
-                <span class="method-name">setUp</span>
+              <div class="chronological-class-name">script.RunBGScript</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">preCondition</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-class before -->
+              </div> <!-- configuration-method before -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">takeTest(autostudentone.9606178621, stuPwd906040, III, English)</span>
-                <span class="method-start">5805 ms</span>
+                <span class="method-name">takeTest(three.9393688889, Taut@2023, III, English)</span>
+                <span class="method-start">22952 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
+                <span class="method-name">postCondition([TestResult name=takeTest status=FAILURE method=RunBGScript.takeTest(java.lang.String,java.lang.Stri...)</span>
+                <span class="method-start">571594 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">preCondition</span>
+                <span class="method-start">579857 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
                 <img src="failed.png">
                 </img>
-                <span class="method-name">postCondition([TestResult name=takeTest status=FAILURE method=ModulariseCode.takeTest(java.lang.String,java.lang.S...)</span>
-                <span class="method-start">26034 ms</span>
+                <span class="method-name">takeTest(four.9393688889, Taut@1607, IV, Science)</span>
+                <span class="method-start">593675 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">postCondition([TestResult name=takeTest status=FAILURE method=RunBGScript.takeTest(java.lang.String,java.lang.Stri...)</span>
+                <span class="method-start">600911 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">preCondition</span>
+                <span class="method-start">607236 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">takeTest(five.9393688889, stuPwd882304, V, Mathematics)</span>
+                <span class="method-start">618354 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">postCondition([TestResult name=takeTest status=FAILURE method=RunBGScript.takeTest(java.lang.String,java.lang.Stri...)</span>
+                <span class="method-start">1143653 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

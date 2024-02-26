@@ -1,50 +1,209 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
+<testng-results ignored="0" total="3" passed="0" failed="3" skipped="0">
   <reporter-output>
     <line>
-      <![CDATA[Set ITO:5]]>
+      <![CDATA[Browser is:chrome]]>
     </line>
     <line>
-      <![CDATA[Enter the URL:https://d2c0p5f3p3k3ka.cloudfront.net/]]>
+      <![CDATA[Set ITO:10]]>
+    </line>
+    <line>
+      <![CDATA[Enter the URL:https://www.tautmore.com/]]>
     </line>
     <line>
       <![CDATA[Maximize the browser]]>
     </line>
     <line>
-      <![CDATA[Set ETO:10]]>
+      <![CDATA[Set ETO:5]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b552f7c62b9f0009a8eeb3]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b55339f6914800091f666d]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b55370f6914800091f667e]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b584c01ab0d8000973442f]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b58572e743df0009a1a285]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b585afd582f1000942dcf4]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b585d31ab0d80009734450]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b59ec7d926d600094f40d8]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b59fcd23ece70009a96c14]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5a04823ece70009a96c27]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c06602a32d0009b9db8a]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c0ec174b250009254cae]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c12f02a32d0009b9db99]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c16102a32d0009b9dba6]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b6900d2a753e0009b344be]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b690382a753e0009b344c4]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b6906c2a753e0009b344ca]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b690c94042fe0009ee0f6a]]>
+    </line>
+    <line>
+      <![CDATA[Close the browser]]>
+    </line>
+    <line>
+      <![CDATA[Browser is:chrome]]>
+    </line>
+    <line>
+      <![CDATA[Set ITO:10]]>
+    </line>
+    <line>
+      <![CDATA[Enter the URL:https://www.tautmore.com/]]>
+    </line>
+    <line>
+      <![CDATA[Maximize the browser]]>
+    </line>
+    <line>
+      <![CDATA[Set ETO:5]]>
+    </line>
+    <line>
+      <![CDATA[Close the browser]]>
+    </line>
+    <line>
+      <![CDATA[Browser is:chrome]]>
+    </line>
+    <line>
+      <![CDATA[Set ITO:10]]>
+    </line>
+    <line>
+      <![CDATA[Enter the URL:https://www.tautmore.com/]]>
+    </line>
+    <line>
+      <![CDATA[Maximize the browser]]>
+    </line>
+    <line>
+      <![CDATA[Set ETO:5]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44612b265940009ea2f89]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b433874651ba00092554f2]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b43437461ea60009f31505]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b434da113c200009745609]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b4342b461ea60009f314ff]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b434ba113c200009745603]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b43561113c200009745637]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b43593113c200009745641]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b440ca461ea60009f3162c]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44101d9e40c000932ef1e]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b4413fd9e40c000932ef2e]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b4417b461ea60009f31678]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44b3d14a1720009f07273]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44b7514a1720009f07285]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44b98461ea60009f317f9]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44bb914a1720009f0728d]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44e5bae14fc0009785274]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44e94ae14fc000978528f]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44f2dae14fc00097852a9]]>
+    </line>
+    <line>
+      <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44f5f14a1720009f07306]]>
+    </line>
+    <line>
+      <![CDATA[Close the browser]]>
     </line>
   </reporter-output>
-  <suite started-at="2024-02-19T13:18:50 IST" name="Default suite" finished-at="2024-02-19T13:19:16 IST" duration-ms="26081">
+  <suite started-at="2024-02-26T08:15:25 IST" name="Default suite" finished-at="2024-02-26T08:34:38 IST" duration-ms="1152854">
     <groups>
     </groups>
-    <test started-at="2024-02-19T13:18:50 IST" name="Default test" finished-at="2024-02-19T13:19:16 IST" duration-ms="26081">
-      <class name="script.ModulariseCode">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:script.ModulariseCode@20140db9]" started-at="2024-02-19T13:18:50 IST" name="setUp" finished-at="2024-02-19T13:18:55 IST" duration-ms="4949" status="PASS">
+    <test started-at="2024-02-26T08:15:25 IST" name="Default test" finished-at="2024-02-26T08:34:38 IST" duration-ms="1152854">
+      <class name="script.RunBGScript">
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:15:27 IST" name="preCondition" finished-at="2024-02-26T08:15:50 IST" duration-ms="22950" status="PASS">
           <reporter-output>
             <line>
-              <![CDATA[Set ITO:5]]>
+              <![CDATA[Browser is:chrome]]>
             </line>
             <line>
-              <![CDATA[Enter the URL:https://d2c0p5f3p3k3ka.cloudfront.net/]]>
+              <![CDATA[Set ITO:10]]>
+            </line>
+            <line>
+              <![CDATA[Enter the URL:https://www.tautmore.com/]]>
             </line>
             <line>
               <![CDATA[Maximize the browser]]>
             </line>
             <line>
-              <![CDATA[Set ETO:10]]>
+              <![CDATA[Set ETO:5]]>
             </line>
           </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@20140db9]" started-at="2024-02-19T13:18:56 IST" name="takeTest" data-provider="data-set" finished-at="2024-02-19T13:19:16 IST" duration-ms="20225" status="FAIL">
+        </test-method> <!-- preCondition -->
+        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:15:50 IST" name="takeTest" data-provider="data-set" finished-at="2024-02-26T08:24:58 IST" duration-ms="548632" status="FAIL">
           <params>
             <param index="0">
               <value>
-                <![CDATA[autostudentone.9606178621]]>
+                <![CDATA[three.9393688889]]>
               </value>
             </param>
             <param index="1">
               <value>
-                <![CDATA[stuPwd906040]]>
+                <![CDATA[Taut@2023]]>
               </value>
             </param>
             <param index="2">
@@ -58,49 +217,18 @@
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchWindowException">
+          <exception class="java.lang.IllegalArgumentException">
             <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=121.0.6167.161)
-Build info: version: '4.16.1', revision: '9b4c83354e'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [2109ef6a76dd8a7892e4dbdb786dbc0a, findElements {using=xpath, value=//p[@class='adjusted-para1']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.161, chrome: {chromedriverVersion: 121.0.6167.184 (057a8ae7deb..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49882}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49882/devtoo..., se:cdpVersion: 121.0.6167.161, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a]]>
+              <![CDATA[hexString can not be null]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=121.0.6167.161)
-Build info: version: '4.16.1', revision: '9b4c83354e'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [2109ef6a76dd8a7892e4dbdb786dbc0a, findElements {using=xpath, value=//p[@class='adjusted-para1']}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.161, chrome: {chromedriverVersion: 121.0.6167.184 (057a8ae7deb..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49882}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49882/devtoo..., se:cdpVersion: 121.0.6167.161, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElements(ElementLocation.java:182)
-at org.openqa.selenium.remote.ElementLocation.findElements(ElementLocation.java:103)
-at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:373)
-at org.openqa.selenium.remote.RemoteWebDriver.findElements(RemoteWebDriver.java:367)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElements(DefaultElementLocator.java:83)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:36)
-at jdk.proxy2/jdk.proxy2.$Proxy15.size(Unknown Source)
-at page.BrainGymPage.getShellCount(BrainGymPage.java:670)
-at page.BrainGymPage.testPerDayShells(BrainGymPage.java:745)
-at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:695)
-at script.ModulariseCode.takeTest(ModulariseCode.java:66)
+              <![CDATA[java.lang.IllegalArgumentException: hexString can not be null
+at org.bson.assertions.Assertions.notNull(Assertions.java:37)
+at org.bson.types.ObjectId.parseHexString(ObjectId.java:418)
+at org.bson.types.ObjectId.<init>(ObjectId.java:205)
+at utilities.mongoDBSeleniumIntegration.updateBrainGymMappings(mongoDBSeleniumIntegration.java:403)
+at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:711)
+at script.RunBGScript.takeTest(RunBGScript.java:117)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -129,63 +257,131 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+          </exception> <!-- java.lang.IllegalArgumentException -->
           <reporter-output>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b552f7c62b9f0009a8eeb3]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b55339f6914800091f666d]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b55370f6914800091f667e]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b584c01ab0d8000973442f]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b58572e743df0009a1a285]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b585afd582f1000942dcf4]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b585d31ab0d80009734450]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b59ec7d926d600094f40d8]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b59fcd23ece70009a96c14]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5a04823ece70009a96c27]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c06602a32d0009b9db8a]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c0ec174b250009254cae]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c12f02a32d0009b9db99]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b5c16102a32d0009b9dba6]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b6900d2a753e0009b344be]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b690382a753e0009b344c4]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b6906c2a753e0009b344ca]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b690c94042fe0009ee0f6a]]>
+            </line>
           </reporter-output>
         </test-method> <!-- takeTest -->
-        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.ModulariseCode@20140db9]" started-at="2024-02-19T13:19:16 IST" name="postCondition" finished-at="2024-02-19T13:19:16 IST" duration-ms="7" status="FAIL">
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:24:58 IST" name="postCondition" finished-at="2024-02-26T08:25:07 IST" duration-ms="8262" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=takeTest status=FAILURE method=ModulariseCode.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.ModulariseCode@20140db9] output={null}]]]>
+                <![CDATA[[TestResult name=takeTest status=FAILURE method=RunBGScript.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.RunBGScript@771a660] output=<span style='color: green;'>Pass: No Duplicate Found : </span>62b552f7c62b9f0009a8eeb3]]]>
               </value>
             </param>
           </params>
-          <exception class="org.openqa.selenium.NoSuchWindowException">
+          <reporter-output>
+            <line>
+              <![CDATA[Close the browser]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:25:07 IST" name="preCondition" finished-at="2024-02-26T08:25:20 IST" duration-ms="13818" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Browser is:chrome]]>
+            </line>
+            <line>
+              <![CDATA[Set ITO:10]]>
+            </line>
+            <line>
+              <![CDATA[Enter the URL:https://www.tautmore.com/]]>
+            </line>
+            <line>
+              <![CDATA[Maximize the browser]]>
+            </line>
+            <line>
+              <![CDATA[Set ETO:5]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- preCondition -->
+        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:25:20 IST" name="takeTest" data-provider="data-set" finished-at="2024-02-26T08:25:28 IST" duration-ms="7232" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[four.9393688889]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Taut@1607]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[IV]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Science]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.NullPointerException">
             <message>
-              <![CDATA[no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=121.0.6167.161)
-Build info: version: '4.16.1', revision: '9b4c83354e'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [2109ef6a76dd8a7892e4dbdb786dbc0a, screenshot {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.161, chrome: {chromedriverVersion: 121.0.6167.184 (057a8ae7deb..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49882}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49882/devtoo..., se:cdpVersion: 121.0.6167.161, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a]]>
+              <![CDATA[Cannot invoke "String.equals(Object)" because "accessToken" is null]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.NoSuchWindowException: no such window: target window already closed
-from unknown error: web view not found
-  (Session info: chrome=121.0.6167.161)
-Build info: version: '4.16.1', revision: '9b4c83354e'
-System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '21'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [2109ef6a76dd8a7892e4dbdb786dbc0a, screenshot {}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.161, chrome: {chromedriverVersion: 121.0.6167.184 (057a8ae7deb..., userDataDir: C:\Users\user\AppData\Local...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:49882}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:49882/devtoo..., se:cdpVersion: 121.0.6167.161, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 2109ef6a76dd8a7892e4dbdb786dbc0a
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:596)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:600)
-at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:326)
-at generic.BaseTest.postCondition(BaseTest.java:141)
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "String.equals(Object)" because "accessToken" is null
+at script.RunBGScript.takeTest(RunBGScript.java:112)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethodConsideringTimeout(MethodInvocationHelper.java:69)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurationMethod(ConfigInvoker.java:390)
-at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:325)
-at org.testng.internal.invokers.TestInvoker.runConfigMethods(TestInvoker.java:810)
-at org.testng.internal.invokers.TestInvoker.runAfterConfigurations(TestInvoker.java:779)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:755)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
 at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
 at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
 at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
@@ -210,15 +406,185 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.NoSuchWindowException -->
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
+          </reporter-output>
+        </test-method> <!-- takeTest -->
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:25:28 IST" name="postCondition" finished-at="2024-02-26T08:25:34 IST" duration-ms="6323" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=takeTest status=FAILURE method=RunBGScript.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.RunBGScript@771a660] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Close the browser]]>
+            </line>
           </reporter-output>
         </test-method> <!-- postCondition -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:script.ModulariseCode@20140db9]" started-at="2024-02-19T13:19:16 IST" name="tearDown" finished-at="2024-02-19T13:19:16 IST" duration-ms="0" status="SKIP">
+        <test-method is-config="true" signature="preCondition()[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:25:34 IST" name="preCondition" finished-at="2024-02-26T08:25:45 IST" duration-ms="11118" status="PASS">
           <reporter-output>
+            <line>
+              <![CDATA[Browser is:chrome]]>
+            </line>
+            <line>
+              <![CDATA[Set ITO:10]]>
+            </line>
+            <line>
+              <![CDATA[Enter the URL:https://www.tautmore.com/]]>
+            </line>
+            <line>
+              <![CDATA[Maximize the browser]]>
+            </line>
+            <line>
+              <![CDATA[Set ETO:5]]>
+            </line>
           </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- script.ModulariseCode -->
+        </test-method> <!-- preCondition -->
+        <test-method signature="takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:25:45 IST" name="takeTest" data-provider="data-set" finished-at="2024-02-26T08:34:30 IST" duration-ms="525294" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[five.9393688889]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[stuPwd882304]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[V]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[Mathematics]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.IllegalArgumentException">
+            <message>
+              <![CDATA[hexString can not be null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.IllegalArgumentException: hexString can not be null
+at org.bson.assertions.Assertions.notNull(Assertions.java:37)
+at org.bson.types.ObjectId.parseHexString(ObjectId.java:418)
+at org.bson.types.ObjectId.<init>(ObjectId.java:205)
+at utilities.mongoDBSeleniumIntegration.updateBrainGymMappings(mongoDBSeleniumIntegration.java:403)
+at page.BrainGymPage.numberOfDaystoRun(BrainGymPage.java:711)
+at script.RunBGScript.takeTest(RunBGScript.java:117)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:227)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:957)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:200)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+at org.testng.TestRunner.privateRun(TestRunner.java:848)
+at org.testng.TestRunner.run(TestRunner.java:621)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
+at org.testng.SuiteRunner.run(SuiteRunner.java:336)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1280)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1200)
+at org.testng.TestNG.runSuites(TestNG.java:1114)
+at org.testng.TestNG.run(TestNG.java:1082)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.IllegalArgumentException -->
+          <reporter-output>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44612b265940009ea2f89]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b433874651ba00092554f2]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b43437461ea60009f31505]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b434da113c200009745609]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b4342b461ea60009f314ff]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b434ba113c200009745603]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b43561113c200009745637]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b43593113c200009745641]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b440ca461ea60009f3162c]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44101d9e40c000932ef1e]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b4413fd9e40c000932ef2e]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b4417b461ea60009f31678]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44b3d14a1720009f07273]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44b7514a1720009f07285]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44b98461ea60009f317f9]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44bb914a1720009f0728d]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44e5bae14fc0009785274]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44e94ae14fc000978528f]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44f2dae14fc00097852a9]]>
+            </line>
+            <line>
+              <![CDATA[<span style='color: green;'>Pass: No Duplicate Found : </span>62b44f5f14a1720009f07306]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- takeTest -->
+        <test-method is-config="true" signature="postCondition(org.testng.ITestResult)[pri:0, instance:script.RunBGScript@771a660]" started-at="2024-02-26T08:34:30 IST" name="postCondition" finished-at="2024-02-26T08:34:38 IST" duration-ms="7618" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=takeTest status=FAILURE method=RunBGScript.takeTest(java.lang.String,java.lang.String,java.lang.String,java.lang.String)[pri:0, instance:script.RunBGScript@771a660] output=<span style='color: green;'>Pass: No Duplicate Found : </span>62b44612b265940009ea2f89]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+            <line>
+              <![CDATA[Close the browser]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- postCondition -->
+      </class> <!-- script.RunBGScript -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
